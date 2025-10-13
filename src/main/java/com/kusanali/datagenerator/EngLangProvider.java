@@ -1,0 +1,41 @@
+package com.kusanali.datagenerator;
+
+import com.kusanali.register.ModItems;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+
+public class EngLangProvider extends FabricLanguageProvider {
+    public EngLangProvider(FabricDataOutput dataOutput) {
+        super(dataOutput,"en_us");
+    }
+
+    @Override
+    public void generateTranslations(TranslationBuilder translationBuilder) {
+        translationBuilder.add(ModItems.ARANAS_FLOWER, "Aranas Flower");
+        translationBuilder.add(ModItems.BLESSED_SEED, "Blessed Seed");
+        translationBuilder.add(ModItems.BLESSED_BENCH, "Blessed Bench");
+        translationBuilder.add(ModItems.FLOAT_DREAM, "A Thousand Floating Dreams");
+        translationBuilder.add(ModItems.CANDIED_NUT, "Candied Ajilenakh Nut");
+        translationBuilder.add(ModItems.HALVAMAZE, "Halvamaze");
+        translationBuilder.add(ModItems.COROLLA, "Aranas Corolla");
+        translationBuilder.add(ModItems.IVE_NEVER_FORGOTTEN, "I've Never Forgotten");
+        translationBuilder.add(ModItems.CLIENT, "Void Client");
+        translationBuilder.add(ModItems.AJILENAKH, "ajilenakh nut");
+
+        translationBuilder.add("dimension.kusanali.dream_di_1", "Dream Dimension");
+
+        translationBuilder.add(ModItems.IVE_NEVER_FORGOTTEN.getTranslationKey() + ".desc", "I've Never Forgotten");
+
+        translationBuilder.add("itemGroup.kusanali", "kusanali");
+        translationBuilder.add("item.kusanali.float_dream.tooltip_1",
+                "The lamps reflecting the dreams of a thousand nights spill out songs from a faraway world in their green light.");
+        translationBuilder.add("item.kusanali.float_dream.tooltip_2",
+                "Deals extra damage to enemies that are on fire.");
+        translationBuilder.add("item.kusanali.float_dream.tooltip_4",
+                "8 Impact Damage");
+        translationBuilder.add("item.kusanali.float_dream.tooltip_3",
+                "6 Normal Attack Damage");
+        translationBuilder.add("item.kusanali.halvamaze.tooltip_1",
+                "It is said that 'Maz' in Sumiru means 'wisdom' Such exquisite and delicate 'wisdom' is truly irresistible");
+    }
+}

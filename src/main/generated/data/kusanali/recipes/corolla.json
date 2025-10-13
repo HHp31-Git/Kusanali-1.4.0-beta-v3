@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": {
+      "item": "kusanali:aranas_flower"
+    }
+  },
+  "pattern": [
+    " b ",
+    "b b",
+    " b "
+  ],
+  "result": {
+    "item": "kusanali:corolla"
+  },
+  "show_notification": true
+}

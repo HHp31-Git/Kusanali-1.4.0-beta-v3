@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:kusanali/got_can",
+  "criteria": {
+    "got_hav": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "kusanali:halvamaze"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "玲珑的「智慧」"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "kusanali:halvamaze"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "哈瓦玛玛兹"
+    }
+  },
+  "requirements": [
+    [
+      "got_hav"
+    ]
+  ],
+  "rewards": {
+    "experience": 1500
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:kusanali/root",
+  "criteria": {
+    "got_fl": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "kusanali:float_dream"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "苍翠的光中流溢着遥世的歌"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "kusanali:float_dream",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "千夜浮梦"
+    }
+  },
+  "requirements": [
+    [
+      "got_fl"
+    ]
+  ],
+  "rewards": {
+    "experience": 1500
+  },
+  "sends_telemetry_event": true
+}

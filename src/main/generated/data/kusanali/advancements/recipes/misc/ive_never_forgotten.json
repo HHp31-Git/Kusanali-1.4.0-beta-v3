@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_aranas_flower": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "kusanali:aranas_flower"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_blessed_seed": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "kusanali:blessed_seed"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "kusanali:ive_never_forgotten"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_aranas_flower",
+      "has_blessed_seed",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "kusanali:ive_never_forgotten"
+    ]
+  },
+  "sends_telemetry_event": false
+}

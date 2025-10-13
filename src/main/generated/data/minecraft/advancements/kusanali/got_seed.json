@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:kusanali/root",
+  "criteria": {
+    "got_seed": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "kusanali:blessed_seed"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "新芽将出"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "kusanali:blessed_seed"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "祝福之种"
+    }
+  },
+  "requirements": [
+    [
+      "got_seed"
+    ]
+  ],
+  "rewards": {
+    "experience": 500
+  },
+  "sends_telemetry_event": true
+}

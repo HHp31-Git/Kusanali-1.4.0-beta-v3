@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:kusanali/root",
+  "criteria": {
+    "got_aji": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "kusanali:ajilenakh"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "沙漠之实"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "kusanali:ajilenakh"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "枣椰"
+    }
+  },
+  "requirements": [
+    [
+      "got_aji"
+    ]
+  ],
+  "rewards": {
+    "experience": 500
+  },
+  "sends_telemetry_event": true
+}

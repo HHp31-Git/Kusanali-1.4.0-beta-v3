@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "got_flower": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "kusanali:aranas_flower"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "minecraft:textures/gui/advancements/backgrounds/root.png",
+    "description": {
+      "text": "For the Lesser Lord Kusanali!"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "kusanali:aranas_flower"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "吉祥草之音"
+    }
+  },
+  "requirements": [
+    [
+      "got_flower"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

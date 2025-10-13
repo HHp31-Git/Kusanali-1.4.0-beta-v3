@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:kusanali/got_aji",
+  "criteria": {
+    "got_can": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "kusanali:candied_nut"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "SWEET"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "kusanali:candied_nut"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "枣椰蜜糖"
+    }
+  },
+  "requirements": [
+    [
+      "got_can"
+    ]
+  ],
+  "rewards": {
+    "experience": 500
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:kusanali/root",
+  "criteria": {
+    "got_co": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "kusanali:corolla"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "致兰那罗的同行者"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "kusanali:corolla",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "花冠"
+    }
+  },
+  "requirements": [
+    [
+      "got_co"
+    ]
+  ],
+  "rewards": {
+    "experience": 500
+  },
+  "sends_telemetry_event": true
+}

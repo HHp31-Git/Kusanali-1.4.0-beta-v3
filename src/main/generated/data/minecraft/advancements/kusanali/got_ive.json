@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:kusanali/root",
+  "criteria": {
+    "got_ive": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "kusanali:ive_never_forgotten"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "致千树之王"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "kusanali:ive_never_forgotten"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "我不曾忘记"
+    }
+  },
+  "requirements": [
+    [
+      "got_ive"
+    ]
+  ],
+  "rewards": {
+    "experience": 1500
+  },
+  "sends_telemetry_event": true
+}

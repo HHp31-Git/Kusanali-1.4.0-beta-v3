@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": {
+      "item": "kusanali:blessed_seed"
+    },
+    "c": {
+      "item": "kusanali:blessed_bench"
+    },
+    "e": {
+      "item": "minecraft:emerald_block"
+    },
+    "f": {
+      "item": "kusanali:aranas_flower"
+    },
+    "i": {
+      "item": "minecraft:diamond_block"
+    }
+  },
+  "pattern": [
+    " b ",
+    "ifi",
+    "cec"
+  ],
+  "result": {
+    "item": "kusanali:float_dream"
+  },
+  "show_notification": true
+}

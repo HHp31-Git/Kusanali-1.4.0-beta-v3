@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "kusanali:aranas_flower"
+    },
+    "b": {
+      "item": "kusanali:blessed_seed"
+    }
+  },
+  "pattern": [
+    " b ",
+    "bab",
+    " b "
+  ],
+  "result": {
+    "item": "kusanali:ive_never_forgotten"
+  },
+  "show_notification": true
+}

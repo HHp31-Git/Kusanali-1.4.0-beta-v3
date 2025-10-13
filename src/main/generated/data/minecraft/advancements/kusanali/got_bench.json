@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:kusanali/root",
+  "criteria": {
+    "got_bench": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "kusanali:blessed_bench"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "新叶将成"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "kusanali:blessed_bench"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "祝福之枝"
+    }
+  },
+  "requirements": [
+    [
+      "got_bench"
+    ]
+  ],
+  "rewards": {
+    "experience": 500
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:kusanali/root",
+  "criteria": {
+    "got_cli": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "kusanali:client"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "text": "统合人民之智慧"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "kusanali:client",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "虚空终端"
+    }
+  },
+  "requirements": [
+    [
+      "got_cli"
+    ]
+  ],
+  "rewards": {
+    "experience": 500
+  },
+  "sends_telemetry_event": true
+}
