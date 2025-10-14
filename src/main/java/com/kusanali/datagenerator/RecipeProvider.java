@@ -11,8 +11,6 @@ import net.minecraft.recipe.book.RecipeCategory;
 
 import java.util.function.Consumer;
 
-import static net.minecraft.world.gen.feature.Feature.SIMPLE_BLOCK;
-
 public class RecipeProvider extends FabricRecipeProvider {
     public RecipeProvider(FabricDataOutput output) {
         super(output);
