@@ -22,6 +22,12 @@ public class EngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.CLIENT, "Void Client");
         translationBuilder.add(ModItems.AJILENAKH, "ajilenakh nut");
 
+        translationBuilder.add("painting.kusanali.nhd_1.title", "2024Birthday Painting");
+        translationBuilder.add("painting.kusanali.nhd_2.title", "2023Birthday Painting");
+
+        translationBuilder.add("painting.kusanali.nhd_1.author", "Mihoyo");
+        translationBuilder.add("painting.kusanali.nhd_2.author", "Mihoyo");
+
         translationBuilder.add("dimension.kusanali.dream_di_1", "Dream Dimension");
 
         translationBuilder.add(ModItems.IVE_NEVER_FORGOTTEN.getTranslationKey() + ".desc", "I've Never Forgotten");

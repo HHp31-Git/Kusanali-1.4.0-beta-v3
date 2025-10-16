@@ -2,9 +2,7 @@ package com.kusanali;
 
 import com.kusanali.event.ClientEvent;
 import com.kusanali.event.CorollaEvent;
-import com.kusanali.register.ModItemGroup;
-import com.kusanali.register.ModItems;
-import com.kusanali.register.ModSounds;
+import com.kusanali.register.*;
 import com.kusanali.specialitem.FloatDream;
 import com.kusanali.world.LootTableModify;
 import net.fabricmc.api.ModInitializer;
@@ -28,7 +26,9 @@ public class Kusanali implements ModInitializer {
 		LOGGER.info("Hello Fabric world!");
         ModItemGroup.initialize();
         ModItems.initialize();
+        ModBlocks.initialize();
         ModSounds.register();
+        ModPaintings.init();
 
         FloatDream.registerAttackEvent();
         CorollaEvent.register();

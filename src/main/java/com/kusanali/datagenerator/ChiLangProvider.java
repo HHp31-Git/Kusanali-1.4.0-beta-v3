@@ -22,6 +22,12 @@ public class ChiLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.CLIENT, "虚空终端");
         translationBuilder.add(ModItems.AJILENAKH, "枣椰");
 
+        translationBuilder.add("painting.kusanali.nhd_1.title", "2024贺图");
+        translationBuilder.add("painting.kusanali.nhd_2.title", "2023贺图");
+
+        translationBuilder.add("painting.kusanali.nhd_1.author", "Mihoyo");
+        translationBuilder.add("painting.kusanali.nhd_2.author", "Mihoyo");
+
         translationBuilder.add(ModItems.IVE_NEVER_FORGOTTEN.getTranslationKey() + ".desc", "I've Never Forgotten");
 
         translationBuilder.add("dimension.kusanali.dream_di_1", "梦境之地");
