@@ -51,6 +51,33 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(ModItems.BLESSED_SEED),
                         FabricRecipeProvider.conditionsFromItem(ModItems.BLESSED_SEED))
                 .offerTo(consumer);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CANDIED_NUT)
+                .pattern(" b ").pattern("bcb").pattern(" a ")
+                .input('b', Items.SUGAR)
+                .criterion(FabricRecipeProvider.hasItem(Items.SUGAR),
+                        FabricRecipeProvider.conditionsFromItem(Items.SUGAR))
+                .input('c', ModItems.AJILENAKH)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.AJILENAKH),
+                        FabricRecipeProvider.conditionsFromItem(ModItems.AJILENAKH))
+                .input('a', Items.MILK_BUCKET)
+                .criterion(FabricRecipeProvider.hasItem(Items.MILK_BUCKET),
+                        FabricRecipeProvider.conditionsFromItem(Items.MILK_BUCKET))
+                .offerTo(consumer);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.HALVAMAZE)
+                .pattern("dbd").pattern("bcb").pattern(" a ")
+                .input('b', Items.SUGAR)
+                .criterion(FabricRecipeProvider.hasItem(Items.SUGAR),
+                        FabricRecipeProvider.conditionsFromItem(Items.SUGAR))
+                .input('c', ModItems.AJILENAKH)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.AJILENAKH),
+                        FabricRecipeProvider.conditionsFromItem(ModItems.AJILENAKH))
+                .input('a', Items.MILK_BUCKET)
+                .criterion(FabricRecipeProvider.hasItem(Items.MILK_BUCKET),
+                        FabricRecipeProvider.conditionsFromItem(Items.MILK_BUCKET))
+                .input('d', ModItems.BLESSED_SEED)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.BLESSED_SEED),
+                        FabricRecipeProvider.conditionsFromItem(ModItems.BLESSED_SEED))
+                .offerTo(consumer);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BLESSED_BENCH, 1)
                 .input(Items.STICK)

@@ -1,6 +1,9 @@
 package com.kusanali;
 
 import com.kusanali.register.ModBlocks;
+import com.kusanali.register.ModKeySet;
+import com.kusanali.server.CoolDawnSync;
+import com.kusanali.server.FloatDreamHud;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
@@ -13,5 +16,9 @@ public class KusanaliModClient implements ClientModInitializer {
             BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SUMIRU_ROSE, RenderLayer.getCutout());
             BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_SUMIRU_ROSE, RenderLayer.getCutout());
         });
+
+        ModKeySet.register();
+        FloatDreamHud.register();
+        CoolDawnSync.register();
     }
 }

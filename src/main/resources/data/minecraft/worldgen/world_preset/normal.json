@@ -37,7 +37,7 @@
       "generator": {
         "type": "minecraft:flat",
         "settings": {
-          "biome":  "kusanali:dream_biome",
+          "biome":  "kusanali:dream_di_1_biome",
           "layers": [
             {
               "block": "minecraft:bedrock",

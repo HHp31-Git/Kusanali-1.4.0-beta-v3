@@ -17,5 +17,6 @@ public class KusanaliDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(RecipeProvider::new);
         pack.addProvider(ModelProvider::new);
         pack.addProvider(AdvancementProvider::new);
+        pack.addProvider(BiomeProvider::new);
 	}
 }

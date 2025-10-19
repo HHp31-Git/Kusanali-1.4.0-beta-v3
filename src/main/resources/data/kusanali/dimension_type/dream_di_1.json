@@ -4,7 +4,7 @@
     "type": "minecraft:noise",
     "biome_source": {
       "type": "minecraft:fixed",
-      "biome": "minecraft:plains"
+      "biome": "kusanali:dream_di_1_biome"
     },
     "settings": "minecraft:overworld"
   },

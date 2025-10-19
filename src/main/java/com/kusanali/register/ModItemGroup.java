@@ -22,6 +22,7 @@ public class ModItemGroup {
                 entries.add(ModItems.CANDIED_NUT);
                 entries.add(ModItems.HALVAMAZE);
                 entries.add(ModItems.IVE_NEVER_FORGOTTEN);
+                entries.add(ModItems.AJILENAKH);
             })
             .build();
     public static void initialize() {
