@@ -45,6 +45,8 @@ public class ChiLangProvider extends FabricLanguageProvider {
                 "据说玛兹在须弥有「智慧」的意思，如此精致玲珑的「智慧」，着实令人无法抗拒");
 
         translationBuilder.add("key.kusanali.activate_float_dream", "心景幻成");
+        translationBuilder.add("key.kusanali.e_float_dream", "所识遍记");
         translationBuilder.add("effect.kusanali.magic_damage", "摩耶之殿");
+        translationBuilder.add("category.kusanali.abilities", "武器能力-千夜浮梦");
     }
 }

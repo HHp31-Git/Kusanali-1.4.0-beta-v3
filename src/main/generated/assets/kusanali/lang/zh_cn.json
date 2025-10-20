@@ -1,5 +1,7 @@
 {
+  "category.kusanali.abilities": "武器能力-千夜浮梦",
   "dimension.kusanali.dream_di_1": "梦境之地",
+  "effect.kusanali.magic_damage": "摩耶之殿",
   "item.kusanali.ajilenakh": "枣椰",
   "item.kusanali.aranas_flower": "兰那罗之花",
   "item.kusanali.blessed_bench": "祝福之枝",
@@ -16,5 +18,11 @@
   "item.kusanali.halvamaze.tooltip_1": "据说玛兹在须弥有「智慧」的意思，如此精致玲珑的「智慧」，着实令人无法抗拒",
   "item.kusanali.ive_never_forgotten": "我不曾忘记",
   "item.kusanali.ive_never_forgotten.desc": "I've Never Forgotten",
-  "itemGroup.kusanali": "吉祥草之音"
+  "itemGroup.kusanali": "吉祥草之音",
+  "key.kusanali.activate_float_dream": "心景幻成",
+  "key.kusanali.e_float_dream": "所识遍记",
+  "painting.kusanali.nhd_1.author": "Mihoyo",
+  "painting.kusanali.nhd_1.title": "2024贺图",
+  "painting.kusanali.nhd_2.author": "Mihoyo",
+  "painting.kusanali.nhd_2.title": "2023贺图"
 }

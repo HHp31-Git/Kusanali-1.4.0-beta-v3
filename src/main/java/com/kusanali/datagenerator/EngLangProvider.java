@@ -45,6 +45,8 @@ public class EngLangProvider extends FabricLanguageProvider {
                 "It is said that 'Maz' in Sumiru means 'wisdom' Such exquisite and delicate 'wisdom' is truly irresistible");
 
         translationBuilder.add("key.kusanali.activate_float_dream", "mind's vision creates illusions");
+        translationBuilder.add("key.kusanali.e_float_dream", "All that is known and recorded");
         translationBuilder.add("effect.kusanali.magic_damage", "Hall of Maya");
+        translationBuilder.add("category.kusanali.abilities", "Ability-Float Dream");
     }
 }
