@@ -18,7 +18,7 @@ public class Kusanali implements ModInitializer {
 	@Override
 	public void onInitialize() {
 
-		LOGGER.info("Hello Fabric world!");
+		LOGGER.info("For the Lesser Lord Kusanali");
         ModItemGroup.initialize();
         ModItems.initialize();
         ModBlocks.initialize();

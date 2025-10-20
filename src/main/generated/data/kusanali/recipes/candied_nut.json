@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "minecraft:milk_bucket"
+    },
+    "b": {
+      "item": "minecraft:sugar"
+    },
+    "c": {
+      "item": "kusanali:ajilenakh"
+    }
+  },
+  "pattern": [
+    " b ",
+    "bcb",
+    " a "
+  ],
+  "result": {
+    "item": "kusanali:candied_nut"
+  },
+  "show_notification": true
+}

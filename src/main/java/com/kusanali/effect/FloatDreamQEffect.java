@@ -17,7 +17,6 @@ public class FloatDreamQEffect extends StatusEffect {
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        // 造成1点魔法伤害
         entity.damage(entity.getDamageSources().magic(), 1.0F);
     }
 }

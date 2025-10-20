@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "minecraft:milk_bucket"
+    },
+    "b": {
+      "item": "minecraft:sugar"
+    },
+    "c": {
+      "item": "kusanali:ajilenakh"
+    },
+    "d": {
+      "item": "kusanali:blessed_seed"
+    }
+  },
+  "pattern": [
+    "dbd",
+    "bcb",
+    " a "
+  ],
+  "result": {
+    "item": "kusanali:halvamaze"
+  },
+  "show_notification": true
+}
