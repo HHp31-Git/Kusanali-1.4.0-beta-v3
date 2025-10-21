@@ -11,12 +11,11 @@ For the Lesser Lord Kusanali. All right reserved[1,6](@ref)
 -   Minecraft 1.20.1
 -   fabric-loader 0.14.21
 
-注意事项：
--   需要前置：geckolib(建议版本:4.7.4)
+## 🌟 功能特点
 
-### 安装与运行
-
-这非常简单：将jar文件放入.minecraft目录下的mods文件夹中，
+- 特殊武器"千夜浮梦"
+- 特殊维度"梦境之地"
+- 多个特殊事件和能力系统
 
 ## 📄 许可证
 

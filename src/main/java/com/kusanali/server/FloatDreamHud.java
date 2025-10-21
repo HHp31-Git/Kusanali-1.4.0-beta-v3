@@ -1,49 +1,35 @@
 package com.kusanali.server;
 
-import com.kusanali.register.ModItems;
-import com.kusanali.register.ModKeySet;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.util.Identifier;
 
 public class FloatDreamHud implements HudRenderCallback {
-    public static int cooldown = 0; // 客户端冷却计时（刻）
+    public static long rCooldownEndTime = 0;  // R键冷却结束时间
+    public static long eCooldownEndTime = 0;  // E键冷却结束时间
     @Override
     public void onHudRender(DrawContext drawContext, float v) {
-        if (cooldown > 0) {
-            MinecraftClient client = MinecraftClient.getInstance();
-            TextRenderer textRenderer = client.textRenderer;
+        MinecraftClient client = MinecraftClient.getInstance();
+        TextRenderer textRenderer = client.textRenderer;
+        long currentTime = System.currentTimeMillis();
 
-            // 在屏幕右下角显示冷却时间
-            String text = "冷却: " + (cooldown / 20) + "s";
+        // 显示R键冷却
+        if (currentTime < rCooldownEndTime) {
+            long remainingSeconds = (rCooldownEndTime - currentTime) / 1000 + 1;
+            String text = "心景幻成 " + remainingSeconds + "s";
             int x = client.getWindow().getScaledWidth() - textRenderer.getWidth(text) - 10;
             int y = client.getWindow().getScaledHeight() - 20;
-
-            drawContext.drawTextWithShadow(textRenderer, text, x, y, 0xFFFFFF);
-
-            // 更新客户端冷却（每帧减少）
-            cooldown--;
+            drawContext.drawTextWithShadow(textRenderer, text, x, y, 0x55FF55);
         }
-    }
-    public static void register() {
-        // 注册HUD渲染
-        HudRenderCallback.EVENT.register(new FloatDreamHud());
 
-        // 监听按键事件
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (ModKeySet.ACTIVATE_FLOAT_DREAM.wasPressed()) {
-                // 检查玩家是否手持float_dream物品
-                if (client.player != null && client.player.getMainHandStack().getItem() == ModItems.FLOAT_DREAM) {
-                    // 发送激活请求到服务器
-                    ClientPlayNetworking.send(new Identifier("kusanali", "activate_float_dream"),
-                            PacketByteBufs.create());
-                }
-            }
-        });
+        // 显示E键冷却
+        if (currentTime < eCooldownEndTime) {
+            long remainingSeconds = (eCooldownEndTime - currentTime) / 1000 + 1;
+            String text = "所识遍记: " + remainingSeconds + "s";
+            int x = client.getWindow().getScaledWidth() - textRenderer.getWidth(text) - 10;
+            int y = client.getWindow().getScaledHeight() - 50;
+            drawContext.drawTextWithShadow(textRenderer, text, x, y, 0xFFFFFF);
+        }
     }
 }

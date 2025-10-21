@@ -18,8 +18,8 @@ public class ModBlocks {
     public static final Block POTTED_SUMIRU_ROSE =
             register("potted_sumiru_rose", new Block(FabricBlockSettings.copyOf(Blocks.POTTED_ORANGE_TULIP)));
     private static <T extends Block> T register(String path, T block) {
-        Registry.register(Registries.BLOCK, Identifier.of("tutorial", path), block);
-        Registry.register(Registries.ITEM, Identifier.of("tutorial", path), new BlockItem(block, new Item.Settings()));
+        Registry.register(Registries.BLOCK, Identifier.of("kusanali", path), block);
+        Registry.register(Registries.ITEM, Identifier.of("kusanali", path), new BlockItem(block, new Item.Settings()));
         return block;
     }
     public static void initialize() {

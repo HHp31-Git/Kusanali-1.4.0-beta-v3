@@ -1,6 +1,7 @@
 package com.kusanali.event;
 import com.kusanali.register.ModItems;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
@@ -39,8 +40,7 @@ public class BedTelepotEvent {
             // 获取服务器玩家对象
             ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
 
-            // 1. 传送前：在当前位置生成粒子效果
-
+            // 传送前：在当前位置生成粒子效果
             if (world.getRegistryKey().getValue().equals(World.OVERWORLD.getValue())) {
                 // 在主世界：传送至自定义维度
                 teleportToDreamDimension(serverPlayer, hitResult.getBlockPos());
@@ -55,12 +55,8 @@ public class BedTelepotEvent {
     }
 
     private static void teleportToDreamDimension(ServerPlayerEntity player, BlockPos bedPos) {
-        ServerWorld dreamWorld = Objects.requireNonNull(player.getServer()).getWorld(
-                player.getServer().getRegistryManager()
-                        .get(RegistryKeys.WORLD)
-                        .get(DREAM_DIMENSION_ID).getRegistryKey()
-        );
-
+        ServerWorld dreamWorld =
+                Objects.requireNonNull(player.getServer()).getWorld(RegistryKey.of(RegistryKeys.WORLD, DREAM_DIMENSION_ID));
         if (dreamWorld == null) {
             System.err.println("梦境1执行错误");
             return;
@@ -76,7 +72,7 @@ public class BedTelepotEvent {
         playerData.putFloat("yaw", player.getYaw());
         playerData.putFloat("pitch", player.getPitch());
 
-        // 传送到固定坐标 (0, 4, 0)
+        // 传送到固定坐标
         BlockPos dreamPos = new BlockPos(0, -60, 0);
         player.teleport(dreamWorld,
                 dreamPos.getX() + 0.5, dreamPos.getY(), dreamPos.getZ() + 0.5,
@@ -84,7 +80,7 @@ public class BedTelepotEvent {
     }
 
     private static void teleportToOverworld(ServerPlayerEntity player) {
-        ServerWorld overworld = player.getServer().getWorld(World.OVERWORLD);
+        ServerWorld overworld = Objects.requireNonNull(player.getServer()).getWorld(World.OVERWORLD);
         NbtCompound playerData = player.writeNbt(new NbtCompound());
 
         // 读取存储的主世界位置

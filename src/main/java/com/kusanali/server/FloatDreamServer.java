@@ -22,22 +22,21 @@ public class FloatDreamServer {
                         server.execute(() -> {
                     // 检查玩家是否手持float_dream
                     ItemStack mainHandStack = player.getMainHandStack();
-                    if (mainHandStack.getItem() != ModItems.FLOAT_DREAM) return;
+                    if (mainHandStack.getItem() != ModItems.FLOAT_DREAM)
+                        return;
 
                     // 检查冷却（使用玩家NBT存储冷却数据）
                     if (player.writeNbt(new NbtCompound()).getInt("float_dream_cooldown") > 0) {
-                        return; // 仍在冷却中
+                         return; // 仍在冷却中
                     }
-
                     // 设置冷却（30秒 = 600游戏刻）
-                    player.writeNbt(new NbtCompound()).putInt("float_dream_cooldown", 600);
+                    long cooldownEndTime = System.currentTimeMillis() + 30000; // 30秒
+                    player.writeNbt(new NbtCompound()).putLong("float_dream_cooldown", cooldownEndTime);
 
-                    // 向客户端同步冷却数据
-                    PacketByteBuf bufb = new PacketByteBuf(Unpooled.buffer());
-                    bufb.writeInt(600);
-                    ServerPlayNetworking.send(player,
-                           new Identifier("kusanali", "cooldown_update"),
-                           bufb);
+                    // 同步到客户端
+                    PacketByteBuf bufr = new PacketByteBuf(Unpooled.buffer());
+                    bufr.writeLong(cooldownEndTime);
+                    ServerPlayNetworking.send(player, new Identifier("kusanali", "cooldown_update"), bufr);
 
                     // 给玩家自身添加力量效果（20秒 = 400游戏刻，等级0表示I级）
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 400, 0));
@@ -64,10 +63,10 @@ public class FloatDreamServer {
 
                 // 每20刻（1秒）同步一次到客户端，减少网络流量
                 if (cooldown % 20 == 0) {
-                    PacketByteBuf bufc = new PacketByteBuf(Unpooled.buffer());
-                    bufc.writeInt(cooldown - 1);
+                    PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
+                    buf.writeLong(cooldown - 1);
                     ServerPlayNetworking.send(player, new Identifier("kusanali", "cooldown_update"),
-                            bufc);
+                            buf);
                 }
             }
         }));

@@ -22,8 +22,9 @@ import java.util.List;
 
 public class FloatDreamForEServer {
     public static void register() {
-        ServerPlayNetworking.registerGlobalReceiver(Identifier.of("kusanali", "activate_ability"),
-                (server, player, handler, buf, responseSender) -> server.execute(() -> {
+        ServerPlayNetworking.registerGlobalReceiver(new Identifier("kusanali", "activate_ability"),
+                (server, player, handler, buf, responseSender) ->
+                        server.execute(() -> {
                     // 检查冷却
                     long cooldownEnd = player.writeNbt(new NbtCompound()).getLong("ability_cooldown");
                     if (System.currentTimeMillis() < cooldownEnd) {
@@ -100,8 +101,7 @@ public class FloatDreamForEServer {
 
         // 同步冷却到客户端
         PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
-        buf.writeInt((int) cooldownEndTime);
-        ServerPlayNetworking.send(player, Identifier.of("kusanali", "cooldown_update"),
-                buf);
+        buf.writeLong(cooldownEndTime);
+        ServerPlayNetworking.send(player, new Identifier("kusanali", "e_cooldown_update"), buf);
     }
 }
