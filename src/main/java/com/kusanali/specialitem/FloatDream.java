@@ -75,7 +75,7 @@ public class FloatDream extends Item {
                 Entity closestEntity = entitiesInSemiCircle.get(0);
                 if (closestEntity instanceof LivingEntity) {
                     boolean wasOnFire = closestEntity.isOnFire();
-                    float damageAmount = 8.0f;
+                    float damageAmount = 10.0f;
                     if (wasOnFire) {
                         // 延长燃烧时间3秒
                         int currentFireTicks = closestEntity.getFireTicks();
@@ -140,7 +140,7 @@ public class FloatDream extends Item {
                     // 扣除耐久
                     stack.damage(1, player, (p) -> p.sendToolBreakStatus(player.getActiveHand()));
                     // 冷却
-                    player.getItemCooldownManager().set(this, 10);
+                    player.getItemCooldownManager().set(this, 8);
                 }
             }
         }
@@ -159,7 +159,7 @@ public class FloatDream extends Item {
                     performSpecialAttack(world, player);
                 }
                 // 冷却
-                player.getItemCooldownManager().set(stack.getItem(), 4);
+                player.getItemCooldownManager().set(stack.getItem(), 3);
                 return ActionResult.SUCCESS;
             }
             return ActionResult.PASS;
@@ -194,7 +194,7 @@ public class FloatDream extends Item {
         // 造成伤害
         for (LivingEntity entity : affectedEntities) {
             boolean wasOnFire = entity.isOnFire();
-            float damageAmount = 6.0f;
+            float damageAmount = 7.0f;
             if (wasOnFire) {
                 // 延长燃烧时间3秒
                 int currentFireTicks = entity.getFireTicks();
@@ -280,7 +280,7 @@ public class FloatDream extends Item {
 
     @Override
     public int getMaxUseTime(ItemStack stack) {
-        return 16;
+        return 14;
     }
     @Override
     public UseAction getUseAction(ItemStack stack) {

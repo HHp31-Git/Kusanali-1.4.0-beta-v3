@@ -3,6 +3,7 @@ package com.kusanali;
 import com.kusanali.register.ModBlocks;
 import com.kusanali.register.ModKeySet;
 import com.kusanali.server.CoolDawnSync;
+import com.kusanali.server.FloatDreamHubForE;
 import com.kusanali.server.FloatDreamHud;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -19,6 +20,7 @@ public class KusanaliModClient implements ClientModInitializer {
 
         ModKeySet.register();
         FloatDreamHud.register();
+        FloatDreamHubForE.register();
         CoolDawnSync.register();
     }
 }

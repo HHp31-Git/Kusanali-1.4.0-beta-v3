@@ -3,7 +3,9 @@ package com.kusanali;
 import com.kusanali.event.BedTelepotEvent;
 import com.kusanali.event.ClientEvent;
 import com.kusanali.event.CorollaEvent;
+import com.kusanali.event.TribbleEvent;
 import com.kusanali.register.*;
+import com.kusanali.server.FloatDreamForEServer;
 import com.kusanali.server.FloatDreamServer;
 import com.kusanali.specialitem.FloatDream;
 import com.kusanali.world.LootTableModify;
@@ -31,7 +33,9 @@ public class Kusanali implements ModInitializer {
         ClientEvent.register();
         LootTableModify.modify();
         BedTelepotEvent.register();
+        TribbleEvent.register();
 
         FloatDreamServer.register();
+        FloatDreamForEServer.register();
     }
 }
