@@ -5,8 +5,7 @@ import com.kusanali.event.ClientEvent;
 import com.kusanali.event.CorollaEvent;
 import com.kusanali.event.TribbleEvent;
 import com.kusanali.register.*;
-import com.kusanali.server.FloatDreamForEServer;
-import com.kusanali.server.FloatDreamServer;
+import com.kusanali.server.FloatDreamHander;
 import com.kusanali.specialitem.FloatDream;
 import com.kusanali.world.LootTableModify;
 import net.fabricmc.api.ModInitializer;
@@ -35,7 +34,6 @@ public class Kusanali implements ModInitializer {
         BedTelepotEvent.register();
         TribbleEvent.register();
 
-        FloatDreamServer.register();
-        FloatDreamForEServer.register();
+        FloatDreamHander.register();
     }
 }
