@@ -20,6 +20,8 @@ public class Kusanali implements ModInitializer {
 	public void onInitialize() {
 
 		LOGGER.info("For the Lesser Lord Kusanali");
+
+
         ModItemGroup.initialize();
         ModItems.initialize();
         ModBlocks.initialize();

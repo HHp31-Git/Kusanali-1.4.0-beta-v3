@@ -38,9 +38,9 @@ public class EngLangProvider extends FabricLanguageProvider {
         translationBuilder.add("item.kusanali.float_dream.tooltip_2",
                 "Deals extra damage to enemies that are on fire.");
         translationBuilder.add("item.kusanali.float_dream.tooltip_4",
-                "8 Impact Damage");
+                "10 Impact Damage");
         translationBuilder.add("item.kusanali.float_dream.tooltip_3",
-                "6 Normal Attack Damage");
+                "7 Normal Attack Damage");
         translationBuilder.add("item.kusanali.halvamaze.tooltip_1",
                 "It is said that 'Maz' in Sumiru means 'wisdom' Such exquisite and delicate 'wisdom' is truly irresistible");
 

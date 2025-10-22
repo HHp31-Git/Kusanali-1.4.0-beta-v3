@@ -38,9 +38,9 @@ public class ChiLangProvider extends FabricLanguageProvider {
         translationBuilder.add("item.kusanali.float_dream.tooltip_2",
                 "可对处于燃烧状态的敌人造成额外伤害");
         translationBuilder.add("item.kusanali.float_dream.tooltip_4",
-                "8 重击伤害");
+                "10 重击伤害");
         translationBuilder.add("item.kusanali.float_dream.tooltip_3",
-                "6 普通攻击伤害");
+                "7 普通攻击伤害");
         translationBuilder.add("item.kusanali.halvamaze.tooltip_1",
                 "据说玛兹在须弥有「智慧」的意思，如此精致玲珑的「智慧」，着实令人无法抗拒");
 
