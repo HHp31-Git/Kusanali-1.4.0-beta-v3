@@ -7,9 +7,9 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
+import net.minecraft.world.gen.foliage.LargeOakFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
+import net.minecraft.world.gen.trunk.ForkingTrunkPlacer;
 
 public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> AJI_TREE_KEY = of("aji_tree");
@@ -17,10 +17,10 @@ public class ModConfiguredFeatures {
         ConfiguredFeatures.register(registry, AJI_TREE_KEY, Feature.TREE,
                 new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(ModBlocks.AJI_LOG),
-                        new StraightTrunkPlacer(4, 2, 1),
+                        new ForkingTrunkPlacer(5, 2, 2),
                         BlockStateProvider.of(ModBlocks.AJI_LEAVES),
-                        new BlobFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(2), 3),
-                        new TwoLayersFeatureSize(1, 0, 2)
+                        new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 3),
+                        new TwoLayersFeatureSize(2, 0, 2)
                 ).build());
     }
     public static RegistryKey<ConfiguredFeature<?, ?>> of(String id) {

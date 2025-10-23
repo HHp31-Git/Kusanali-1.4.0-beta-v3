@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "kusanali:block/potted_sumiru_rose"
+  }
+}

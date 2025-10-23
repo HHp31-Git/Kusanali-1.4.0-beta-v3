@@ -5,6 +5,7 @@ import com.kusanali.register.*;
 import com.kusanali.server.FloatDreamHander;
 import com.kusanali.specialitem.FloatDream;
 import com.kusanali.world.LootTableModify;
+import com.kusanali.world.feature.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
@@ -37,6 +38,8 @@ public class Kusanali implements ModInitializer {
         AjiLeavesDrop.register();
 
         FloatDreamHander.register();
+
+        ModWorldGeneration.register();
 
         StrippableBlockRegistry.register(ModBlocks.AJI_LOG, ModBlocks.STRIPPED_AJI_LOG);
         StrippableBlockRegistry.register(ModBlocks.AJI_WOOD, ModBlocks.STRIPPED_AJI_WOOD);
