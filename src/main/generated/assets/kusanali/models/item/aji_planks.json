@@ -1,3 +1,6 @@
 {
-  "parent": "kusanali:block/aji_planks"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "kusanali:item/aji_planks"
+  }
 }

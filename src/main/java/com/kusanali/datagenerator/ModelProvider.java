@@ -25,6 +25,9 @@ public class ModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerTintableCross(ModBlocks.AJI_SAPLING,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
+
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.POTTED_SUMIRU_ROSE, ModBlocks.SUMIRU_ROSE,
+                BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
     @Override
@@ -40,5 +43,13 @@ public class ModelProvider extends FabricModelProvider {
 
         itemModelGenerator.registerArmor((ArmorItem) ModItems.COROLLA);
         itemModelGenerator.registerArmor((ArmorItem) ModItems.CLIENT);
+
+        itemModelGenerator.register(ModBlocks.AJI_LEAVES.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.AJI_PLANKS.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.AJI_LOG.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.STRIPPED_AJI_LOG.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.STRIPPED_AJI_WOOD.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.AJI_WOOD.asItem(), Models.GENERATED);
+        itemModelGenerator.register(ModBlocks.SUMIRU_ROSE.asItem(), Models.GENERATED);
     }
 }

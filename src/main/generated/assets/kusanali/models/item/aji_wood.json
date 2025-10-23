@@ -1,3 +1,6 @@
 {
-  "parent": "kusanali:block/aji_wood"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "kusanali:item/aji_wood"
+  }
 }
