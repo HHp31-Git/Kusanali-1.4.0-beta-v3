@@ -18,5 +18,7 @@ public class KusanaliModClient implements ClientModInitializer {
 
         ModKeySet.register();
         FloatDreamAbilityClient.register();
+
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AJI_SAPLING, RenderLayer.getCutout());
     }
 }

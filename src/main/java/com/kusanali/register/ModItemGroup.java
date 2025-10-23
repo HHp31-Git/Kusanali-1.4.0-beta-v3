@@ -23,6 +23,14 @@ public class ModItemGroup {
                 entries.add(ModItems.HALVAMAZE);
                 entries.add(ModItems.IVE_NEVER_FORGOTTEN);
                 entries.add(ModItems.AJILENAKH);
+                entries.add(ModBlocks.AJI_LEAVES);
+                entries.add(ModBlocks.AJI_LOG);
+                entries.add(ModBlocks.AJI_PLANKS);
+                entries.add(ModBlocks.AJI_SAPLING);
+                entries.add(ModBlocks.AJI_WOOD);
+                entries.add(ModBlocks.STRIPPED_AJI_LOG);
+                entries.add(ModBlocks.STRIPPED_AJI_WOOD);
+                entries.add(ModBlocks.SUMIRU_ROSE);
             })
             .build();
     public static void initialize() {

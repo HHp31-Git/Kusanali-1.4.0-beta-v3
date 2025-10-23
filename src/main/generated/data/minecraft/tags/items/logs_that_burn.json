@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "kusanali:aji_log",
+    "kusanali:aji_wood",
+    "kusanali:stripped_aji_log",
+    "kusanali:stripped_aji_wood"
+  ]
+}

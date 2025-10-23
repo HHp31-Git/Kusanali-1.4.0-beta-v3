@@ -1,5 +1,6 @@
 package com.kusanali.datagenerator;
 
+import com.kusanali.register.ModBlocks;
 import com.kusanali.register.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -15,7 +16,15 @@ public class ModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        blockStateModelGenerator.registerLog(ModBlocks.AJI_LOG)
+                .log(ModBlocks.AJI_LOG).wood(ModBlocks.AJI_WOOD);
+        blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_AJI_LOG)
+                .log(ModBlocks.STRIPPED_AJI_LOG).wood(ModBlocks.STRIPPED_AJI_WOOD);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AJI_PLANKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AJI_LEAVES);
 
+        blockStateModelGenerator.registerTintableCross(ModBlocks.AJI_SAPLING,
+                BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
     @Override

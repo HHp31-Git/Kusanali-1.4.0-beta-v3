@@ -1,14 +1,13 @@
 package com.kusanali;
 
-import com.kusanali.event.BedTelepotEvent;
-import com.kusanali.event.ClientEvent;
-import com.kusanali.event.CorollaEvent;
-import com.kusanali.event.TribbleEvent;
+import com.kusanali.event.*;
 import com.kusanali.register.*;
 import com.kusanali.server.FloatDreamHander;
 import com.kusanali.specialitem.FloatDream;
 import com.kusanali.world.LootTableModify;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 public class Kusanali implements ModInitializer {
@@ -35,7 +34,19 @@ public class Kusanali implements ModInitializer {
         LootTableModify.modify();
         BedTelepotEvent.register();
         TribbleEvent.register();
+        AjiLeavesDrop.register();
 
         FloatDreamHander.register();
+
+        StrippableBlockRegistry.register(ModBlocks.AJI_LOG, ModBlocks.STRIPPED_AJI_LOG);
+        StrippableBlockRegistry.register(ModBlocks.AJI_WOOD, ModBlocks.STRIPPED_AJI_WOOD);
+
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.AJI_PLANKS, 5, 20);
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.AJI_LEAVES, 30, 60);
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.AJI_SAPLING, 60, 100);
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.AJI_LOG, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_AJI_LOG, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.AJI_WOOD, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_AJI_WOOD, 5, 5);
     }
 }

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "kusanali:block/stripped_aji_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "kusanali:block/stripped_aji_log"
+    },
+    "axis=z": {
+      "model": "kusanali:block/stripped_aji_log_horizontal",
+      "x": 90
+    }
+  }
+}

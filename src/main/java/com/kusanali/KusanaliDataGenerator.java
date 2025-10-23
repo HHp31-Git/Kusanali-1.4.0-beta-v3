@@ -1,8 +1,11 @@
 package com.kusanali;
 
 import com.kusanali.datagenerator.*;
+import com.kusanali.world.feature.ModConfiguredFeatures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.minecraft.registry.RegistryBuilder;
+import net.minecraft.registry.RegistryKeys;
 
 public class KusanaliDataGenerator implements DataGeneratorEntrypoint {
 	@Override
@@ -18,5 +21,10 @@ public class KusanaliDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(ModelProvider::new);
         pack.addProvider(AdvancementProvider::new);
         pack.addProvider(BiomeProvider::new);
+        pack.addProvider(WorldGenerator::new);
 	}
+    @Override
+    public void buildRegistry(RegistryBuilder builder) {
+        builder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
+    }
 }

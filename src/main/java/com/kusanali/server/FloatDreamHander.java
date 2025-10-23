@@ -5,7 +5,9 @@ import com.kusanali.register.ModItems;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.block.FlowerBlock;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSources;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -16,12 +18,16 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 
 import java.util.Comparator;
 import java.util.List;
+
+import static net.minecraft.block.Block.getDroppedStacks;
 
 public class FloatDreamHander {
     private static final TrackedData<Long> R_COOLDOWN = DataTracker.registerData(ServerPlayerEntity.class, TrackedDataHandlerRegistry.LONG);
@@ -121,10 +127,10 @@ public class FloatDreamHander {
         // 获取玩家朝向和位置
         Vec3d playerPos = player.getPos();
         Vec3d lookVec = player.getRotationVec(1.0F);
-        Vec3d areaCenter = playerPos.add(lookVec.multiply(7));
 
-        // 创建检测区域
-        Box detectionBox = new Box(areaCenter.add(-7, -7, -7), areaCenter.add(7, 7, 7));
+        // 创建前方7格的检测区域
+        Vec3d areaEnd = playerPos.add(lookVec.multiply(7));
+        Box detectionBox = new Box(playerPos, areaEnd).expand(3); // 扩展3格范围，形成更准确的检测区域
 
         // 获取检测区域内的所有生物实体
         List<LivingEntity> entities = player.getWorld().getEntitiesByClass(
@@ -133,22 +139,43 @@ public class FloatDreamHander {
                 entity -> entity != player && entity.isAlive()
         );
 
-        // 筛选出在前方扇形区域内的实体，并按距离排序
+        // 计算扇形检测的阈值（cos 30度）
+        final double THRESHOLD = Math.cos(Math.toRadians(30));
+
+        // 找出最近的实体
         LivingEntity target = entities.stream()
                 .filter(entity -> {
                     Vec3d toEntity = entity.getPos().subtract(playerPos).normalize();
-                    double dotProduct = toEntity.dotProduct(lookVec);
-                    return dotProduct > 0.5; // 60度扇形区域
+                    return toEntity.dotProduct(lookVec) > THRESHOLD;
                 })
                 .min(Comparator.comparingDouble(e -> e.squaredDistanceTo(playerPos)))
                 .orElse(null);
 
-        // 如果找到目标实体
         if (target != null) {
-            // 施加发光效果（9秒）
+            // 对实体施加效果
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 9 * 20, 0));
-            // 施加Tribble效果（9秒，使受到的伤害+2）
             target.addStatusEffect(new StatusEffectInstance(ModEffects.TRIBBLE, 9 * 20, 0));
+            DamageSources sources = player.getWorld().getDamageSources();
+            target.damage(sources.playerAttack(player), 7.0f);
+        } else {
+            // 如果没有找到实体，检测范围内的花朵
+            BlockPos.stream(detectionBox)
+                    .filter(pos -> player.getWorld().getBlockState(pos).getBlock() instanceof FlowerBlock)
+                    .forEach(pos -> {
+                        // 收集花朵掉落物
+                        List<ItemStack> drops = getDroppedStacks(
+                                player.getWorld().getBlockState(pos),
+                                (ServerWorld) player.getWorld(),
+                                pos, null, player, player.getMainHandStack()
+                        );
+
+                        // 将掉落物添加到玩家背包
+                        drops.forEach(player.getInventory()::insertStack);
+
+                        // 移除花朵
+                        player.getWorld().removeBlock(pos, false);
+                    });
+            cooldownEnd = System.currentTimeMillis() + 5000; // 原冷却时间-6秒
         }
 
         // 同步冷却到客户端

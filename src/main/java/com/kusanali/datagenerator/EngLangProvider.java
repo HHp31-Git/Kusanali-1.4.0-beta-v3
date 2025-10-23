@@ -1,5 +1,6 @@
 package com.kusanali.datagenerator;
 
+import com.kusanali.register.ModBlocks;
 import com.kusanali.register.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -21,6 +22,15 @@ public class EngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.IVE_NEVER_FORGOTTEN, "I've Never Forgotten");
         translationBuilder.add(ModItems.CLIENT, "Void Client");
         translationBuilder.add(ModItems.AJILENAKH, "ajilenakh nut");
+
+        translationBuilder.add(ModBlocks.AJI_LEAVES, "ajilenakh leaves");
+        translationBuilder.add(ModBlocks.AJI_LOG, "ajilenakh log");
+        translationBuilder.add(ModBlocks.AJI_PLANKS, "ajilenakh planks");
+        translationBuilder.add(ModBlocks.AJI_SAPLING, "ajilenakh sapling");
+        translationBuilder.add(ModBlocks.AJI_WOOD, "ajilenakh wood");
+        translationBuilder.add(ModBlocks.STRIPPED_AJI_LOG, "stripped ajilenakh log");
+        translationBuilder.add(ModBlocks.STRIPPED_AJI_WOOD, "stripped ajilenakh wood");
+        translationBuilder.add(ModBlocks.SUMIRU_ROSE, "sumiru rose");
 
         translationBuilder.add("painting.kusanali.nhd_1.title", "2024Birthday Painting");
         translationBuilder.add("painting.kusanali.nhd_2.title", "2023Birthday Painting");

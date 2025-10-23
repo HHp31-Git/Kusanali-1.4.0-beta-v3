@@ -1,5 +1,6 @@
 package com.kusanali.datagenerator;
 
+import com.kusanali.register.ModBlocks;
 import com.kusanali.register.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -21,6 +22,15 @@ public class ChiLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.IVE_NEVER_FORGOTTEN, "我不曾忘记");
         translationBuilder.add(ModItems.CLIENT, "虚空终端");
         translationBuilder.add(ModItems.AJILENAKH, "枣椰");
+
+        translationBuilder.add(ModBlocks.AJI_LEAVES, "枣椰树叶");
+        translationBuilder.add(ModBlocks.AJI_LOG, "枣椰原木");
+        translationBuilder.add(ModBlocks.AJI_PLANKS, "枣椰木板");
+        translationBuilder.add(ModBlocks.AJI_SAPLING, "枣椰树苗");
+        translationBuilder.add(ModBlocks.AJI_WOOD, "枣椰木");
+        translationBuilder.add(ModBlocks.STRIPPED_AJI_LOG, "去皮枣椰原木");
+        translationBuilder.add(ModBlocks.STRIPPED_AJI_WOOD, "去皮枣椰木");
+        translationBuilder.add(ModBlocks.SUMIRU_ROSE, "须弥蔷薇");
 
         translationBuilder.add("painting.kusanali.nhd_1.title", "2024贺图");
         translationBuilder.add("painting.kusanali.nhd_2.title", "2023贺图");
