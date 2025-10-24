@@ -27,7 +27,7 @@ public class ModPlacedFeatures {
         PlacedFeatures.register(featureRegistry, AJI_TREE_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.AJI_TREE_KEY),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(
-                        PlacedFeatures.createCountExtraModifier(0, 0.02f, 1),
+                        PlacedFeatures.createCountExtraModifier(1, 0.02f, 1),
                         ModBlocks.AJI_SAPLING
                 ));
 

@@ -17,6 +17,7 @@ public class ItemTagsProvider extends FabricTagProvider.ItemTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
                 .add(ModItems.IVE_NEVER_FORGOTTEN);
+
         getOrCreateTagBuilder(ItemTags.PLANKS)
                 .add(ModBlocks.AJI_PLANKS.asItem());
         getOrCreateTagBuilder(ItemTags.LOGS)

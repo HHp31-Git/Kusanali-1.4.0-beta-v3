@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "kusanali:block/aji_log_top",
-    "side": "kusanali:block/aji_log"
-  }
-}
