@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-24T01:03:23.6124827	Kusanali/Model Definitions
+// 1.20.1	2025-10-24T23:12:05.1879431	Kusanali/Model Definitions
 2785a10272b7bf6ddc7b06cc8041a9d78686a135 assets\kusanali\models\item\aji_planks.json
 e46e2136a36ebf8606ebc00aa47955a340d69f81 assets\kusanali\models\item\client_iron_trim.json
 092c78bef222ab67f9211a0861b4286376991fca assets\kusanali\models\item\corolla_diamond_trim.json
@@ -27,8 +27,8 @@ f2059d90c0b6ecca3355c623d096c8158fbf7765 assets\kusanali\models\item\client_emer
 58b3d80aa9d409488a199dcbc387de297f31eb02 assets\kusanali\models\item\corolla_lapis_trim.json
 42201f7c6e8e3041129ede9ca29091c80cfeefd0 assets\kusanali\models\item\corolla_copper_trim.json
 946044846e9e6154bb590b2f0766c200118db169 assets\kusanali\models\item\corolla.json
-1a42dbf8bbb7c748d64fe03ca06d4d5dda12fe2f assets\kusanali\models\block\aji_wood.json
 f873ec099e12d6692c802f3727a1725057892306 assets\kusanali\models\item\candied_nut.json
+1a42dbf8bbb7c748d64fe03ca06d4d5dda12fe2f assets\kusanali\models\block\aji_wood.json
 a7d6b7a363e0b4c5e85cd382d4d486fd123c7b4e assets\kusanali\models\item\corolla_amethyst_trim.json
 b62e3278f4e07cc94e28313d836101bc9815ab55 assets\kusanali\models\item\stripped_aji_log.json
 ca2aec66a0e4c1cd9ddd7c48a37f88f10c2f1303 assets\kusanali\models\block\aji_sapling.json
@@ -43,14 +43,14 @@ bc25f751d8b6c9a1577eda58d717dc5451000266 assets\kusanali\blockstates\potted_sumi
 44ac19fbbae08374b8ae7cb09983b44acb228163 assets\kusanali\models\item\corolla_emerald_trim.json
 cb55b129277f836157baaa620916de15fbb6a16a assets\kusanali\models\item\aji_sapling.json
 a43bf70d58c1fe11ebb017140d35bc105b238639 assets\kusanali\models\item\client_lapis_trim.json
-d526040d615b30db5571c242ff5567fd6e0b04a5 assets\kusanali\models\item\corolla_netherite_trim.json
 65ef475d9d890a2ba0d4c1e2e84e559512cf8549 assets\kusanali\models\item\ajilenakh.json
-5e27cdb8df52c20bf9e246570b72b1bb543f961c assets\kusanali\models\item\aji_wood.json
+d526040d615b30db5571c242ff5567fd6e0b04a5 assets\kusanali\models\item\corolla_netherite_trim.json
 2458f5e49f00bea125b514d127d4865e085109f7 assets\kusanali\models\item\corolla_quartz_trim.json
+5e27cdb8df52c20bf9e246570b72b1bb543f961c assets\kusanali\models\item\aji_wood.json
 5f9cb2902ca01fbba694a0779aed6f42301a5a16 assets\kusanali\models\item\halvamaze.json
 8feb055de0d2073f372f3d4a9038adf5319ba095 assets\kusanali\models\item\aranas_flower.json
-ce8f3c71ec08fd1f9448c25cbd284737d8da5d08 assets\kusanali\models\item\corolla_gold_trim.json
 2815326aa34dfa1f55504f36f95367d6b07b2815 assets\kusanali\models\block\potted_sumiru_rose.json
+ce8f3c71ec08fd1f9448c25cbd284737d8da5d08 assets\kusanali\models\item\corolla_gold_trim.json
 c58d7dee21314021fdede6fb5a92998d5c82aba4 assets\kusanali\blockstates\aji_sapling.json
 30c103e066d0a85343f3c091cc3a60a400915cc9 assets\kusanali\models\item\stripped_aji_wood.json
 55959a3a5a4471f949dfb4157b000ff8f1cd2885 assets\kusanali\blockstates\sumiru_rose.json

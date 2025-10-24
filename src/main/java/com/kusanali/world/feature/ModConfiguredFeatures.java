@@ -13,6 +13,9 @@ import net.minecraft.world.gen.trunk.ForkingTrunkPlacer;
 
 public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> AJI_TREE_KEY = of("aji_tree");
+
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SUMIRU_ROSE_KEY = of("sumiru_rose_key");
+
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> registry) {
         ConfiguredFeatures.register(registry, AJI_TREE_KEY, Feature.TREE,
                 new TreeFeatureConfig.Builder(
@@ -22,6 +25,12 @@ public class ModConfiguredFeatures {
                         new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 3),
                         new TwoLayersFeatureSize(2, 0, 2)
                 ).build());
+
+        ConfiguredFeatures.register(registry, SUMIRU_ROSE_KEY, Feature.FLOWER,
+                new RandomPatchFeatureConfig(20, 4, 3, PlacedFeatures.createEntry(
+                        Feature.SIMPLE_BLOCK,
+                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.SUMIRU_ROSE))
+                )));
     }
     public static RegistryKey<ConfiguredFeature<?, ?>> of(String id) {
         return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(Kusanali.MOD_ID, id));
