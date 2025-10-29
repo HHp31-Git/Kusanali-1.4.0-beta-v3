@@ -23,29 +23,25 @@ public class BedTelepotEvent {
         UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
             // 检查交互的方块是否为床
             if (!(world.getBlockState(hitResult.getBlockPos()).getBlock() instanceof BedBlock)) {
-                return ActionResult.PASS; // 不是床，不处理
+                return ActionResult.PASS;
             }
 
-            // 确保逻辑在服务器端执行
             if (world.isClient) {
                 return ActionResult.PASS;
             }
 
-            // 检查玩家是否佩戴头盔
+            // 检查是否佩戴头盔
             ItemStack helmetStack = player.getInventory().getArmorStack(3);
             if (helmetStack.getItem() != ModItems.CLIENT) {
-                return ActionResult.PASS; // 不是指定的头盔物品
+                return ActionResult.PASS;
             }
 
             // 获取服务器玩家对象
             ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
 
-            // 传送前：在当前位置生成粒子效果
             if (world.getRegistryKey().getValue().equals(World.OVERWORLD.getValue())) {
-                // 在主世界：传送至自定义维度
                 teleportToDreamDimension(serverPlayer, hitResult.getBlockPos());
             } else if (world.getRegistryKey().getValue().equals(DREAM_DIMENSION_ID)) {
-                // 在自定义维度：传送回主世界
                 teleportToOverworld(serverPlayer);
             }
 

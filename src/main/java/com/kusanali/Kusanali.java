@@ -32,14 +32,16 @@ public class Kusanali implements ModInitializer {
         FloatDream.registerAttackEvent();
         CorollaEvent.register();
         ClientEvent.register();
-        LootTableModify.modify();
         BedTelepotEvent.register();
         TribbleEvent.register();
+
         AjiLeavesDrop.register();
 
         FloatDreamHander.register();
 
         ModWorldGeneration.register();
+
+        LootTableModify.modify();
 
         StrippableBlockRegistry.register(ModBlocks.AJI_LOG, ModBlocks.STRIPPED_AJI_LOG);
         StrippableBlockRegistry.register(ModBlocks.AJI_WOOD, ModBlocks.STRIPPED_AJI_WOOD);

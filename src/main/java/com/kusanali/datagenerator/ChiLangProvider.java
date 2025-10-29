@@ -58,6 +58,7 @@ public class ChiLangProvider extends FabricLanguageProvider {
         translationBuilder.add("key.kusanali.e_float_dream", "所识遍记");
         translationBuilder.add("effect.kusanali.magic_damage", "摩耶之殿");
         translationBuilder.add("effect.kusanali.tribble", "灭净三业");
+        translationBuilder.add("effect.kusanali.seed_sign", "蕴种印");
         translationBuilder.add("category.kusanali.abilities", "武器能力-千夜浮梦");
     }
 }
