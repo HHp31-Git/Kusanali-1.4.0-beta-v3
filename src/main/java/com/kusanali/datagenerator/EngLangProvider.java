@@ -33,10 +33,12 @@ public class EngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.SUMIRU_ROSE, "sumiru rose");
 
         translationBuilder.add("painting.kusanali.nhd_1.title", "2024Birthday Painting");
+        translationBuilder.add("painting.kusanali.nhd_3.title", "2025Birthday Painting");
         translationBuilder.add("painting.kusanali.nhd_2.title", "2023Birthday Painting");
 
         translationBuilder.add("painting.kusanali.nhd_1.author", "Mihoyo");
         translationBuilder.add("painting.kusanali.nhd_2.author", "Mihoyo");
+        translationBuilder.add("painting.kusanali.nhd_3.author", "Mihoyo");
 
         translationBuilder.add("dimension.kusanali.dream_di_1", "Dream Dimension");
 

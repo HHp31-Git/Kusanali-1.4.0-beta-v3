@@ -34,9 +34,11 @@ public class ChiLangProvider extends FabricLanguageProvider {
 
         translationBuilder.add("painting.kusanali.nhd_1.title", "2024贺图");
         translationBuilder.add("painting.kusanali.nhd_2.title", "2023贺图");
+        translationBuilder.add("painting.kusanali.nhd_3.title", "2025贺图");
 
         translationBuilder.add("painting.kusanali.nhd_1.author", "Mihoyo");
         translationBuilder.add("painting.kusanali.nhd_2.author", "Mihoyo");
+        translationBuilder.add("painting.kusanali.nhd_3.author", "Mihoyo");
 
         translationBuilder.add(ModItems.IVE_NEVER_FORGOTTEN.getTranslationKey() + ".desc", "I've Never Forgotten");
 

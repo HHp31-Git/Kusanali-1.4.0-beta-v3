@@ -8,6 +8,7 @@ import net.minecraft.util.Identifier;
 public class ModPaintings extends PaintingVariant {
     public static final PaintingVariant NHD_1 = register("nhd_1", new PaintingVariant(32, 32));
     public static final PaintingVariant NHD_2 = register("nhd_2", new PaintingVariant(32,32));
+    public static final PaintingVariant NHD_3 = register("nhd_3", new PaintingVariant(32,32));
 
     public ModPaintings(int width, int height) {
         super(width, height);
