@@ -35,7 +35,9 @@
     ]
   ],
   "rewards": {
-    "experience": 500
+    "recipes": [
+      "kusanali:corolla"
+    ]
   },
   "sends_telemetry_event": true
 }

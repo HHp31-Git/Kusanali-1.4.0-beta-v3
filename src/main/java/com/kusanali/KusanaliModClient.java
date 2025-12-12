@@ -3,7 +3,6 @@ package com.kusanali;
 import com.kusanali.register.ModBlocks;
 import com.kusanali.register.ModKeySet;
 import com.kusanali.server.FloatDreamAbilityClient;
-import com.kusanali.server.SeedSignRender;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
@@ -19,7 +18,6 @@ public class KusanaliModClient implements ClientModInitializer {
 
         ModKeySet.register();
 
-        SeedSignRender.register();
 
         FloatDreamAbilityClient.register();
 

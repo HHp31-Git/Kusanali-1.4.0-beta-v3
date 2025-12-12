@@ -60,7 +60,6 @@ public class EngLangProvider extends FabricLanguageProvider {
         translationBuilder.add("key.kusanali.e_float_dream", "All that is known and recorded");
         translationBuilder.add("effect.kusanali.magic_damage", "Hall of Maya");
         translationBuilder.add("effect.kusanali.tribble", "Tribble");
-        translationBuilder.add("effect.kusanali.seed_sign", "Seed Sign");
         translationBuilder.add("category.kusanali.abilities", "Ability-Float Dream");
     }
 }

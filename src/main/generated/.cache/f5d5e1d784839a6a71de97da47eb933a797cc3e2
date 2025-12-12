@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-30T23:46:43.3498346	Kusanali/Model Definitions
+// 1.20.1	2025-11-05T23:21:46.8177682	Kusanali/Model Definitions
 1fb02be88471440ae158532d85185b95731e1b9a assets\kusanali\models\item\aji_planks.json
 e46e2136a36ebf8606ebc00aa47955a340d69f81 assets\kusanali\models\item\client_iron_trim.json
 092c78bef222ab67f9211a0861b4286376991fca assets\kusanali\models\item\corolla_diamond_trim.json
@@ -21,8 +21,8 @@ bd22330d37c816a1d66a3fe027893f5de92a1f7d assets\kusanali\blockstates\aji_wood.js
 6c65e7657f657be83988c71aca0488a3ebd82374 assets\kusanali\models\block\aji_log.json
 c9247892e557a0c448d88cb533ff5973aa156354 assets\kusanali\models\item\potted_sumiru_rose.json
 51e73d1845a7fa8eac8973a0763ec63b3f256b84 assets\kusanali\blockstates\aji_planks.json
-da38dc77e118c82a5bd3b5087f4af3171cead400 assets\kusanali\models\block\stripped_aji_log.json
 4ddfd3d1d3d7fb9d18866a23b9cbddcb51095430 assets\kusanali\models\block\aji_log_horizontal.json
+da38dc77e118c82a5bd3b5087f4af3171cead400 assets\kusanali\models\block\stripped_aji_log.json
 f2059d90c0b6ecca3355c623d096c8158fbf7765 assets\kusanali\models\item\client_emerald_trim.json
 58b3d80aa9d409488a199dcbc387de297f31eb02 assets\kusanali\models\item\corolla_lapis_trim.json
 42201f7c6e8e3041129ede9ca29091c80cfeefd0 assets\kusanali\models\item\corolla_copper_trim.json

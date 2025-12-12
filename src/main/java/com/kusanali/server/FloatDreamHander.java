@@ -156,7 +156,6 @@ public class FloatDreamHander {
             DamageSources sources = player.getWorld().getDamageSources();
             target.damage(sources.magic(), 6.0f);
             target.addStatusEffect(new StatusEffectInstance(ModEffects.TRIBBLE, 9 * 20, 0));
-            target.addStatusEffect(new StatusEffectInstance(ModEffects.SEED_SIGN, 9 * 20, 0));
         } else {
             // 如果没有找到实体，检测范围内的花朵
             BlockPos.stream(detectionBox)

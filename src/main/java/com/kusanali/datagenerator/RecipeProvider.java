@@ -42,6 +42,12 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(ModItems.ARANAS_FLOWER),
                         FabricRecipeProvider.conditionsFromItem(ModItems.ARANAS_FLOWER))
                 .offerTo(consumer);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CLIENT)
+                .pattern(" bb").pattern("b b").pattern("bb ")
+                .input('b', ModItems.BLESSED_BENCH)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.BLESSED_BENCH),
+                        FabricRecipeProvider.conditionsFromItem(ModItems.BLESSED_BENCH))
+                .offerTo(consumer);
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.IVE_NEVER_FORGOTTEN)
                 .pattern(" b ").pattern("bab").pattern(" b ")
                 .input('a', ModItems.ARANAS_FLOWER)

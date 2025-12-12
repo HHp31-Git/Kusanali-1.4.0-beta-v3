@@ -34,5 +34,10 @@
       "got_flower"
     ]
   ],
+  "rewards": {
+    "recipes": [
+      "kusanali:blessed_seed"
+    ]
+  },
   "sends_telemetry_event": true
 }

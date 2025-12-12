@@ -35,7 +35,9 @@
     ]
   ],
   "rewards": {
-    "experience": 500
+    "recipes": [
+      "kusanali:candied_nut"
+    ]
   },
   "sends_telemetry_event": true
 }

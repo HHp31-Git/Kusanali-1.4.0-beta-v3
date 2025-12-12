@@ -36,7 +36,9 @@
     ]
   ],
   "rewards": {
-    "experience": 1500
+    "recipes": [
+      "kusanali:ive_never_forgotten"
+    ]
   },
   "sends_telemetry_event": true
 }

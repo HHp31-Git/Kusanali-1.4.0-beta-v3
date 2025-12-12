@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": {
+      "item": "kusanali:blessed_bench"
+    }
+  },
+  "pattern": [
+    " bb",
+    "b b",
+    "bb "
+  ],
+  "result": {
+    "item": "kusanali:client"
+  },
+  "show_notification": true
+}

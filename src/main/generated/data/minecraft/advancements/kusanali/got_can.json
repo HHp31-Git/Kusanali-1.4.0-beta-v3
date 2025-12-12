@@ -35,7 +35,9 @@
     ]
   ],
   "rewards": {
-    "experience": 500
+    "recipes": [
+      "kusanali:halvamaze"
+    ]
   },
   "sends_telemetry_event": true
 }

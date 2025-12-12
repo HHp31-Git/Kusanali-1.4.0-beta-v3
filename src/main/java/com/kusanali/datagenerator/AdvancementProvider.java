@@ -11,6 +11,7 @@ import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+import java.util.Arrays;
 import java.util.function.Consumer;
 
 public class AdvancementProvider extends FabricAdvancementProvider {
@@ -32,6 +33,14 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                         false // 在进度页面里隐藏
                 )
                 // Criterion 中使用的第一个字符串是其他进度在需要 'requirements' 时引用的名字
+                .rewards(AdvancementRewards.Builder.recipe(new Identifier(Kusanali.MOD_ID, "blessed_seed")
+                        //new Identifier(Kusanali.MOD_ID, "blessed_bench"),
+                        //new Identifier(Kusanali.MOD_ID, "float_dream"),
+                        //new Identifier(Kusanali.MOD_ID, "ive_never_forgotten"),
+                        //new Identifier(Kusanali.MOD_ID, "corolla"),
+                        //new Identifier(Kusanali.MOD_ID, "candied_nut"),
+                        //new Identifier(Kusanali.MOD_ID, "halvamaze"
+                ))
                 .criterion("got_flower", InventoryChangedCriterion.Conditions.items(ModItems.ARANAS_FLOWER))
                 .build(consumer, Kusanali.MOD_ID + "/root");
         Advancement gotSeedAdvancement = Advancement.Builder.create().parent(rootAdvancement)
@@ -45,7 +54,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                         true,
                         false
                 )
-                .rewards(AdvancementRewards.Builder.experience(500))
+                .rewards(AdvancementRewards.Builder.recipe(new Identifier(Kusanali.MOD_ID, "blessed_bench")))
                 .criterion("got_seed", InventoryChangedCriterion.Conditions.items(ModItems.BLESSED_SEED))
                 .build(consumer, Kusanali.MOD_ID + "/got_seed");
         Advancement gotBenchAdvancement = Advancement.Builder.create().parent(rootAdvancement)
@@ -59,7 +68,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                         true,
                         false
                 )
-                .rewards(AdvancementRewards.Builder.experience(500))
+                .rewards(AdvancementRewards.Builder.recipe(new Identifier(Kusanali.MOD_ID, "corolla")))
                 .criterion("got_bench", InventoryChangedCriterion.Conditions.items(ModItems.BLESSED_BENCH))
                 .build(consumer, Kusanali.MOD_ID + "/got_bench");
         Advancement gotFrAdvancement = Advancement.Builder.create().parent(rootAdvancement)
@@ -73,7 +82,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                         true,
                         false
                 )
-                .rewards(AdvancementRewards.Builder.experience(500))
+                .rewards(AdvancementRewards.Builder.recipe(new Identifier(Kusanali.MOD_ID, "candied_nut")))
                 .criterion("got_aji", InventoryChangedCriterion.Conditions.items(ModItems.AJILENAKH))
                 .build(consumer, Kusanali.MOD_ID + "/got_aji");
         Advancement gotCanAjAdvancement = Advancement.Builder.create().parent(gotFrAdvancement)
@@ -87,7 +96,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                         true,
                         false
                 )
-                .rewards(AdvancementRewards.Builder.experience(500))
+                .rewards(AdvancementRewards.Builder.recipe(new Identifier(Kusanali.MOD_ID, "halvamaze")))
                 .criterion("got_can", InventoryChangedCriterion.Conditions.items(ModItems.CANDIED_NUT))
                 .build(consumer, Kusanali.MOD_ID + "/got_can");
         Advancement gotAjiAdvancement = Advancement.Builder.create().parent(gotCanAjAdvancement)
@@ -115,7 +124,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                         true,
                         false
                 )
-                .rewards(AdvancementRewards.Builder.experience(500))
+                .rewards(AdvancementRewards.Builder.recipe(new Identifier(Kusanali.MOD_ID, "float_dream")))
                 .criterion("got_co", InventoryChangedCriterion.Conditions.items(ModItems.COROLLA))
                 .build(consumer, Kusanali.MOD_ID + "/got_co");
         Advancement gotCiAdvancement = Advancement.Builder.create().parent(rootAdvancement)
@@ -143,7 +152,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                         true,
                         false
                 )
-                .rewards(AdvancementRewards.Builder.experience(1500))
+                .rewards(AdvancementRewards.Builder.recipe(new Identifier(Kusanali.MOD_ID, "ive_never_forgotten")))
                 .criterion("got_fl", InventoryChangedCriterion.Conditions.items(ModItems.FLOAT_DREAM))
                 .build(consumer, Kusanali.MOD_ID + "/got_fl");
         Advancement gotIveFlAdvancement = Advancement.Builder.create().parent(rootAdvancement)

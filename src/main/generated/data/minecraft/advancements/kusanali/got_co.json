@@ -36,7 +36,9 @@
     ]
   ],
   "rewards": {
-    "experience": 500
+    "recipes": [
+      "kusanali:float_dream"
+    ]
   },
   "sends_telemetry_event": true
 }
