@@ -16,6 +16,7 @@ import net.minecraft.nbt.NbtCompound;
 import java.util.Objects;
 
 public class BedTelepotEvent {
+    //梦境传送功能
     private static final Identifier DREAM_DIMENSION_ID = new Identifier("kusanali", "dream_di_1");
 
     public static void register() {

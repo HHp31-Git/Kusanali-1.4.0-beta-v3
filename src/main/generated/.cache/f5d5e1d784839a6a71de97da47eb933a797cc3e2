@@ -1,9 +1,9 @@
-// 1.20.1	2025-11-05T23:21:46.8177682	Kusanali/Model Definitions
+// 1.20.1	2026-07-10T15:20:55.8823035	Kusanali/Model Definitions
 1fb02be88471440ae158532d85185b95731e1b9a assets\kusanali\models\item\aji_planks.json
 e46e2136a36ebf8606ebc00aa47955a340d69f81 assets\kusanali\models\item\client_iron_trim.json
 092c78bef222ab67f9211a0861b4286376991fca assets\kusanali\models\item\corolla_diamond_trim.json
-48b6a6d0a2b8b49f1745e1a7c66bfedca3ca0e94 assets\kusanali\models\item\client_copper_trim.json
 50728d5967dd5b1a3e70970905dcfc2870f38903 assets\kusanali\models\item\blessed_seed.json
+48b6a6d0a2b8b49f1745e1a7c66bfedca3ca0e94 assets\kusanali\models\item\client_copper_trim.json
 3d15e5e1bb64c10f8b99719c307496dbb7fa4d84 assets\kusanali\models\item\client_netherite_trim.json
 7fa718e9603adfd89fb3f8d323e670454ca6154b assets\kusanali\blockstates\stripped_aji_wood.json
 b1a9c203657a8cf33920379af618e681b8c6b435 assets\kusanali\models\item\aji_leaves.json

@@ -5,8 +5,9 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 
 public class FloatDreamQEffect extends StatusEffect {
+    //千夜浮梦-元素爆发
     public FloatDreamQEffect() {
-        super(StatusEffectCategory.HARMFUL, 0xADD8E6); // 浅蓝色表示魔法伤害
+        super(StatusEffectCategory.HARMFUL, 0xADD8E6);
     }
 
     @Override

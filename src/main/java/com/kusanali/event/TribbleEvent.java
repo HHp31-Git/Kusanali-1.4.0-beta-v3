@@ -5,6 +5,7 @@ import com.kusanali.register.ModEffects;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 
 public class TribbleEvent {
+    //蕴种印-事件触发
     public static void register() {
         ServerLivingEntityEvents.ALLOW_DAMAGE.register((entity, source, amount) -> {
             if (entity.hasStatusEffect(ModEffects.TRIBBLE)) {

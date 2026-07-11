@@ -32,7 +32,6 @@ public class Kusanali implements ModInitializer {
         FloatDream.registerAttackEvent();
         CorollaEvent.register();
         ClientEvent.register();
-        BedTelepotEvent.register();
         TribbleEvent.register();
 
         AjiLeavesDrop.register();

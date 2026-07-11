@@ -16,26 +16,35 @@ import net.minecraft.util.Rarity;
 
 public class ModItems {
     public static final Item IVE_NEVER_FORGOTTEN =
+            //唱片-我不曾忘记
             register("ive_never_forgotten", new MusicDiscItem(15,
                     ModSounds.IVE_NEVER_FORGOTTEN,
                     new Item.Settings()
                             .rarity(Rarity.RARE)
                             .maxCount(1),255
             ));
+
     public static final Item COROLLA =
+            //兰那罗花冠
             register("corolla", new ArmorItem(ModArmorMaterial.COROLLA, ArmorItem.Type.HELMET,
                     new Item.Settings()
                             .rarity(Rarity.EPIC)));
+
     public static final Item CLIENT =
+            //虚空终端
             register("client", new Client(ModArmorMaterial.CLIENT, Client.Type.HELMET,
                     new Item.Settings()
                             .rarity(Rarity.RARE)));
+
     public static final Item FLOAT_DREAM =
+            //千夜浮梦
             register("float_dream", new FloatDream(new Item.Settings()
                     .maxCount(64)
                     .rarity(Rarity.EPIC)
                     .maxDamage(1027)));
+
     public static final Item CANDIED_NUT =
+            //枣椰蜜糖
             register("candied_nut", new Item(new Item.Settings()
                     .maxCount(64)
                     .rarity(Rarity.RARE)
@@ -45,6 +54,7 @@ public class ModItems {
                             .alwaysEdible()
                             .statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 200, 0),1.0f)
                             .build())));
+
     public static final Item AJILENAKH =
             register("ajilenakh", new Item(new Item.Settings()
                     .maxCount(64)
@@ -52,7 +62,9 @@ public class ModItems {
                             .hunger(3)
                             .saturationModifier(0.3f)
                             .build())));
+
     public static final Item HALVAMAZE =
+            //哈瓦玛玛兹
             register("halvamaze", new Halvamaze(new Item.Settings()
                     .maxCount(64)
                     .rarity(Rarity.EPIC)
@@ -63,15 +75,21 @@ public class ModItems {
                             .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 200, 0),1.0f)
                             .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 1200, 0),1.0f)
                             .build())));
+
     public static final Item ARANAS_FLOWER =
+            //兰那罗之花
             register("aranas_flower", new Item(new Item.Settings()
                     .maxCount(64)
                     .rarity(Rarity.EPIC)));
+
     public static final Item BLESSED_BENCH =
+            //祝福之枝
             register("blessed_bench", new Item(new Item.Settings()
                     .maxCount(64)
                     .rarity(Rarity.RARE)));
+
     public static final Item BLESSED_SEED =
+            //祝福之种
             register("blessed_seed", new Item(new Item.Settings()
                     .maxCount(64)
                     .rarity(Rarity.RARE)));

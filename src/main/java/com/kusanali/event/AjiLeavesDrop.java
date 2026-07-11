@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import java.util.Random;
 
 public class AjiLeavesDrop {
+    //控制枣椰掉落
     public static void register() {
         // 注册方块破坏事件监听器
         PlayerBlockBreakEvents.AFTER.register((world, player, pos, state, blockEntity) -> {

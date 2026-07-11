@@ -36,18 +36,21 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(Items.EMERALD_BLOCK),
                         FabricRecipeProvider.conditionsFromItem(Items.EMERALD_BLOCK))
                 .offerTo(consumer);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.COROLLA)
                 .pattern(" b ").pattern("b b").pattern(" b ")
                 .input('b', ModItems.ARANAS_FLOWER)
                 .criterion(FabricRecipeProvider.hasItem(ModItems.ARANAS_FLOWER),
                         FabricRecipeProvider.conditionsFromItem(ModItems.ARANAS_FLOWER))
                 .offerTo(consumer);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CLIENT)
                 .pattern(" bb").pattern("b b").pattern("bb ")
                 .input('b', ModItems.BLESSED_BENCH)
                 .criterion(FabricRecipeProvider.hasItem(ModItems.BLESSED_BENCH),
                         FabricRecipeProvider.conditionsFromItem(ModItems.BLESSED_BENCH))
                 .offerTo(consumer);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.IVE_NEVER_FORGOTTEN)
                 .pattern(" b ").pattern("bab").pattern(" b ")
                 .input('a', ModItems.ARANAS_FLOWER)
@@ -57,6 +60,7 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(ModItems.BLESSED_SEED),
                         FabricRecipeProvider.conditionsFromItem(ModItems.BLESSED_SEED))
                 .offerTo(consumer);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CANDIED_NUT)
                 .pattern(" b ").pattern("bcb").pattern(" a ")
                 .input('b', Items.SUGAR)
@@ -69,6 +73,7 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(Items.MILK_BUCKET),
                         FabricRecipeProvider.conditionsFromItem(Items.MILK_BUCKET))
                 .offerTo(consumer);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.HALVAMAZE)
                 .pattern("dbd").pattern("bcb").pattern(" a ")
                 .input('b', Items.SUGAR)
@@ -85,11 +90,13 @@ public class RecipeProvider extends FabricRecipeProvider {
                         FabricRecipeProvider.conditionsFromItem(ModItems.BLESSED_SEED))
                 .offerTo(consumer);
 
+
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BLESSED_BENCH, 1)
                 .input(Items.STICK)
                 .input(ModItems.ARANAS_FLOWER)
                 .criterion(hasItem(ModItems.ARANAS_FLOWER), conditionsFromItem(ModItems.ARANAS_FLOWER))
                 .offerTo(consumer);
+
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BLESSED_SEED, 1)
                 .input(Items.WHEAT_SEEDS)
                 .input(ModItems.ARANAS_FLOWER)
