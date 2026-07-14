@@ -1,12 +1,12 @@
-// 1.20.1	2026-07-10T15:20:55.8843308	Kusanali/Tags for minecraft:block
+// 1.20.1	2026-07-16T01:00:08.4081706	Kusanali/Tags for minecraft:block
 cbfed9f196c06b8a0b223e9b57298444d5af8bbf data\minecraft\tags\blocks\leaves.json
 8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\minecraft\tags\blocks\needs_diamond_tool.json
 1ad3368b9ef0b4613ec6cf075611d7244f01e5bd data\minecraft\tags\blocks\logs_that_burn.json
 4e56503d412d867546a38d9dc0e84ff138459b08 data\minecraft\tags\blocks\saplings.json
 331d2ea4eaa9d0e5a4c88893bb80fd067f86ccb3 data\minecraft\tags\blocks\planks.json
 8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\minecraft\tags\blocks\mineable\shovel.json
-8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\minecraft\tags\blocks\mineable\pickaxe.json
 8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\minecraft\tags\blocks\mineable\axe.json
+8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\minecraft\tags\blocks\mineable\pickaxe.json
 8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\minecraft\tags\blocks\mineable\hoe.json
 8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\minecraft\tags\blocks\needs_stone_tool.json
 8a23702b05296c8af5014d6aa6e9265ded85c7d9 data\minecraft\tags\blocks\needs_iron_tool.json

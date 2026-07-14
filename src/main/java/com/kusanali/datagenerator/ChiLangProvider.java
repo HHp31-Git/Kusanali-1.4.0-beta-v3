@@ -61,5 +61,12 @@ public class ChiLangProvider extends FabricLanguageProvider {
         translationBuilder.add("effect.kusanali.magic_damage", "摩耶之殿");
         translationBuilder.add("effect.kusanali.tribble", "灭净三业");
         translationBuilder.add("category.kusanali.abilities", "武器能力-千夜浮梦");
+        translationBuilder.add("effect.kusanali.pyro", "火元素附着");
+        translationBuilder.add("effect.kusanali.hydro", "水元素附着");
+        translationBuilder.add("effect.kusanali.anemo", "风元素附着");
+        translationBuilder.add("effect.kusanali.electro", "雷元素附着");
+        translationBuilder.add("effect.kusanali.dendro", "草元素附着");
+        translationBuilder.add("effect.kusanali.cryo", "冰元素附着");
+        translationBuilder.add("effect.kusanali.geo", "岩元素附着");
     }
 }

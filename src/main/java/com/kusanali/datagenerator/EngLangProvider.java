@@ -61,5 +61,12 @@ public class EngLangProvider extends FabricLanguageProvider {
         translationBuilder.add("effect.kusanali.magic_damage", "Hall of Maya");
         translationBuilder.add("effect.kusanali.tribble", "Tribble");
         translationBuilder.add("category.kusanali.abilities", "Ability-Float Dream");
+        translationBuilder.add("effect.kusanali.pyro", "Pyro Adhering");
+        translationBuilder.add("effect.kusanali.hydro", "Hydro Adhering");
+        translationBuilder.add("effect.kusanali.anemo", "Anemo Adhering");
+        translationBuilder.add("effect.kusanali.electro", "Electro Adhering");
+        translationBuilder.add("effect.kusanali.dendro", "Dendro Adhering");
+        translationBuilder.add("effect.kusanali.cryo", "Cryo Adhering");
+        translationBuilder.add("effect.kusanali.geo", "Geo Adhering");
     }
 }
