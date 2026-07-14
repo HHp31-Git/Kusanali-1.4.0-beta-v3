@@ -56,6 +56,7 @@ public class ModItems {
                             .build())));
 
     public static final Item AJILENAKH =
+            //枣椰
             register("ajilenakh", new Item(new Item.Settings()
                     .maxCount(64)
                     .food(new FoodComponent.Builder()
