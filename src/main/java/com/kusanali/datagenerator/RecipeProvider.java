@@ -113,18 +113,11 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.AJILENAKH), conditionsFromItem(ModItems.AJILENAKH))
                 .offerTo(consumer);
 
-        TagKey<Item> ajiLogsTag =
-                TagKey.of(RegistryKeys.ITEM, new Identifier("kusanali", "aji_log"));
-                TagKey.of(RegistryKeys.ITEM, new Identifier("kusanali", "aji_wood"));
-                TagKey.of(RegistryKeys.ITEM, new Identifier("kusanali", "stripped_aji_log"));
-                TagKey.of(RegistryKeys.ITEM, new Identifier("kusanali", "stripped_aji_wood"));
-                //合成木板tag集合
-        ShapelessRecipeJsonBuilder.create(
-                        RecipeCategory.MISC,
-                        ModBlocks.AJI_PLANKS,4
-                )
+        TagKey<Item> ajiLogsTag = TagKey.of(RegistryKeys.ITEM, new Identifier("kusanali", "aji_logs"));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.AJI_PLANKS, 4)
                 .input(ajiLogsTag)
-                .criterion("has_aji_log", conditionsFromTag(ajiLogsTag))
+                .criterion("has_aji_logs", conditionsFromTag(ajiLogsTag))
                 .offerTo(consumer, new Identifier("kusanali", "aji_planks_from_logs"));
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.AJI_WOOD, 1)

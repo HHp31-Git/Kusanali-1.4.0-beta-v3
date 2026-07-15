@@ -4,8 +4,11 @@ import com.kusanali.register.ModBlocks;
 import com.kusanali.register.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -15,6 +18,12 @@ public class ItemTagsProvider extends FabricTagProvider.ItemTagProvider {
     }
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+        getOrCreateTagBuilder(TagKey.of(RegistryKeys.ITEM, new Identifier("kusanali", "aji_logs")))
+                .add(ModBlocks.AJI_LOG.asItem())
+                .add(ModBlocks.AJI_WOOD.asItem())
+                .add(ModBlocks.STRIPPED_AJI_LOG.asItem())
+                .add(ModBlocks.STRIPPED_AJI_WOOD.asItem());
+
         getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
                 .add(ModItems.IVE_NEVER_FORGOTTEN);
 

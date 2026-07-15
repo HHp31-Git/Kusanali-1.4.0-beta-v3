@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "kusanali:stripped_aji_log"
+    }
+  ],
+  "result": {
+    "item": "kusanali:stripped_aji_wood"
+  }
+}

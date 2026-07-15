@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "kusanali:ajilenakh"
+    }
+  ],
+  "result": {
+    "item": "kusanali:aji_sapling"
+  }
+}
