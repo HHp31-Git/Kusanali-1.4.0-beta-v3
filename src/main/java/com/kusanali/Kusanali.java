@@ -34,6 +34,13 @@ public class Kusanali implements ModInitializer {
         ClientEvent.register();
         TribbleEvent.register();
 
+        ElectroEvent.register();
+        HydroEvent.register();
+        PyroEvent.register();
+
+        SnowBallCyroEvent.register();
+        DripstoneGeoEvent.register();
+
         AjiLeavesDrop.register();
 
         FloatDreamHander.register();

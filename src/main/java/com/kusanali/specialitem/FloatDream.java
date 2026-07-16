@@ -1,10 +1,12 @@
 package com.kusanali.specialitem;
 
+import com.kusanali.register.ModEffects;
 import com.kusanali.register.ModItems;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -24,9 +26,16 @@ import java.util.Comparator;
 import java.util.List;
 
 public class FloatDream extends Item {
+
     public FloatDream(Settings settings) {
         super(settings);
     }
+
+    /* ========================= Item Tooltip ========================= */
+
+    /**
+     * 添加物品说明
+     */
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         tooltip.add(Text.translatable("item.kusanali.float_dream.tooltip_1")
@@ -37,201 +46,298 @@ public class FloatDream extends Item {
                 .setStyle(Style.EMPTY.withColor(Formatting.DARK_GREEN)));
         tooltip.add(Text.translatable("item.kusanali.float_dream.tooltip_4")
                 .setStyle(Style.EMPTY.withColor(Formatting.DARK_GREEN)));
-
     }
 
+    /* ========================= 右键使用 ========================= */
+
+    /**
+     * 右键开始使用物品（蓄力阶段）
+     * - 检查冷却，防止连续触发
+     * - 设置为当前手持动作，进入 finishUsing 流程
+     */
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
-        // 检查冷却
+
+        // 冷却检测（客户端也会校验，避免动画鬼畜）
         if (user.getItemCooldownManager().isCoolingDown(this)) {
             return TypedActionResult.fail(itemStack);
         }
+
         user.setCurrentHand(hand);
         return TypedActionResult.consume(itemStack);
     }
+
+    /**
+     * 蓄力结束后的主逻辑（右键释放）
+     * 执行一次前方扇形重击
+     */
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+        // 仅在服务端处理逻辑，避免客户端不同步
         if (!world.isClient && user instanceof PlayerEntity player) {
-            // 重击
-            // 检测前方r=5半圆
+
+            /* ---------- 1. 前方半圆检测 ---------- */
+
+            // 玩家位置
             Vec3d playerPos = user.getPos();
+            // 玩家视线向量
             Vec3d lookVec = user.getRotationVec(1.0F);
+            // 半圆中心点（前方 5 格）
             Vec3d areaCenter = playerPos.add(lookVec.multiply(5));
-            Box detectionBox = new Box(areaCenter.add(-5, -5, -5), areaCenter.add(5, 5, 5));
-            // 获取生物实体
-            List<Entity> entitiesInArea = world.getOtherEntities(user, detectionBox,
-                    entity -> entity instanceof LivingEntity && !entity.isSpectator());
+
+            // 检测包围盒（10×10×10）
+            Box detectionBox = new Box(
+                    areaCenter.add(-5, -5, -5),
+                    areaCenter.add(5, 5, 5)
+            );
+
+            // 获取范围内非旁观者生物
+            List<Entity> entitiesInArea = world.getOtherEntities(
+                    user,
+                    detectionBox,
+                    entity -> entity instanceof LivingEntity && !entity.isSpectator()
+            );
+
+            // 筛选前方 180° 半圆，并按距离排序
             List<Entity> entitiesInSemiCircle = entitiesInArea.stream()
                     .filter(entity -> {
                         Vec3d toEntity = entity.getPos().subtract(playerPos).normalize();
                         double dotProduct = toEntity.dotProduct(lookVec);
+                        // dot > 0 表示夹角 < 90°，合成 180° 扇形
                         return dotProduct > 0;
                     })
                     .sorted(Comparator.comparingDouble(e -> e.squaredDistanceTo(playerPos)))
                     .toList();
-            // 定位
+
+            /* ---------- 2. 命中判定与伤害 ---------- */
+
             if (!entitiesInSemiCircle.isEmpty()) {
                 Entity closestEntity = entitiesInSemiCircle.get(0);
-                if (closestEntity instanceof LivingEntity) {
-                    boolean wasOnFire = closestEntity.isOnFire();
+
+                if (closestEntity instanceof LivingEntity target) {
+                    boolean wasOnFire = target.isOnFire();
                     float damageAmount = 10.0f;
+                    target.addStatusEffect(new StatusEffectInstance(ModEffects.DENDRO, 15));
+
+                    // 燃烧加成：延长燃烧 + 额外伤害
                     if (wasOnFire) {
-                        // 延长燃烧时间3秒
-                        int currentFireTicks = closestEntity.getFireTicks();
-                        closestEntity.setFireTicks(currentFireTicks + 60);
-                        // 后续燃烧伤害+1
+                        int currentFireTicks = target.getFireTicks();
+                        target.setFireTicks(currentFireTicks + 60); // +3 秒
                         damageAmount += 1.0f;
-                        // 提示效果触发
-                        if (world instanceof ServerWorld) {
-                            ((ServerWorld) world).spawnParticles(ParticleTypes.FLAME,
-                                    closestEntity.getX(), closestEntity.getY() + 1, closestEntity.getZ(),
-                                    10, 0.5, 0.5, 0.5, 0.05);
-                            world.playSound(null, closestEntity.getBlockPos(),
-                                    SoundEvents.ENTITY_BLAZE_BURN, SoundCategory.NEUTRAL, 0.5f, 1.0f);
+
+                        // 火焰视觉反馈
+                        if (world instanceof ServerWorld serverWorld) {
+                            serverWorld.spawnParticles(
+                                    ParticleTypes.FLAME,
+                                    target.getX(),
+                                    target.getY() + 1,
+                                    target.getZ(),
+                                    10,
+                                    0.5, 0.5, 0.5,
+                                    0.05
+                            );
+                            world.playSound(
+                                    null,
+                                    target.getBlockPos(),
+                                    SoundEvents.ENTITY_BLAZE_BURN,
+                                    SoundCategory.NEUTRAL,
+                                    0.5f,
+                                    1.0f
+                            );
                         }
                     }
-                    // 应用伤害
-                    closestEntity.damage(world.getDamageSources().magic(), damageAmount);
-                    // 棱长为1.5
-                    double centerX = closestEntity.getX();
-                    double centerY = closestEntity.getY() + closestEntity.getHeight() / 2;
-                    double centerZ = closestEntity.getZ();
-                    double halfSide = 0.75;
-                    // 顶点
+
+                    // 应用魔法伤害
+                    target.damage(world.getDamageSources().magic(), damageAmount);
+
+                    /* ---------- 3. 立方体粒子特效 ---------- */
+
+                    double centerX = target.getX();
+                    double centerY = target.getY() + target.getHeight() / 2;
+                    double centerZ = target.getZ();
+                    double halfSide = 0.75; // 棱长 1.5
+
+                    // 立方体 8 个顶点
                     double[][] vertices = {
-                            // 底面
                             {centerX - halfSide, centerY - halfSide, centerZ - halfSide},
                             {centerX + halfSide, centerY - halfSide, centerZ - halfSide},
                             {centerX + halfSide, centerY - halfSide, centerZ + halfSide},
                             {centerX - halfSide, centerY - halfSide, centerZ + halfSide},
-                            // 顶面
                             {centerX - halfSide, centerY + halfSide, centerZ - halfSide},
                             {centerX + halfSide, centerY + halfSide, centerZ - halfSide},
                             {centerX + halfSide, centerY + halfSide, centerZ + halfSide},
                             {centerX - halfSide, centerY + halfSide, centerZ + halfSide}
                     };
-                    // 棱边
+
+                    // 立方体 12 条棱
                     int[][] edges = {
-                            {0, 1}, {1, 2}, {2, 3}, {3, 0}, // 底面
-                            {4, 5}, {5, 6}, {6, 7}, {7, 4}, // 顶面
-                            {0, 4}, {1, 5}, {2, 6}, {3, 7}  // 高
+                            {0, 1}, {1, 2}, {2, 3}, {3, 0},
+                            {4, 5}, {5, 6}, {6, 7}, {7, 4},
+                            {0, 4}, {1, 5}, {2, 6}, {3, 7}
                     };
-                    // 生成粒子
+
                     ServerWorld serverWorld = (ServerWorld) world;
                     for (int[] edge : edges) {
                         double[] start = vertices[edge[0]];
                         double[] end = vertices[edge[1]];
+
                         int particlesPerEdge = 5;
                         for (int i = 0; i <= particlesPerEdge; i++) {
                             double ratio = (double) i / particlesPerEdge;
-                            double particleX = start[0] + ratio * (end[0] - start[0]);
-                            double particleY = start[1] + ratio * (end[1] - start[1]);
-                            double particleZ = start[2] + ratio * (end[2] - start[2]);
+                            double px = start[0] + ratio * (end[0] - start[0]);
+                            double py = start[1] + ratio * (end[1] - start[1]);
+                            double pz = start[2] + ratio * (end[2] - start[2]);
+
                             serverWorld.spawnParticles(
                                     ParticleTypes.HAPPY_VILLAGER,
-                                    particleX, particleY, particleZ,
+                                    px, py, pz,
                                     1,
                                     0, 0, 0,
                                     0
                             );
                         }
                     }
-                    // 扣除耐久
-                    stack.damage(1, player, (p) -> p.sendToolBreakStatus(player.getActiveHand()));
-                    // 冷却
-                    player.getItemCooldownManager().set(this, 8);
                 }
             }
+
+            /* ---------- 4. 耐久与冷却 ---------- */
+
+            stack.damage(1, player, p -> p.sendToolBreakStatus(player.getActiveHand()));
+            player.getItemCooldownManager().set(this, 8); // 8 tick ≈ 0.4s
         }
+
         return stack;
     }
+
+    /* ========================= 左键攻击回调 ========================= */
+
+    /**
+     * 注册左键（普通攻击）事件
+     * 在攻击实体时触发额外技能：前方地面生成 4 个魔法方阵
+     */
     public static void registerAttackEvent() {
-        AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
+        AttackEntityCallback.EVENT.register((player, world, hand,
+                                             entity, hitResult) -> {
             ItemStack stack = player.getStackInHand(hand);
+
             if (stack.getItem() instanceof FloatDream) {
-                // 检查冷却状态
+                // 冷却保护
                 if (player.getItemCooldownManager().isCoolingDown(stack.getItem())) {
                     return ActionResult.PASS;
                 }
+
                 if (!world.isClient) {
-                    // 攻击逻辑
                     performSpecialAttack(world, player);
                 }
-                // 冷却
+
                 player.getItemCooldownManager().set(stack.getItem(), 3);
                 return ActionResult.SUCCESS;
             }
+
             return ActionResult.PASS;
         });
     }
+
+    /**
+     * 左键特殊攻击逻辑
+     * 在玩家前方生成 4 个正方形魔法阵并对范围内敌人造成伤害
+     */
     private static void performSpecialAttack(World world, PlayerEntity player) {
-        // 踩键盘
         Vec3d playerPos = player.getPos();
         Vec3d lookVec = player.getRotationVec(1.0F).multiply(4);
+
+        // 沿视线方向生成 4 个魔法阵中心
         Vec3d[] squareCenters = new Vec3d[4];
         for (int i = 0; i < 4; i++) {
             double ratio = (i + 1) / 4.0;
             squareCenters[i] = playerPos.add(lookVec.multiply(ratio).add(0.2, 0.1, 0));
         }
-        // 粒子生成
+
+        // 生成粒子
         for (Vec3d center : squareCenters) {
             spawnSquareParticles(world, center);
         }
-        // 检测实体
+
+        // 收集受影响实体
         List<LivingEntity> affectedEntities = new ArrayList<>();
         for (Vec3d center : squareCenters) {
             Box detectionBox = new Box(
                     center.add(-0.5, -0.5, -0.5),
                     center.add(0.5, 0.5, 0.5)
             );
+
             List<LivingEntity> entitiesInBox = world.getEntitiesByClass(
-                    LivingEntity.class, detectionBox, entity ->
-                            entity != player && entity.isAlive()
+                    LivingEntity.class,
+                    detectionBox,
+                    entity -> entity != player && entity.isAlive()
             );
+
             affectedEntities.addAll(entitiesInBox);
         }
-        // 造成伤害
+
+        // 对范围内实体造成伤害
         for (LivingEntity entity : affectedEntities) {
             boolean wasOnFire = entity.isOnFire();
             float damageAmount = 7.0f;
+
             if (wasOnFire) {
-                // 延长燃烧时间3秒
                 int currentFireTicks = entity.getFireTicks();
                 entity.setFireTicks(currentFireTicks + 60);
-                // 后续燃烧伤害+1
                 damageAmount += 1.0f;
-                // 提示效果触发
-                if (world instanceof ServerWorld) {
-                    ((ServerWorld) world).spawnParticles(ParticleTypes.FLAME,
-                            entity.getX(), entity.getY() + 1, entity.getZ(),
-                            10, 0.5, 0.5, 0.5, 0.05);
-                        world.playSound(null, entity.getBlockPos(),
-                            SoundEvents.ENTITY_BLAZE_BURN, SoundCategory.NEUTRAL, 0.5f, 1.0f);
+
+                if (world instanceof ServerWorld serverWorld) {
+                    serverWorld.spawnParticles(
+                            ParticleTypes.FLAME,
+                            entity.getX(),
+                            entity.getY() + 1,
+                            entity.getZ(),
+                            10,
+                            0.5, 0.5, 0.5,
+                            0.05
+                    );
+                    world.playSound(
+                            null,
+                            entity.getBlockPos(),
+                            SoundEvents.ENTITY_BLAZE_BURN,
+                            SoundCategory.NEUTRAL,
+                            0.5f,
+                            1.0f
+                    );
                 }
             }
+
             entity.damage(world.getDamageSources().magic(), damageAmount);
+            entity.addStatusEffect(new StatusEffectInstance(ModEffects.DENDRO,15));
         }
     }
+
+    /**
+     * 生成正方形魔法阵粒子
+     * 客户端使用 addParticle，服务端使用 spawnParticles
+     */
     private static void spawnSquareParticles(World world, Vec3d center) {
         double halfSide = 0.5;
+
         Vec3d[] corners = {
                 new Vec3d(center.x - halfSide, center.y, center.z - halfSide),
                 new Vec3d(center.x + halfSide, center.y, center.z - halfSide),
                 new Vec3d(center.x + halfSide, center.y, center.z + halfSide),
                 new Vec3d(center.x - halfSide, center.y, center.z + halfSide)
         };
-        // 生成粒子
+
         if (world.isClient) {
-            // 边
+            // 客户端粒子（本地渲染）
             for (int i = 0; i < 4; i++) {
                 Vec3d start = corners[i];
                 Vec3d end = corners[(i + 1) % 4];
                 int particlesPerSide = 8;
+
                 for (int j = 0; j <= particlesPerSide; j++) {
                     double ratio = (double) j / particlesPerSide;
                     double x = start.x + ratio * (end.x - start.x);
                     double z = start.z + ratio * (end.z - start.z);
+
                     world.addParticle(
                             ParticleTypes.HAPPY_VILLAGER,
                             x, center.y, z,
@@ -239,61 +345,92 @@ public class FloatDream extends Item {
                     );
                 }
             }
-            // 中心
+
             world.addParticle(
                     ParticleTypes.HAPPY_VILLAGER,
                     center.x, center.y, center.z,
                     0, 0, 0
             );
         } else {
+            // 服务端同步粒子（所有玩家可见）
             ServerWorld serverWorld = (ServerWorld) world;
+
             for (int i = 0; i < 4; i++) {
                 Vec3d start = corners[i];
                 Vec3d end = corners[(i + 1) % 4];
                 int particlesPerSide = 8;
+
                 for (int j = 0; j <= particlesPerSide; j++) {
                     double ratio = (double) j / particlesPerSide;
                     double x = start.x + ratio * (end.x - start.x);
                     double z = start.z + ratio * (end.z - start.z);
+
                     serverWorld.spawnParticles(
                             ParticleTypes.HAPPY_VILLAGER,
                             x, center.y, z,
-                            1, 0, 0, 0, 0
+                            1,
+                            0, 0, 0,
+                            0
                     );
                 }
             }
-            // 中心粒子
+
             serverWorld.spawnParticles(
                     ParticleTypes.HAPPY_VILLAGER,
                     center.x, center.y, center.z,
-                    3, 0, 0, 0, 0
+                    3,
+                    0, 0, 0,
+                    0
             );
         }
     }
 
+    /* ========================= Item 基础行为 ========================= */
+
+    /**
+     * 普通攻击命中回调（预留扩展）
+     */
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        // 普攻
         return super.postHit(stack, target, attacker);
     }
 
-
+    /**
+     * 最大使用时间（tick）
+     * 14 tick ≈ 0.7 秒蓄力
+     */
     @Override
     public int getMaxUseTime(ItemStack stack) {
         return 14;
     }
+
+    /**
+     * 使用动作：弓的拉弓动画
+     */
     @Override
     public UseAction getUseAction(ItemStack stack) {
         return UseAction.BOW;
     }
+
+    /**
+     * 定义修复材料
+     */
     @Override
     public boolean canRepair(ItemStack stack, ItemStack ingredient) {
         return ingredient.getItem() == ModItems.ARANAS_FLOWER;
     }
+
+    /**
+     * 允许附魔
+     */
     @Override
     public boolean isEnchantable(ItemStack stack) {
         return true;
     }
+
+    /**
+     * 附魔权重（与原版工具一致）
+     */
     @Override
     public int getEnchantability() {
         return 25;

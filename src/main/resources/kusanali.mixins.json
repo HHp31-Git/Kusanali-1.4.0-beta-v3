@@ -1,14 +1,19 @@
 {
-	"required": true,
-	"package": "com.kusanali.mixin",
-	"compatibilityLevel": "JAVA_17",
-	"mixins": [
-		"ExampleMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"overwrites": {
-		"requireAnnotations": true
+  "required": true,
+  "package": "com.kusanali.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "BlazePyroAddMixin",
+    "IronGolemPyroAddMixin",
+    "MagmaPyroAddMixin",
+    "SlimeSplitMixin",
+    "SnowGolenPyroAddMixin",
+    "StriderPyroAddMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
 	}
 }

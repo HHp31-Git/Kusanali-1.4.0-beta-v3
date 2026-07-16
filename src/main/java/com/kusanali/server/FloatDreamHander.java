@@ -135,6 +135,7 @@ public class FloatDreamHander {
         ).forEach(entity -> {
             // 施加自定义魔法伤害效果（20秒），持续造成伤害
             entity.addStatusEffect(new StatusEffectInstance(ModEffects.MAGIC_DAMAGE, 20 * 20, 0));
+            entity.addStatusEffect(new StatusEffectInstance(ModEffects.DENDRO, 15));
         });
 
         // 构建网络包，将冷却结束时间同步给客户端，用于渲染HUD冷却条
@@ -184,6 +185,7 @@ public class FloatDreamHander {
             target.damage(sources.magic(), 6.0f); // 造成6点魔法伤害
             target.addStatusEffect(new StatusEffectInstance(ModEffects.TRIBBLE, 9 * 20, 0));
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 9 * 20, 0));
+            target.addStatusEffect(new StatusEffectInstance(ModEffects.DENDRO, 15));
             // 若命中敌对生物，冷却时间缩短为3秒
             if (target instanceof Monster) {
                 cooldownEnd = System.currentTimeMillis() + 3000;
