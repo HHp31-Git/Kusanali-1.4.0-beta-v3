@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:magma_cube",
+    "minecraft:blaze",
+    "minecraft:snow_golem",
+    "minecraft:iron_golem",
+    "minecraft:strider"
+  ]
+}
