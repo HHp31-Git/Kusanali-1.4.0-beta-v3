@@ -1,4 +1,4 @@
-package com.kusanali.effect;
+package com.kusanali.effect.elements;
 
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;

@@ -1,4 +1,4 @@
-package com.kusanali.event;
+package com.kusanali.event.element_adhering;
 
 import com.kusanali.register.ModEffects;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;

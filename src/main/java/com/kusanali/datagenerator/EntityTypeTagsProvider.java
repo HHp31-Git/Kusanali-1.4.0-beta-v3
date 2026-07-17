@@ -18,6 +18,8 @@ public class EntityTypeTagsProvider extends FabricTagProvider.EntityTypeTagProvi
             completableFuture) {
         super(output, completableFuture);
     }
+    public static final TagKey<EntityType<?>> ELEMENTS_ENTITY =
+            TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(Kusanali.MOD_ID, "elements_entity"));
     public static final TagKey<EntityType<?>> PYRO_ENTITY =
             TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(Kusanali.MOD_ID, "pyro_entity"));
     public static final TagKey<EntityType<?>> CYRO_ENTITY =
@@ -35,5 +37,11 @@ public class EntityTypeTagsProvider extends FabricTagProvider.EntityTypeTagProvi
                 .add(EntityType.SNOW_GOLEM);
         getOrCreateTagBuilder(GEO_ENTITY)
                 .add(EntityType.IRON_GOLEM);
+        getOrCreateTagBuilder(ELEMENTS_ENTITY)
+                .add(EntityType.MAGMA_CUBE)
+                .add(EntityType.BLAZE)
+                .add(EntityType.SNOW_GOLEM)
+                .add(EntityType.IRON_GOLEM)
+                .add(EntityType.STRIDER);
     }
 }

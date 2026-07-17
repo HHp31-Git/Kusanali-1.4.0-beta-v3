@@ -1,6 +1,7 @@
 package com.kusanali.register;
 
 import com.kusanali.effect.*;
+import com.kusanali.effect.elements.*;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -15,7 +16,7 @@ public class ModEffects {
     public static final StatusEffect HYDRO = new HydroEffect(); //水元素附着
     public static final StatusEffect CYRO = new CyroEffect(); //冰元素附着
     public static final StatusEffect ANEMO = new AnemoEffect(); //风元素附着
-    public static final StatusEffect GEO = new GeoEffect(); //岩元素附着
+    public static final StatusEffect GEO = new GeoEffect(); //岩元素附着 /
 
     public static void register() {
         Registry.register(Registries.STATUS_EFFECT, new Identifier("kusanali", "magic_damage"), MAGIC_DAMAGE);

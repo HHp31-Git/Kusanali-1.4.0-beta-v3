@@ -68,5 +68,20 @@ public class ChiLangProvider extends FabricLanguageProvider {
         translationBuilder.add("effect.kusanali.dendro", "草元素附着");
         translationBuilder.add("effect.kusanali.cryo", "冰元素附着");
         translationBuilder.add("effect.kusanali.geo", "岩元素附着");
+
+        translationBuilder.add("death_attack.element", "%1$s 被元素攻击击杀");
+        translationBuilder.add("death.attack.element.player",   "%1$s 被元素攻击击杀");
+        translationBuilder.add("death_attack.reaction_type_1", "%1$s 死于增幅反应");
+        translationBuilder.add("death.attack.reaction_type_1.player",   "%1$s 死于增幅反应");
+        translationBuilder.add("death_attack.reaction_type_2", "%1$s 死于剧变反应");
+        translationBuilder.add("death.attack.reaction_type_2.player",   "%1$s 死于剧变反应");
+        translationBuilder.add("death_attack.reaction_type_3", "%1$s 死于结晶反应");
+        translationBuilder.add("death.attack.reaction_type_3.player",   "%1$s 死于结晶反应");
+        translationBuilder.add("death_attack.reaction_type_4", "%1$s 死于激化反应");
+        translationBuilder.add("death.attack.reaction_type_4.player",   "%1$s 死于激化反应");
+        translationBuilder.add("death_attack.reaction_type_5", "%1$s 死于月反应");
+        translationBuilder.add("death.attack.reaction_type_5.player",   "%1$s 死于月反应");
+        translationBuilder.add("death_attack.reaction_type_6", "%1$s 死于星反应");
+        translationBuilder.add("death.attack.reaction_type_6.player",   "%1$s 死于星反应");
     }
 }

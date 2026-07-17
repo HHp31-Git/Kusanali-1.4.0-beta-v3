@@ -68,5 +68,20 @@ public class EngLangProvider extends FabricLanguageProvider {
         translationBuilder.add("effect.kusanali.dendro", "Dendro Adhering");
         translationBuilder.add("effect.kusanali.cryo", "Cryo Adhering");
         translationBuilder.add("effect.kusanali.geo", "Geo Adhering");
+
+        translationBuilder.add("death.attack.element",          "%1$s was consumed by elemental power");
+        translationBuilder.add("death.attack.element.player",   "%1$s was consumed by elemental power");
+        translationBuilder.add("death_attack.reaction_type_1", "%1$s was consumed by amplification reaction");
+        translationBuilder.add("death.attack.reaction_type_1.player",   "%1$s was consumed by amplification reaction");
+        translationBuilder.add("death_attack.reaction_type_2", "%1$s was consumed by dramatic reaction");
+        translationBuilder.add("death.attack.reaction_type_2.player",   "%1$s was consumed by dramatic reaction");
+        translationBuilder.add("death_attack.reaction_type_3", "%1$s was consumed by crystallization reaction");
+        translationBuilder.add("death.attack.reaction_type_3.player",   "%1$s was consumed by crystallization reaction");
+        translationBuilder.add("death_attack.reaction_type_4", "%1$s was consumed by intensified reaction");
+        translationBuilder.add("death.attack.reaction_type_4.player",   "%1$s was consumed by intensified reaction");
+        translationBuilder.add("death_attack.reaction_type_5", "%1$s was consumed by moon reaction");
+        translationBuilder.add("death.attack.reaction_type_5.player",   "%1$s was consumed by moon reaction");
+        translationBuilder.add("death_attack.reaction_type_6", "%1$s was consumed by star reaction");
+        translationBuilder.add("death.attack.reaction_type_6.player",   "%1$s was consumed by star reaction");
     }
 }

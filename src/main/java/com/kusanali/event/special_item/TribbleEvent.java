@@ -1,4 +1,4 @@
-package com.kusanali.event;
+package com.kusanali.event.special_item;
 
 import com.kusanali.register.ModEffects;
 

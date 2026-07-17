@@ -1,6 +1,10 @@
 package com.kusanali;
 
-import com.kusanali.event.*;
+import com.kusanali.event.element_adhering.*;
+import com.kusanali.event.special_item.AjiLeavesDrop;
+import com.kusanali.event.special_item.ClientEvent;
+import com.kusanali.event.special_item.CorollaEvent;
+import com.kusanali.event.special_item.TribbleEvent;
 import com.kusanali.register.*;
 import com.kusanali.server.FloatDreamHander;
 import com.kusanali.specialitem.FloatDream;
@@ -28,6 +32,8 @@ public class Kusanali implements ModInitializer {
         ModSounds.register();
         ModPaintings.init();
         ModEffects.register();
+        ModDamageTypes.register();
+        ModLootTable.register();
 
         FloatDream.registerAttackEvent();
         CorollaEvent.register();
@@ -40,6 +46,7 @@ public class Kusanali implements ModInitializer {
 
         SnowBallCyroEvent.register();
         DripstoneGeoEvent.register();
+        ElementEntityAttackEvent.register();
 
         AjiLeavesDrop.register();
 
@@ -59,5 +66,7 @@ public class Kusanali implements ModInitializer {
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_AJI_LOG, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.AJI_WOOD, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_AJI_WOOD, 5, 5);
+
+
     }
 }
