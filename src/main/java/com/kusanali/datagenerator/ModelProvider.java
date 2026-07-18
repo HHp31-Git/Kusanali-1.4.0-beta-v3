@@ -44,5 +44,12 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor((ArmorItem) ModItems.COROLLA);
         itemModelGenerator.registerArmor((ArmorItem) ModItems.CLIENT);
 
+        itemModelGenerator.register(ModItems.ANEMO_ITEM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CYRO_ITEM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.DENDRO_ITEM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ELECTRO_ITEM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.GEO_ITEM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.HYDRO_ITEM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PYRO_ITEM, Models.GENERATED);
     }
 }

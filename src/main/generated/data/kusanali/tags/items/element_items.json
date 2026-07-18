@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "kusanali:anemo_item",
+    "kusanali:cyro_item",
+    "kusanali:electro_item",
+    "kusanali:geo_item",
+    "kusanali:hydro_item",
+    "kusanali:pyro_item",
+    "kusanali:anemo_item"
+  ]
+}

@@ -23,6 +23,14 @@ public class EngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.CLIENT, "Void Client");
         translationBuilder.add(ModItems.AJILENAKH, "ajilenakh nut");
 
+        translationBuilder.add(ModItems.ANEMO_ITEM, "anemo item");
+        translationBuilder.add(ModItems.CYRO_ITEM, "cyro item");
+        translationBuilder.add(ModItems.ELECTRO_ITEM, "electro item");
+        translationBuilder.add(ModItems.GEO_ITEM, "geo item");
+        translationBuilder.add(ModItems.HYDRO_ITEM, "hydro item");
+        translationBuilder.add(ModItems.PYRO_ITEM, "pyro item");
+        translationBuilder.add(ModItems.DENDRO_ITEM, "dendro item");
+
         translationBuilder.add(ModBlocks.AJI_LEAVES, "ajilenakh leaves");
         translationBuilder.add(ModBlocks.AJI_LOG, "ajilenakh log");
         translationBuilder.add(ModBlocks.AJI_PLANKS, "ajilenakh planks");
@@ -39,8 +47,6 @@ public class EngLangProvider extends FabricLanguageProvider {
         translationBuilder.add("painting.kusanali.nhd_1.author", "Mihoyo");
         translationBuilder.add("painting.kusanali.nhd_2.author", "Mihoyo");
         translationBuilder.add("painting.kusanali.nhd_3.author", "Mihoyo");
-
-        translationBuilder.add("dimension.kusanali.dream_di_1", "Dream Dimension");
 
         translationBuilder.add(ModItems.IVE_NEVER_FORGOTTEN.getTranslationKey() + ".desc", "I've Never Forgotten");
 

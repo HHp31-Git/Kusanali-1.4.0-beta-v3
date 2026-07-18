@@ -6,6 +6,7 @@ import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 
 public class ElectroEvent {
+
     public static void register() {
         ServerLivingEntityEvents.ALLOW_DAMAGE.register((entity, source, amount) -> {
             if (source.isOf(DamageTypes.LIGHTNING_BOLT)) {

@@ -23,6 +23,14 @@ public class ChiLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.CLIENT, "虚空终端");
         translationBuilder.add(ModItems.AJILENAKH, "枣椰");
 
+        translationBuilder.add(ModItems.ANEMO_ITEM, "风元素");
+        translationBuilder.add(ModItems.CYRO_ITEM, "冰元素");
+        translationBuilder.add(ModItems.ELECTRO_ITEM, "雷元素");
+        translationBuilder.add(ModItems.GEO_ITEM, "岩元素");
+        translationBuilder.add(ModItems.HYDRO_ITEM, "水元素");
+        translationBuilder.add(ModItems.PYRO_ITEM, "火元素");
+        translationBuilder.add(ModItems.DENDRO_ITEM, "草元素");
+
         translationBuilder.add(ModBlocks.AJI_LEAVES, "枣椰树叶");
         translationBuilder.add(ModBlocks.AJI_LOG, "枣椰原木");
         translationBuilder.add(ModBlocks.AJI_PLANKS, "枣椰木板");
@@ -42,7 +50,6 @@ public class ChiLangProvider extends FabricLanguageProvider {
 
         translationBuilder.add(ModItems.IVE_NEVER_FORGOTTEN.getTranslationKey() + ".desc", "I've Never Forgotten");
 
-        translationBuilder.add("dimension.kusanali.dream_di_1", "梦境之地");
 
         translationBuilder.add("itemGroup.kusanali", "吉祥草之音");
         translationBuilder.add("item.kusanali.float_dream.tooltip_1",

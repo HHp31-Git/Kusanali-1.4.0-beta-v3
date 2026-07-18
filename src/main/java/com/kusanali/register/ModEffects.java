@@ -18,6 +18,8 @@ public class ModEffects {
     public static final StatusEffect ANEMO = new AnemoEffect(); //风元素附着
     public static final StatusEffect GEO = new GeoEffect(); //岩元素附着 /
 
+    public static final StatusEffect SUPERCONDUCTIVITY = new SuperconductivityEffect(); //超导
+
     public static void register() {
         Registry.register(Registries.STATUS_EFFECT, new Identifier("kusanali", "magic_damage"), MAGIC_DAMAGE);
         Registry.register(Registries.STATUS_EFFECT, new Identifier("kusanali", "tribble"), TRIBBLE);
@@ -28,5 +30,7 @@ public class ModEffects {
         Registry.register(Registries.STATUS_EFFECT, new Identifier("kusanali", "cyro"), CYRO);
         Registry.register(Registries.STATUS_EFFECT, new Identifier("kusanali", "anemo"), ANEMO);
         Registry.register(Registries.STATUS_EFFECT, new Identifier("kusanali", "geo"), GEO);
+
+        Registry.register(Registries.STATUS_EFFECT, new Identifier("kusanali", "superconductivity"), SUPERCONDUCTIVITY);
     }
 }

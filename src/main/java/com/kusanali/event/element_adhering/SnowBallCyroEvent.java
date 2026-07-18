@@ -22,7 +22,7 @@ public class SnowBallCyroEvent {
                 // 雪球自身的碰撞箱
                 Box box = snowball.getBoundingBox().expand(0.2);
 
-                // 查找命中的生物
+                // 命中生物
                 List<LivingEntity> targets = world.getEntitiesByClass(
                         LivingEntity.class,
                         box,

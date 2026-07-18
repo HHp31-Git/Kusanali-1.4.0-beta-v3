@@ -3,6 +3,7 @@ package com.kusanali.register;
 import com.kusanali.specialitem.Client;
 import com.kusanali.specialitem.FloatDream;
 import com.kusanali.specialitem.Halvamaze;
+import com.kusanali.specialitem.elements.*;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ArmorItem;
@@ -94,6 +95,35 @@ public class ModItems {
             register("blessed_seed", new Item(new Item.Settings()
                     .maxCount(64)
                     .rarity(Rarity.RARE)));
+
+    public static final Item ELECTRO_ITEM =
+            //雷元素
+            register("electro_item", new ElectroItem(new Item.Settings()
+                    .rarity(Rarity.EPIC)));
+    public static final Item DENDRO_ITEM =
+            //草元素
+            register("dendro_item", new DendroItem(new Item.Settings()
+                    .rarity(Rarity.EPIC)));
+    public static final Item PYRO_ITEM =
+            //火元素
+            register("pyro_item", new PyroItem(new Item.Settings()
+                    .rarity(Rarity.EPIC)));
+    public static final Item GEO_ITEM =
+            //岩元素
+            register("geo_item", new GeoItem(new Item.Settings()
+                    .rarity(Rarity.EPIC)));
+    public static final Item CYRO_ITEM =
+            //冰元素
+            register("cyro_item", new CyroItem(new Item.Settings()
+                    .rarity(Rarity.EPIC)));
+    public static final Item ANEMO_ITEM =
+            //风元素
+            register("anemo_item", new AnemoItem(new Item.Settings()
+                    .rarity(Rarity.EPIC)));
+    public static final Item HYDRO_ITEM =
+            //水元素
+            register("hydro_item", new HydroItem(new Item.Settings()
+                    .rarity(Rarity.EPIC)));
 
     private static Item register(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier("kusanali", name), item);

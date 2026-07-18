@@ -1,6 +1,9 @@
 package com.kusanali;
 
 import com.kusanali.event.element_adhering.*;
+import com.kusanali.event.element_reaction.EvaporationEvent;
+import com.kusanali.event.element_reaction.MeltEvent;
+import com.kusanali.event.reaction_middle.SuperconductivityEvent;
 import com.kusanali.event.special_item.AjiLeavesDrop;
 import com.kusanali.event.special_item.ClientEvent;
 import com.kusanali.event.special_item.CorollaEvent;
@@ -25,7 +28,6 @@ public class Kusanali implements ModInitializer {
 
 		LOGGER.info("For the Lesser Lord Kusanali");
 
-
         ModItemGroup.initialize();
         ModItems.initialize();
         ModBlocks.initialize();
@@ -44,9 +46,16 @@ public class Kusanali implements ModInitializer {
         HydroEvent.register();
         PyroEvent.register();
 
+        EvaporationEvent.register();
+        MeltEvent.register();
+        SuperconductivityEvent.register();
+
         SnowBallCyroEvent.register();
         DripstoneGeoEvent.register();
         ElementEntityAttackEvent.register();
+        SlimeRandomEvent.register();
+
+        ElementDamageEvent.register();
 
         AjiLeavesDrop.register();
 
@@ -66,7 +75,5 @@ public class Kusanali implements ModInitializer {
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_AJI_LOG, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.AJI_WOOD, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_AJI_WOOD, 5, 5);
-
-
     }
 }

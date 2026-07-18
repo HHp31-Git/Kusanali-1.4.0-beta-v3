@@ -8,7 +8,8 @@
     "MagmaPyroAddMixin",
     "SlimeSplitMixin",
     "SnowGolenPyroAddMixin",
-    "StriderPyroAddMixin"
+    "StriderPyroAddMixin",
+    "WitchAttackMixin"
   ],
   "injectors": {
     "defaultRequire": 1

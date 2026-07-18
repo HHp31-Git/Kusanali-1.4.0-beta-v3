@@ -31,6 +31,13 @@ public class ModItemGroup {
                 entries.add(ModBlocks.STRIPPED_AJI_LOG);
                 entries.add(ModBlocks.STRIPPED_AJI_WOOD);
                 entries.add(ModBlocks.SUMIRU_ROSE);
+                entries.add(ModItems.ANEMO_ITEM);
+                entries.add(ModItems.CYRO_ITEM);
+                entries.add(ModItems.DENDRO_ITEM);
+                entries.add(ModItems.ELECTRO_ITEM);
+                entries.add(ModItems.GEO_ITEM);
+                entries.add(ModItems.HYDRO_ITEM);
+                entries.add(ModItems.PYRO_ITEM);
             })
             .build();
     public static void initialize() {

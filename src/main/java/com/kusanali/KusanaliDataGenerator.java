@@ -21,9 +21,9 @@ public class KusanaliDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(RecipeProvider::new);
         pack.addProvider(ModelProvider::new);
         pack.addProvider(AdvancementProvider::new);
-        pack.addProvider(BiomeProvider::new);
         pack.addProvider(WorldGenerator::new);
         pack.addProvider(EntityTypeTagsProvider::new);
+        pack.addProvider(DamageTypeTagProvider::new);
 	}
     @Override
     public void buildRegistry(RegistryBuilder builder) {
