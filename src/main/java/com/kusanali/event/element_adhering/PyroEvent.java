@@ -93,7 +93,10 @@ public class PyroEvent {
                 || source.isOf(DamageTypes.LAVA)
                 || source.isOf(DamageTypes.HOT_FLOOR)
                 || source.isOf(DamageTypes.PLAYER_EXPLOSION)
-                || source.isOf(DamageTypes.EXPLOSION);
+                || source.isOf(DamageTypes.EXPLOSION)
+                || source.isOf(DamageTypes.FIREBALL)
+                || source.isOf(DamageTypes.FIREWORKS)
+                || source.isOf(DamageTypes.UNATTRIBUTED_FIREBALL);
     }
 
     /** 判断是否在火焰 / 岩浆环境中（不依赖伤害） */

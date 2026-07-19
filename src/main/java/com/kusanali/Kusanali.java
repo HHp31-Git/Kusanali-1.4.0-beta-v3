@@ -1,8 +1,10 @@
 package com.kusanali;
 
 import com.kusanali.event.element_adhering.*;
+import com.kusanali.event.element_reaction.DiffusionEvent;
 import com.kusanali.event.element_reaction.EvaporationEvent;
 import com.kusanali.event.element_reaction.MeltEvent;
+import com.kusanali.event.element_reaction.SuperconductivityEventMain;
 import com.kusanali.event.reaction_middle.SuperconductivityEvent;
 import com.kusanali.event.special_item.AjiLeavesDrop;
 import com.kusanali.event.special_item.ClientEvent;
@@ -49,6 +51,8 @@ public class Kusanali implements ModInitializer {
         EvaporationEvent.register();
         MeltEvent.register();
         SuperconductivityEvent.register();
+        SuperconductivityEventMain.register();
+        DiffusionEvent.register();
 
         SnowBallCyroEvent.register();
         DripstoneGeoEvent.register();
