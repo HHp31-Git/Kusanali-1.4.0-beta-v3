@@ -1,10 +1,7 @@
 package com.kusanali;
 
 import com.kusanali.event.element_adhering.*;
-import com.kusanali.event.element_reaction.DiffusionEvent;
-import com.kusanali.event.element_reaction.EvaporationEvent;
-import com.kusanali.event.element_reaction.MeltEvent;
-import com.kusanali.event.element_reaction.SuperconductivityEventMain;
+import com.kusanali.event.element_reaction.*;
 import com.kusanali.event.reaction_middle.SuperconductivityEvent;
 import com.kusanali.event.special_item.AjiLeavesDrop;
 import com.kusanali.event.special_item.ClientEvent;
@@ -13,7 +10,6 @@ import com.kusanali.event.special_item.TribbleEvent;
 import com.kusanali.register.*;
 import com.kusanali.server.FloatDreamHander;
 import com.kusanali.specialitem.FloatDream;
-import com.kusanali.world.LootTableModify;
 import com.kusanali.world.feature.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
@@ -47,17 +43,21 @@ public class Kusanali implements ModInitializer {
         ElectroEvent.register();
         HydroEvent.register();
         PyroEvent.register();
+        IronManAttackEvent.register();
+        SnowBallCyroEvent.register();
+        DripstoneGeoEvent.register();
+        ElementEntityAttackEvent.register();
+        SlimeRandomEvent.register();
 
         EvaporationEvent.register();
         MeltEvent.register();
         SuperconductivityEvent.register();
         SuperconductivityEventMain.register();
         DiffusionEvent.register();
-
-        SnowBallCyroEvent.register();
-        DripstoneGeoEvent.register();
-        ElementEntityAttackEvent.register();
-        SlimeRandomEvent.register();
+        OverloadEvent.register();
+        FreezingEvent.register();
+        IceSpawnEvent.register();
+        IceBreakEvent.register();
 
         ElementDamageEvent.register();
 
@@ -66,8 +66,6 @@ public class Kusanali implements ModInitializer {
         FloatDreamHander.register();
 
         ModWorldGeneration.register();
-
-        LootTableModify.modify();
 
         StrippableBlockRegistry.register(ModBlocks.AJI_LOG, ModBlocks.STRIPPED_AJI_LOG);
         StrippableBlockRegistry.register(ModBlocks.AJI_WOOD, ModBlocks.STRIPPED_AJI_WOOD);

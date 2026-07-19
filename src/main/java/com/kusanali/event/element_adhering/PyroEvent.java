@@ -18,7 +18,6 @@ public class PyroEvent {
     private static final WeakHashMap<PlayerEntity, Integer> CREATIVE_PYRO_GRACE =
             new WeakHashMap<>();
     public static void register() {
-        /* ---------- 1. 火焰伤害 → Pyro（生存 / 冒险） ---------- */
         ServerLivingEntityEvents.ALLOW_DAMAGE.register(
                 (entity, source, amount) -> {
 
@@ -41,7 +40,7 @@ public class PyroEvent {
                 }
         );
 
-        /* ---------- 2. 创造模式玩家：火焰环境检测 ---------- */
+        /* ---------- 火焰环境检测 ---------- */
         ServerTickEvents.END_WORLD_TICK.register(world -> {
             if (!(world instanceof ServerWorld)) return;
 
@@ -54,7 +53,7 @@ public class PyroEvent {
 
                 if (inFire) {
 
-                    // 在火焰中：刷新 Pyro + 清除冷却
+                    // 在火焰中
                     CREATIVE_PYRO_GRACE.remove(player);
                     player.addStatusEffect(
                             new StatusEffectInstance(
@@ -67,7 +66,7 @@ public class PyroEvent {
                             )
                     );
                 } else if (player.hasStatusEffect(ModEffects.PYRO)) {
-                    // 不在火焰中，但有 Pyro：进入 10 秒倒计时
+                    // 不在火焰中，但有 Pyro
                     int ticksLeft = CREATIVE_PYRO_GRACE.getOrDefault(player, -1);
 
                     if (ticksLeft == -1) {
@@ -99,7 +98,7 @@ public class PyroEvent {
                 || source.isOf(DamageTypes.UNATTRIBUTED_FIREBALL);
     }
 
-    /** 判断是否在火焰 / 岩浆环境中（不依赖伤害） */
+    /** 判断是否在火焰 / 岩浆环境中 */
     private static boolean isInFireEnvironment(PlayerEntity player, ServerWorld world) {
         BlockPos pos = player.getBlockPos();
         if (world.getBlockState(pos).isOf(Blocks.FIRE)) return true;

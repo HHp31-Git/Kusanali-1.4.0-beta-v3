@@ -19,6 +19,7 @@ public class ModEffects {
     public static final StatusEffect GEO = new GeoEffect(); //岩元素附着 /
 
     public static final StatusEffect SUPERCONDUCTIVITY = new SuperconductivityEffect(); //超导
+    public static final StatusEffect FREEZING = new FreezingEffect(); //冻结
 
     public static void register() {
         Registry.register(Registries.STATUS_EFFECT, new Identifier("kusanali", "magic_damage"), MAGIC_DAMAGE);
@@ -32,5 +33,6 @@ public class ModEffects {
         Registry.register(Registries.STATUS_EFFECT, new Identifier("kusanali", "geo"), GEO);
 
         Registry.register(Registries.STATUS_EFFECT, new Identifier("kusanali", "superconductivity"), SUPERCONDUCTIVITY);
+        Registry.register(Registries.STATUS_EFFECT, new Identifier("kusanali", "freezing"), FREEZING);
     }
 }

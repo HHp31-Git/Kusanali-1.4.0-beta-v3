@@ -14,12 +14,9 @@ public class SuperconductivityEffect extends StatusEffect {
         super(StatusEffectCategory.HARMFUL, 0x7FBFFF);
     }
 
-    /** 物理伤害 Tag（来自 Datagen） */
     private static final TagKey<DamageType> PHISICAL =
             DamageTypeTagProvider.PHYSICAL;
-    /**
-     * 由 SuperconductivityEvent 调用
-     */
+
     public static void onDamage(LivingEntity entity, DamageSource source, float amount) {
         if (!(entity.getWorld() instanceof ServerWorld)) return;
 

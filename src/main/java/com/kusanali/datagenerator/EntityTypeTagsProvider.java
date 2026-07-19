@@ -33,10 +33,13 @@ public class EntityTypeTagsProvider extends FabricTagProvider.EntityTypeTagProvi
                 .add(EntityType.MAGMA_CUBE)
                 .add(EntityType.BLAZE)
                 .add(EntityType.STRIDER);
+
         getOrCreateTagBuilder(CYRO_ENTITY)
                 .add(EntityType.SNOW_GOLEM);
+
         getOrCreateTagBuilder(GEO_ENTITY)
                 .add(EntityType.IRON_GOLEM);
+
         getOrCreateTagBuilder(ELEMENTS_ENTITY)
                 .add(EntityType.MAGMA_CUBE)
                 .add(EntityType.BLAZE)
