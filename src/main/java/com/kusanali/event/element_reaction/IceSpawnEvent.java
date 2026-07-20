@@ -11,6 +11,13 @@ import net.minecraft.server.world.ServerWorld;
 import java.util.*;
 
 public class IceSpawnEvent {
+
+    /** 扩散冷却时间（14 tick = 0.7 秒） */
+    private static final int SWIRL_COOLDOWN = 70;
+
+    /** 记录实体上次触发扩散的时间 */
+    private static final Map<UUID, Long> LAST_SWIRL_TIME = new WeakHashMap<>();
+
     /** 实体 -> 效果首次获得时间 */
     private static final Map<UUID, Map<StatusEffect, Long>> APPLY_TIME =
             new WeakHashMap<>();
@@ -57,6 +64,12 @@ public class IceSpawnEvent {
             for (var ent : world.iterateEntities()) {
                 if (!(ent instanceof LivingEntity entity)) continue;
                 UUID uuid = entity.getUuid();
+
+                // 冷却检查
+                long lastSwirl = LAST_SWIRL_TIME.getOrDefault(uuid, 0L);
+                if (now - lastSwirl < SWIRL_COOLDOWN) {
+                    continue; // 冷却中，跳过
+                }
 
                 // 已有Freezing不触发
                 if (entity.hasStatusEffect(ModEffects.FREEZING)) {
@@ -116,7 +129,7 @@ public class IceSpawnEvent {
                         .put(earlierEffect, false);
 
                 applyFreezeReaction(entity, world);
-
+                LAST_SWIRL_TIME.put(uuid, now);
                 REACTED.put(uuid, true);
             }
 

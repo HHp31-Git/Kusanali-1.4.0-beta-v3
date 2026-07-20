@@ -13,6 +13,9 @@ import java.util.*;
 
 public class DiffusionEvent {
 
+    /** 扩散冷却时间（14 tick = 0.7 秒） */
+    private static final int SWIRL_COOLDOWN = 14;
+
     /** 效果首次获得时间 */
     private static final Map<UUID, Map<StatusEffect, Long>> APPLY_TIME =
             new WeakHashMap<>();
@@ -24,6 +27,9 @@ public class DiffusionEvent {
     /** 已触发实体 */
     private static final Map<UUID, Boolean> REACTED =
             new WeakHashMap<>();
+
+    /** 记录实体上次触发扩散的时间 */
+    private static final Map<UUID, Long> LAST_SWIRL_TIME = new WeakHashMap<>();
 
     /** 可以被扩散的元素 */
     private static final List<StatusEffect> SWIRLABLE_ELEMENTS = List.of(
@@ -59,6 +65,12 @@ public class DiffusionEvent {
             for (var ent : world.iterateEntities()) {
                 if (!(ent instanceof LivingEntity entity)) continue;
                 UUID uuid = entity.getUuid();
+
+                // 冷却检查：每 0.7 秒最多触发一次
+                long lastSwirl = LAST_SWIRL_TIME.getOrDefault(uuid, 0L);
+                if (now - lastSwirl < SWIRL_COOLDOWN) {
+                    continue; // 冷却中，跳过
+                }
 
                 StatusEffectInstance anemo = entity.getStatusEffect(ModEffects.ANEMO);
                 if (anemo == null) {
@@ -148,7 +160,7 @@ public class DiffusionEvent {
                             )
                     );
                 }
-
+                LAST_SWIRL_TIME.put(uuid, now);
                 REACTED.put(uuid, true);
             }
 

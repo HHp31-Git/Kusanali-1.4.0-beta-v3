@@ -13,6 +13,12 @@ import java.util.*;
 
 public class EvaporationEvent {
 
+    /** 扩散冷却时间（14 tick = 0.7 秒） */
+    private static final int SWIRL_COOLDOWN = 20;
+
+    /** 记录实体上次触发扩散的时间 */
+    private static final Map<UUID, Long> LAST_SWIRL_TIME = new WeakHashMap<>();
+
     /** 实体 -> 效果首次获得时间 */
     private static final Map<UUID, Map<StatusEffect, Long>> APPLY_TIME =
             new WeakHashMap<>();
@@ -44,6 +50,12 @@ public class EvaporationEvent {
             for (var ent : world.iterateEntities()) {
                 if (!(ent instanceof LivingEntity entity)) continue;
                 UUID uuid = entity.getUuid();
+
+                // 冷却检查
+                long lastSwirl = LAST_SWIRL_TIME.getOrDefault(uuid, 0L);
+                if (now - lastSwirl < SWIRL_COOLDOWN) {
+                    continue; // 冷却中，跳过
+                }
 
                 StatusEffectInstance pyro = entity.getStatusEffect(ModEffects.PYRO);
                 StatusEffectInstance cyro = entity.getStatusEffect(ModEffects.CYRO);
@@ -86,7 +98,6 @@ public class EvaporationEvent {
                 // 同 tick 获得：Pyro 视为先获得
                 boolean pyroLater = (pyroTime == cyroTime) || (pyroTime > cyroTime);
 
-                StatusEffectInstance earlier = pyroLater ? cyro : pyro;
                 StatusEffect earlierEffect = pyroLater ? ModEffects.CYRO : ModEffects.PYRO;
 
                 entity.removeStatusEffect(earlierEffect);
@@ -97,7 +108,7 @@ public class EvaporationEvent {
                 float damage = pyroLater ? 2.0f : 3.0f;
                 DamageSource src = ModDamageTypes.reaction_type_2(world);
                 entity.damage(src, damage);
-
+                LAST_SWIRL_TIME.put(uuid, now);
                 REACTED.put(uuid, true);
             }
 
