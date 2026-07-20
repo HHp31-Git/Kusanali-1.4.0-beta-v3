@@ -135,7 +135,7 @@ public class FloatDreamHander {
         ).forEach(entity -> {
             // 施加自定义魔法伤害效果（20秒），持续造成伤害
             entity.addStatusEffect(new StatusEffectInstance(ModEffects.MAGIC_DAMAGE, 20 * 20, 0));
-            entity.addStatusEffect(new StatusEffectInstance(ModEffects.DENDRO, 15));
+            entity.addStatusEffect(new StatusEffectInstance(ModEffects.DENDRO, 200));
         });
 
         // 构建网络包，将冷却结束时间同步给客户端，用于渲染HUD冷却条
@@ -150,7 +150,6 @@ public class FloatDreamHander {
     private static void executeGAbility(ServerPlayerEntity player) {
         // 初始设置5秒冷却（5000毫秒）
         long cooldownEnd = System.currentTimeMillis() + 5000;
-        setCooldownTime(player, "g_ability_cooldown", cooldownEnd);
 
         // 获取玩家朝向向量与脚部坐标
         Vec3d playerPos = player.getPos();
@@ -185,10 +184,10 @@ public class FloatDreamHander {
             target.damage(sources.magic(), 6.0f); // 造成6点魔法伤害
             target.addStatusEffect(new StatusEffectInstance(ModEffects.TRIBBLE, 9 * 20, 0));
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 9 * 20, 0));
-            target.addStatusEffect(new StatusEffectInstance(ModEffects.DENDRO, 15));
-            // 若命中敌对生物，冷却时间缩短为3秒
+            target.addStatusEffect(new StatusEffectInstance(ModEffects.DENDRO, 200));
+            // 若命中敌对生物，冷却时间缩短为3.5秒
             if (target instanceof Monster) {
-                cooldownEnd = System.currentTimeMillis() + 3000;
+                cooldownEnd = System.currentTimeMillis() + 3500;
             }
         } else {
             // === 未命中实体逻辑：尝试采集视线聚焦的植物 ===
@@ -229,7 +228,7 @@ public class FloatDreamHander {
                 }
             }
         }
-
+        setCooldownTime(player, "g_ability_cooldown", cooldownEnd);
         // 无论命中实体还是植物，最终将实际的冷却结束时间同步给客户端渲染
         PacketByteBuf packetByteBuf2 = new PacketByteBuf(PacketByteBufs.create().writeLong(cooldownEnd));
         ServerPlayNetworking.send(player, new Identifier("kusanali", "g_cooldown_update"),

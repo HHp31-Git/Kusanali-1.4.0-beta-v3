@@ -1,6 +1,6 @@
 package com.kusanali.event.reaction_middle;
 
-import com.kusanali.effect.SuperconductivityEffect;
+import com.kusanali.effect.middel.SuperconductivityEffect;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 
 public class SuperconductivityEvent {

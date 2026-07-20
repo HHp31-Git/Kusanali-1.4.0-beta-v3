@@ -1,4 +1,4 @@
-package com.kusanali.effect;
+package com.kusanali.effect.middel;
 
 import com.kusanali.datagenerator.DamageTypeTagProvider;
 import net.minecraft.entity.LivingEntity;

@@ -1,4 +1,4 @@
-package com.kusanali.effect;
+package com.kusanali.effect.middel;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;

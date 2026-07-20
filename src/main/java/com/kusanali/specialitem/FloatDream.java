@@ -21,9 +21,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class FloatDream extends Item {
 
@@ -118,7 +116,7 @@ public class FloatDream extends Item {
                 if (closestEntity instanceof LivingEntity target) {
                     boolean wasOnFire = target.isOnFire();
                     float damageAmount = 10.0f;
-                    target.addStatusEffect(new StatusEffectInstance(ModEffects.DENDRO, 15));
+                    target.addStatusEffect(new StatusEffectInstance(ModEffects.DENDRO, 200));
 
                     // 燃烧加成：延长燃烧 + 额外伤害
                     if (wasOnFire) {
@@ -260,7 +258,7 @@ public class FloatDream extends Item {
         }
 
         // 收集受影响实体
-        List<LivingEntity> affectedEntities = new ArrayList<>();
+        Set<LivingEntity> affectedEntities = new HashSet<>();
         for (Vec3d center : squareCenters) {
             Box detectionBox = new Box(
                     center.add(-0.5, -0.5, -0.5),
@@ -308,7 +306,7 @@ public class FloatDream extends Item {
             }
 
             entity.damage(world.getDamageSources().magic(), damageAmount);
-            entity.addStatusEffect(new StatusEffectInstance(ModEffects.DENDRO,15));
+            entity.addStatusEffect(new StatusEffectInstance(ModEffects.DENDRO,200));
         }
     }
 

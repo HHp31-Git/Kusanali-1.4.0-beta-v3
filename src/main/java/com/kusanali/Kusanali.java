@@ -58,6 +58,7 @@ public class Kusanali implements ModInitializer {
         FreezingEvent.register();
         IceSpawnEvent.register();
         IceBreakEvent.register();
+        ElectrifyEvent.register();
 
         ElementDamageEvent.register();
 

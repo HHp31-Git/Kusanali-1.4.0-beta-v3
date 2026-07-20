@@ -23,8 +23,10 @@
   "death_attack.reaction_type_5": "%1$s 死于月反应",
   "death_attack.reaction_type_6": "%1$s 死于星反应",
   "effect.kusanali.anemo": "风元素附着",
+  "effect.kusanali.burning": "燃烧",
   "effect.kusanali.cryo": "冰元素附着",
   "effect.kusanali.dendro": "草元素附着",
+  "effect.kusanali.electrify": "感电",
   "effect.kusanali.electro": "雷元素附着",
   "effect.kusanali.freezing": "冻结",
   "effect.kusanali.geo": "岩元素附着",
@@ -64,6 +66,5 @@
   "painting.kusanali.nhd_2.author": "Mihoyo",
   "painting.kusanali.nhd_2.title": "2023贺图",
   "painting.kusanali.nhd_3.author": "Mihoyo",
-  "painting.kusanali.nhd_3.title": "2025贺图",
-  "death.attack.element": "%1$s was consumed by elemental power"
+  "painting.kusanali.nhd_3.title": "2025贺图"
 }

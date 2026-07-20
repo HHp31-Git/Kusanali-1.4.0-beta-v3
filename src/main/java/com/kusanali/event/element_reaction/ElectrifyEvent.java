@@ -10,7 +10,7 @@ import net.minecraft.server.world.ServerWorld;
 
 import java.util.*;
 
-public class IceSpawnEvent {
+public class ElectrifyEvent {
     /** 实体 -> 效果首次获得时间 */
     private static final Map<UUID, Map<StatusEffect, Long>> APPLY_TIME =
             new WeakHashMap<>();
@@ -23,8 +23,8 @@ public class IceSpawnEvent {
     private static final Map<UUID, Boolean> REACTED =
             new WeakHashMap<>();
 
-    /** Freezing 持续时间 */
-    private static final int FREEZING_DURATION = 200;
+    /** Electrified 持续时间 */
+    private static final int ELECTRIFIED_DURATION = 200;
 
     private static void track(UUID uuid, StatusEffect effect,
                               LivingEntity entity, long now) {
@@ -49,7 +49,7 @@ public class IceSpawnEvent {
                 if (!(ent instanceof LivingEntity entity)) continue;
                 UUID uuid = entity.getUuid();
 
-                track(uuid, ModEffects.CYRO, entity, now);
+                track(uuid, ModEffects.ELECTRO, entity, now);
                 track(uuid, ModEffects.HYDRO, entity, now);
             }
 
@@ -58,16 +58,16 @@ public class IceSpawnEvent {
                 if (!(ent instanceof LivingEntity entity)) continue;
                 UUID uuid = entity.getUuid();
 
-                // 已有Freezing不触发
-                if (entity.hasStatusEffect(ModEffects.FREEZING)) {
+                // 已有 Electrified 不触发
+                if (entity.hasStatusEffect(ModEffects.ELECTRIFY)) {
                     REACTED.remove(uuid);
                     continue;
                 }
 
-                StatusEffectInstance cyro = entity.getStatusEffect(ModEffects.CYRO);
+                StatusEffectInstance electro = entity.getStatusEffect(ModEffects.ELECTRO);
                 StatusEffectInstance hydro = entity.getStatusEffect(ModEffects.HYDRO);
 
-                if (cyro == null || hydro == null) {
+                if (electro == null || hydro == null) {
                     REACTED.remove(uuid);
                     continue;
                 }
@@ -76,47 +76,49 @@ public class IceSpawnEvent {
                 Map<StatusEffect, Long> times = APPLY_TIME.get(uuid);
                 if (times == null) continue;
 
-                boolean cyroInfinite = cyro.getDuration() == -1;
+                boolean electroInfinite = electro.getDuration() == -1;
                 boolean hydroInfinite = hydro.getDuration() == -1;
 
-                /* ===== 无限处理 ===== */
-                if (cyroInfinite && !hydroInfinite) {
+                /* ===== 两者都无限 ===== */
+                if (electroInfinite && hydroInfinite) {
+                    // 保留两者，触发反应
+                    applyElectrifiedReaction(entity, world);
+                    REACTED.put(uuid, true);
+                    continue;
+                }
+
+                /* ===== Electro 无限，Hydro 有限 ===== */
+                if (electroInfinite) {
                     entity.removeStatusEffect(ModEffects.HYDRO);
                     times.remove(ModEffects.HYDRO);
                     PREV.getOrDefault(uuid, Collections.emptyMap())
                             .put(ModEffects.HYDRO, false);
 
-                    applyFreezeReaction(entity, world);
+                    applyElectrifiedReaction(entity, world);
                     REACTED.put(uuid, true);
                     continue;
                 }
 
-                if (hydroInfinite && !cyroInfinite) {
-                    entity.removeStatusEffect(ModEffects.CYRO);
-                    times.remove(ModEffects.CYRO);
+                /* ===== Hydro 无限，Electro 有限 ===== */
+                if (hydroInfinite) {
+                    // 清除 Electro，保留 Hydro
+                    entity.removeStatusEffect(ModEffects.ELECTRO);
+                    times.remove(ModEffects.ELECTRO);
                     PREV.getOrDefault(uuid, Collections.emptyMap())
-                            .put(ModEffects.CYRO, false);
+                            .put(ModEffects.ELECTRO, false);
 
-                    applyFreezeReaction(entity, world);
+                    applyElectrifiedReaction(entity, world);
                     REACTED.put(uuid, true);
                     continue;
                 }
 
-                /* ===== 有限处理 ===== */
-                long cyroTime = times.getOrDefault(ModEffects.CYRO, 0L);
-                long hydroTime = times.getOrDefault(ModEffects.HYDRO, 0L);
-
-                // 同 tick Cyro 视为先获得
-                boolean cyroLater = (cyroTime == hydroTime) || (cyroTime > hydroTime);
-                StatusEffect earlierEffect = cyroLater ? ModEffects.HYDRO : ModEffects.CYRO;
-
-                entity.removeStatusEffect(earlierEffect);
-                times.remove(earlierEffect);
+                /* ===== 两者都有限（Electro 优先，清除 Hydro） ===== */
+                entity.removeStatusEffect(ModEffects.HYDRO);
+                times.remove(ModEffects.HYDRO);
                 PREV.getOrDefault(uuid, Collections.emptyMap())
-                        .put(earlierEffect, false);
+                        .put(ModEffects.HYDRO, false);
 
-                applyFreezeReaction(entity, world);
-
+                applyElectrifiedReaction(entity, world);
                 REACTED.put(uuid, true);
             }
 
@@ -126,8 +128,8 @@ public class IceSpawnEvent {
                 UUID uuid = entity.getUuid();
 
                 PREV.computeIfAbsent(uuid, k -> new HashMap<>())
-                        .put(ModEffects.CYRO,
-                                entity.getStatusEffect(ModEffects.CYRO) != null);
+                        .put(ModEffects.ELECTRO,
+                                entity.getStatusEffect(ModEffects.ELECTRO) != null);
 
                 PREV.computeIfAbsent(uuid, k -> new HashMap<>())
                         .put(ModEffects.HYDRO,
@@ -136,11 +138,11 @@ public class IceSpawnEvent {
         });
     }
 
-    private static void applyFreezeReaction(LivingEntity entity, ServerWorld world) {
+    private static void applyElectrifiedReaction(LivingEntity entity, ServerWorld world) {
         entity.addStatusEffect(
                 new StatusEffectInstance(
-                        ModEffects.FREEZING,
-                        FREEZING_DURATION,
+                        ModEffects.ELECTRIFY,
+                        ELECTRIFIED_DURATION,
                         0,
                         false,
                         true,

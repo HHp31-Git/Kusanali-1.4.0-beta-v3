@@ -2,6 +2,10 @@ package com.kusanali.register;
 
 import com.kusanali.effect.*;
 import com.kusanali.effect.elements.*;
+import com.kusanali.effect.middel.BurningEffect;
+import com.kusanali.effect.middel.ElectrifyEffect;
+import com.kusanali.effect.middel.FreezingEffect;
+import com.kusanali.effect.middel.SuperconductivityEffect;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -20,6 +24,8 @@ public class ModEffects {
 
     public static final StatusEffect SUPERCONDUCTIVITY = new SuperconductivityEffect(); //超导
     public static final StatusEffect FREEZING = new FreezingEffect(); //冻结
+    public static final StatusEffect ELECTRIFY = new ElectrifyEffect(); //感电
+    public static final StatusEffect BURNING = new BurningEffect(); //燃烧
 
     public static void register() {
         Registry.register(Registries.STATUS_EFFECT, new Identifier("kusanali", "magic_damage"), MAGIC_DAMAGE);
@@ -34,5 +40,7 @@ public class ModEffects {
 
         Registry.register(Registries.STATUS_EFFECT, new Identifier("kusanali", "superconductivity"), SUPERCONDUCTIVITY);
         Registry.register(Registries.STATUS_EFFECT, new Identifier("kusanali", "freezing"), FREEZING);
+        Registry.register(Registries.STATUS_EFFECT, new Identifier("kusanali", "electrify"), ELECTRIFY);
+        Registry.register(Registries.STATUS_EFFECT, new Identifier("kusanali", "burning"), BURNING);
     }
 }
