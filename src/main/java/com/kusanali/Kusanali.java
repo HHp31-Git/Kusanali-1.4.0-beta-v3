@@ -48,6 +48,8 @@ public class Kusanali implements ModInitializer {
         DripstoneGeoEvent.register();
         ElementEntityAttackEvent.register();
         SlimeRandomEvent.register();
+        CyroSnowEvent.register();
+        RainingHydroEvent.register();
 
         EvaporationEvent.register();
         MeltEvent.register();
