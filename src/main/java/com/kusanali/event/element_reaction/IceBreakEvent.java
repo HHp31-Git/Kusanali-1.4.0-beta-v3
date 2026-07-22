@@ -41,11 +41,11 @@ public class IceBreakEvent {
         serverWorld.spawnParticles(
                 ParticleTypes.ITEM_SNOWBALL,
                 x, y, z,
-                12,                     // 数量
-                0.8,                    // 水平扩散
-                0.5,                    // 垂直扩散
-                0.8,                    // 水平扩散
-                0.15                    // 速度（向外迸发）
+                12,
+                0.8,
+                0.5,
+                0.8,
+                0.25
         );
 
         serverWorld.spawnParticles(

@@ -19,6 +19,8 @@ public class DamageTypeTagProvider extends FabricTagProvider<DamageType> {
 
     public static final TagKey<DamageType> PHYSICAL =
             TagKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier("kusanali", "physical"));
+    public static final TagKey<DamageType> REACTION =
+            TagKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier("kusanali", "reaction"));
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
@@ -27,5 +29,12 @@ public class DamageTypeTagProvider extends FabricTagProvider<DamageType> {
                 .add(new Identifier("minecraft", "player_attack"))
                 .add(new Identifier("minecraft", "arrow"))
                 .add(new Identifier("minecraft", "trident"));
+        getOrCreateTagBuilder(REACTION)
+                .add(new Identifier("kusanali", "reaction_type_1"))
+                .add(new Identifier("kusanali", "reaction_type_2"))
+                .add(new Identifier("kusanali", "reaction_type_3"))
+                .add(new Identifier("kusanali", "reaction_type_4"))
+                .add(new Identifier("kusanali", "reaction_type_5"))
+                .add(new Identifier("kusanali", "reaction_type_6"));
     }
 }

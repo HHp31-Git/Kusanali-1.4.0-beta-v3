@@ -16,7 +16,10 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.loot.context.LootContextParameterSet;
+import net.minecraft.loot.context.LootContextParameters;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.registry.Registries;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
@@ -25,11 +28,10 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 
 import java.util.Comparator;
 import java.util.List;
-
-import static net.minecraft.block.Block.getDroppedStacks;
 
 public class FloatDreamHander {
     // 注册用于服务端DataTracker的追踪数据，用于在服务端存储和同步R技能的冷却结束时间戳
@@ -196,43 +198,79 @@ public class FloatDreamHander {
 
             if (hitResult != null && hitResult.getType() == HitResult.Type.BLOCK) {
                 BlockPos pos = ((BlockHitResult) hitResult).getBlockPos();
-                BlockState blockState = player.getWorld().getBlockState(pos);
-                Block block = blockState.getBlock();
 
-                // 判断目标方块是否为可采集的植物类型（花、树苗、草、珊瑚等）
-                if (block instanceof FlowerBlock ||
-                        block instanceof SaplingBlock ||
-                        block instanceof TallFlowerBlock ||
-                        block instanceof GrassBlock ||
-                        block instanceof SeaPickleBlock ||
-                        block instanceof CoralFanBlock ||
-                        block instanceof FernBlock ||
-                        block instanceof SweetBerryBushBlock ||
-                        block instanceof MushroomPlantBlock) {
-
-                    // 模拟方块被破坏后的掉落物
-                    List<ItemStack> drops = getDroppedStacks(
-                            blockState,
-                            (ServerWorld) player.getWorld(),
-                            pos, null, player, player.getMainHandStack()
-                    );
-
-                    // 直接将掉落物插入玩家背包
-                    drops.forEach(player.getInventory()::insertStack);
-
-                    // 移除该方块（不产生额外掉落，false表示不触发方块掉落逻辑）
-                    player.getWorld().breakBlock(pos, false, player);
-
-                    // 命中植物时，将冷却时间缩短为3秒（3000毫秒）
+                // 使用 PlantGatherUtil 尝试采集
+                if (FloatDreamHander.tryGather(player, pos)) {
+                    // 采集成功，冷却缩短为3秒
                     cooldownEnd = System.currentTimeMillis() + 3000;
                 }
             }
         }
+
+        // 更新冷却时间到 DataTracker
         setCooldownTime(player, "g_ability_cooldown", cooldownEnd);
+
         // 无论命中实体还是植物，最终将实际的冷却结束时间同步给客户端渲染
         PacketByteBuf packetByteBuf2 = new PacketByteBuf(PacketByteBufs.create().writeLong(cooldownEnd));
         ServerPlayNetworking.send(player, new Identifier("kusanali", "g_cooldown_update"),
                 packetByteBuf2);
     }
+    public static boolean tryGather(PlayerEntity player, BlockPos pos) {
+        World world = player.getWorld();
+        if (world.isClient() || !(world instanceof ServerWorld sw)) return false;
+
+        BlockState state = sw.getBlockState(pos);
+        Block block = state.getBlock();
+
+        if (!isGatherable(block)) return false;
+
+        // ---- 决定掉落 ----
+        List<ItemStack> drops;
+        if (isSilkGroup(block)) {
+            // 精准组：掉方块自身
+            drops = List.of(new ItemStack(block.asItem()));
+        } else {
+            // 非精准组：用原版 loot 表（成熟作物/可可/疣 正常产物）
+            LootContextParameterSet.Builder builder = new LootContextParameterSet.Builder(sw)
+                    .add(LootContextParameters.ORIGIN, player.getPos())
+                    .add(LootContextParameters.TOOL, player.getMainHandStack())
+                    .add(LootContextParameters.THIS_ENTITY, player)
+                    .add(LootContextParameters.BLOCK_STATE, state);
+            drops = state.getDroppedStacks(builder);
+        }
+
+        // 进背包
+        for (ItemStack drop : drops) {
+            if (!drop.isEmpty()) player.getInventory().insertStack(drop.copy());
+        }
+
+        // 删方块，不触发原版掉落
+        sw.breakBlock(pos, false, player);
+        return true;
+    }
+
+    /** 是否在本技能可采集范围内 */
+    private static boolean isGatherable(Block block) {
+        return isSilkGroup(block)
+                || block instanceof CropBlock
+                || block instanceof CocoaBlock
+                || block instanceof NetherWartBlock
+                || block instanceof DeadBushBlock;
+    }
+
+    /** 精准采集组：草/高草/蕨/花/高花丛/珊瑚扇/死珊瑚扇/枯灌木 */
+    private static boolean isSilkGroup(Block block) {
+        Identifier id = Registries.BLOCK.getId(block);
+        return id.equals(new Identifier("minecraft", "short_grass"))
+                || id.equals(new Identifier("minecraft", "tall_grass"))
+                || id.equals(new Identifier("minecraft", "fern"))
+                || id.equals(new Identifier("minecraft", "large_fern"))
+                || block instanceof FlowerBlock
+                || block instanceof TallFlowerBlock
+                || block instanceof DeadCoralFanBlock
+                || block instanceof CoralFanBlock
+                || block instanceof DeadBushBlock;
+    }
+
 }
 

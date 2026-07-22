@@ -31,7 +31,11 @@ public class SuperconductivityEffect extends StatusEffect {
         }
 
         // 追加物理易伤伤害
-        entity.damage(source, 0.5f);
+        entity.setHealth(entity.getHealth() - 2.0f);
+        if (entity.getHealth() <= 0f) {
+            entity.setHealth(0f);
+            entity.onDeath(source);
+        }
     }
 
     @Override

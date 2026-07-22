@@ -95,7 +95,6 @@ public class MeltEvent {
 
                 boolean hydroLater = (hydroTime == pyroTime) || (hydroTime > pyroTime);
 
-                StatusEffectInstance earlier = hydroLater ? pyro : hydro;
                 StatusEffect earlierEffect = hydroLater ? ModEffects.CYRO : ModEffects.PYRO;
 
                 entity.removeStatusEffect(earlierEffect);

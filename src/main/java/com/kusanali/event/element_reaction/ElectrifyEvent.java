@@ -3,9 +3,11 @@ package com.kusanali.event.element_reaction;
 import com.kusanali.register.ModDamageTypes;
 import com.kusanali.register.ModEffects;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 
 import java.util.*;
@@ -163,6 +165,11 @@ public class ElectrifyEvent {
                         true
                 )
         );
+        double tx = entity.getX();
+        double ty = entity.getY() + entity.getHeight() * 0.5;
+        double tz = entity.getZ();
         entity.damage(ModDamageTypes.reaction_type_3(world), 1.0f);
+        world.spawnParticles(ParticleTypes.ELECTRIC_SPARK, tx, ty, tz,
+                3, 0.1, 0.1, 0.1, 0.05);
     }
 }

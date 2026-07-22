@@ -13,6 +13,9 @@ public class RainingHydroEvent {
         ServerTickEvents.END_WORLD_TICK.register(world -> {
             if (!(world instanceof ServerWorld)) return;
 
+            // 每 20 tick 检测一次
+            if (world.getTime() % 20 != 0) return;
+
             for (var entity : world.iterateEntities()) {
                 if (!(entity instanceof LivingEntity living)) continue;
 
@@ -49,7 +52,7 @@ public class RainingHydroEvent {
         var headPos = entity.getBlockPos().up();
         if (world.getBlockState(headPos).isOpaque()) return false;
 
-        // 所在群系必须是降雨（不是下雪）
+        // 所在群系必须是降雨
         var biome = world.getBiome(entity.getBlockPos());
         return biome.value().getPrecipitation(entity.getBlockPos()) == Biome.Precipitation.RAIN;
     }

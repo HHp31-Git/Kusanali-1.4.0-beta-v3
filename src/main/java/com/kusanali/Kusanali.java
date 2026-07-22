@@ -3,10 +3,7 @@ package com.kusanali;
 import com.kusanali.event.element_adhering.*;
 import com.kusanali.event.element_reaction.*;
 import com.kusanali.event.reaction_middle.SuperconductivityEvent;
-import com.kusanali.event.special_item.AjiLeavesDrop;
-import com.kusanali.event.special_item.ClientEvent;
-import com.kusanali.event.special_item.CorollaEvent;
-import com.kusanali.event.special_item.TribbleEvent;
+import com.kusanali.event.special_item.*;
 import com.kusanali.register.*;
 import com.kusanali.server.FloatDreamHander;
 import com.kusanali.specialitem.FloatDream;
@@ -39,6 +36,7 @@ public class Kusanali implements ModInitializer {
         CorollaEvent.register();
         ClientEvent.register();
         TribbleEvent.register();
+        TribbleReactionEvent.register();
 
         ElectroEvent.register();
         HydroEvent.register();
@@ -61,6 +59,7 @@ public class Kusanali implements ModInitializer {
         IceSpawnEvent.register();
         IceBreakEvent.register();
         ElectrifyEvent.register();
+        DendroBurnEvent.register();
 
         ElementDamageEvent.register();
 
