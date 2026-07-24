@@ -17,61 +17,64 @@ public class PyroEvent {
 
     private static final WeakHashMap<PlayerEntity, Integer> CREATIVE_PYRO_GRACE =
             new WeakHashMap<>();
+
     public static void register() {
-        ServerLivingEntityEvents.ALLOW_DAMAGE.register(
-                (entity, source, amount) -> {
+        // ===== 火焰伤害挂 Pyro =====
+        ServerLivingEntityEvents.ALLOW_DAMAGE.register((entity, source, amount) -> {
+            if (entity.getWorld().isClient()) return true;
 
-                    if (!isFireDamage(source)) {
-                        return true;
-                    }
+            if (!isFireDamage(source)) return true;
 
-                    entity.addStatusEffect(
-                            new StatusEffectInstance(
-                                    ModEffects.PYRO,
-                                    200,
-                                    0,
-                                    false,
-                                    true,
-                                    true
-                            )
-                    );
+            // 已有 Pyro 且剩余时间充足，跳过
+            StatusEffectInstance existing = entity.getStatusEffect(ModEffects.PYRO);
+            if (existing != null && existing.getDuration() > 150) return true;
 
-                    return true;
-                }
-        );
+            entity.addStatusEffect(
+                    new StatusEffectInstance(
+                            ModEffects.PYRO,
+                            200,
+                            0,
+                            false,
+                            true,
+                            true
+                    )
+            );
 
-        /* ---------- 火焰环境检测 ---------- */
+            return true;
+        });
+
+        // ===== 创造模式火焰环境检测 =====
         ServerTickEvents.END_WORLD_TICK.register(world -> {
-            if (!(world instanceof ServerWorld)) return;
-
             for (var player : world.getPlayers()) {
-
                 // 只处理创造模式
                 if (!player.isCreative()) continue;
 
                 boolean inFire = isInFireEnvironment(player, world);
 
                 if (inFire) {
-
                     // 在火焰中
                     CREATIVE_PYRO_GRACE.remove(player);
-                    player.addStatusEffect(
-                            new StatusEffectInstance(
-                                    ModEffects.PYRO,
-                                    200,
-                                    0,
-                                    false,
-                                    true,
-                                    true
-                            )
-                    );
+
+                    StatusEffectInstance existing = player.getStatusEffect(ModEffects.PYRO);
+                    if (existing == null || existing.getDuration() <= 190) {
+                        player.addStatusEffect(
+                                new StatusEffectInstance(
+                                        ModEffects.PYRO,
+                                        200,
+                                        0,
+                                        false,
+                                        true,
+                                        true
+                                )
+                        );
+                    }
                 } else if (player.hasStatusEffect(ModEffects.PYRO)) {
                     // 不在火焰中，但有 Pyro
                     int ticksLeft = CREATIVE_PYRO_GRACE.getOrDefault(player, -1);
 
                     if (ticksLeft == -1) {
                         // 刚离开火焰
-                        CREATIVE_PYRO_GRACE.put(player, 200);
+                        CREATIVE_PYRO_GRACE.put(player, 199);
                     } else if (ticksLeft > 0) {
                         // 倒计时中，不刷新时间
                         CREATIVE_PYRO_GRACE.put(player, ticksLeft - 1);

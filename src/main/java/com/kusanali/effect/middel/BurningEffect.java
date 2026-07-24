@@ -1,14 +1,16 @@
 package com.kusanali.effect.middel;
 
-import com.kusanali.register.ModDamageTypes;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+
+import java.util.Map;
+import java.util.UUID;
+import java.util.WeakHashMap;
 
 public class BurningEffect extends StatusEffect {
     public BurningEffect() {
@@ -25,32 +27,33 @@ public class BurningEffect extends StatusEffect {
         return true;
     }
 
+    private static final Map<UUID, Integer> LAST_DAMAGE_TICK = new WeakHashMap<>();
+
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (!(entity.getWorld() instanceof ServerWorld serverWorld)) return;
 
-        // 检查是否在水中或雨中，如果是则清除效果
         if (isInWaterOrRain(entity)) {
             entity.removeStatusEffect(this);
             return;
         }
 
-        var instance = entity.getStatusEffect(this);
-        if (instance == null) return;
+        int currentTick = serverWorld.getServer().getTicks();
+        UUID uuid = entity.getUuid();
+        int lastDamage = LAST_DAMAGE_TICK.getOrDefault(uuid, 0);
 
-        int remainingDuration = instance.getDuration();
-        int totalDuration = instance.getDuration() + remainingDuration;
-        int elapsedTicks = totalDuration - remainingDuration;
+        // 每 5 tick 造成一次伤害
+        if (currentTick - lastDamage >= DAMAGE_INTERVAL) {
+            LAST_DAMAGE_TICK.put(uuid, currentTick);
 
-        // 每 5 tick（0.25 秒）造成一次伤害
-        if (elapsedTicks % DAMAGE_INTERVAL == 0) {
             float damage = DAMAGE_PER_TICK * (1 + amplifier);
-
-            DamageSource src = ModDamageTypes.reaction_type_3(serverWorld);
-            entity.damage(src, damage);
+            entity.setHealth(entity.getHealth() - damage);
+            if (entity.getHealth() <= 0) {
+                entity.setHealth(0);
+                entity.onDeath(serverWorld.getDamageSources().magic());
+            }
         }
 
-        // 每 tick 生成火焰粒子
         spawnFlameParticles(entity, serverWorld);
     }
 

@@ -5,34 +5,36 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 
 public class CyroSnowEvent {
 
-    /** Cyro 持续时间（10 秒 = 200 tick） */
-    private static final int CYRO_DURATION = 200;
+    /** 最小刷新间隔（40 tick = 2 秒），避免每 tick 刷新 */
+    private static final int MIN_REFRESH_INTERVAL = 60;
 
     public static void register() {
         ServerTickEvents.END_WORLD_TICK.register(world -> {
-            if (!(world instanceof ServerWorld)) return;
+            world.getTime();
 
             for (var entity : world.iterateEntities()) {
                 if (!(entity instanceof LivingEntity living)) continue;
 
-                // 判断是否在细雪中
-                if (isInPowderSnow(living)) {
-                    // 在细雪中：持续给予 10 秒 Cyro
-                    living.addStatusEffect(new StatusEffectInstance(
-                            ModEffects.CYRO,
-                            CYRO_DURATION,
-                            0,
-                            false,
-                            true,
-                            true
-                    ));
-                }
-                // 离开细雪后不做任何操作，Cyro 自然衰减
+                // 不在细雪中则跳过
+                if (!isInPowderSnow(living)) continue;
+
+                // 已有 Cyro 且剩余时间充足，不刷新
+                StatusEffectInstance existing = living.getStatusEffect(ModEffects.CYRO);
+                if (existing != null && existing.getDuration() > MIN_REFRESH_INTERVAL) continue;
+
+                // 在细雪中：持续给予 10 秒 Cyro
+                living.addStatusEffect(new StatusEffectInstance(
+                        ModEffects.CYRO,
+                        200,
+                        0,
+                        false,
+                        true,
+                        true
+                ));
             }
         });
     }

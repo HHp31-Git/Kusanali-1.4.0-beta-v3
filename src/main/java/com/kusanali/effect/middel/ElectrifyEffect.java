@@ -4,11 +4,9 @@ import com.kusanali.register.ModDamageTypes;
 import com.kusanali.register.ModEffects;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
@@ -16,6 +14,7 @@ import net.minecraft.util.math.Vec3d;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.WeakHashMap;
 
 public class ElectrifyEffect extends StatusEffect {
 
@@ -27,38 +26,38 @@ public class ElectrifyEffect extends StatusEffect {
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
         return true;
     }
+    private static final Map<UUID, Integer> LAST_DAMAGE_TICK = new WeakHashMap<>();
+    private static final Map<UUID, Integer> LAST_PARTICLE_TICK = new WeakHashMap<>();
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        var instance = entity.getStatusEffect(this);
-        if (instance == null) return;
+        if (!(entity.getWorld() instanceof ServerWorld serverWorld)) return;
 
-        int remainingDuration = instance.getDuration();
-        int totalDuration = instance.getDuration() + remainingDuration; // 近似总时长
-        int elapsedTicks = totalDuration - remainingDuration;
+        int currentTick = serverWorld.getServer().getTicks();
+        UUID uuid = entity.getUuid();
 
         // 每 20 tick 造成一次伤害
-        if (elapsedTicks % 20 == 0) {
+        int lastDamage = LAST_DAMAGE_TICK.getOrDefault(uuid, 0);
+        if (currentTick - lastDamage >= 20) {
+            LAST_DAMAGE_TICK.put(uuid, currentTick);
+
             float damage = 1.0f + amplifier;
-
-            DamageSource magicDamage = new DamageSource(
-                    entity.getWorld()
-                            .getRegistryManager()
-                            .get(RegistryKeys.DAMAGE_TYPE)
-                            .entryOf(ModDamageTypes.REACTION_TYPE_3)
-            );
-
-            entity.damage(magicDamage, damage);
+            entity.setHealth(entity.getHealth() - damage);
+            if (entity.getHealth() <= 0) {
+                entity.setHealth(0);
+                entity.onDeath(serverWorld.getDamageSources().magic());
+            }
 
             // 触发传染
             infectNearbyHydroEntities(entity, amplifier);
         }
 
-        // 每 5 tick 生成电弧粒子
-        if (elapsedTicks % 5 == 0) {
+        // 每 5 tick 生成粒子
+        int lastParticle = LAST_PARTICLE_TICK.getOrDefault(uuid, 0);
+        if (currentTick - lastParticle >= 5) {
+            LAST_PARTICLE_TICK.put(uuid, currentTick);
             spawnArcParticles(entity);
         }
     }
-
     private void infectNearbyHydroEntities(LivingEntity source, int amplifier) {
         if (!(source.getWorld() instanceof ServerWorld serverWorld)) return;
 
@@ -99,13 +98,8 @@ public class ElectrifyEffect extends StatusEffect {
 
             // 造成传染伤害
             float damage = 1.0f + amplifier;
-            DamageSource magicDamage = new DamageSource(
-                    source.getWorld()
-                            .getRegistryManager()
-                            .get(RegistryKeys.DAMAGE_TYPE)
-                            .entryOf(DamageTypes.MAGIC)
-            );
-            target.damage(magicDamage, damage);
+            DamageSource source1 = ModDamageTypes.reaction_type_3(serverWorld);
+            target.damage(source1, damage);
 
             // 传染粒子效果
             spawnArcParticles(target);

@@ -84,7 +84,7 @@ public class MeltEvent {
                 if (pyroInfinite && !hydroInfinite) {
                     entity.removeStatusEffect(ModEffects.CYRO);
                     times.remove(ModEffects.CYRO);
-                    PREV.getOrDefault(uuid, Collections.emptyMap()).put(ModEffects.HYDRO, false);
+                    PREV.getOrDefault(uuid, Collections.emptyMap()).put(ModEffects.CYRO, false);
                     REACTED.put(uuid, true);
                     continue; // 本次 tick 不再结算
                 }

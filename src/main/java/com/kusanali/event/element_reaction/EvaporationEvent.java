@@ -43,7 +43,7 @@ public class EvaporationEvent {
 
                 // 1. 更新获得时间
                 track(uuid, ModEffects.PYRO, entity, now);
-                track(uuid, ModEffects.CYRO, entity, now);
+                track(uuid, ModEffects.HYDRO, entity, now);
 
                 // 2. 结算反应
                 long lastReaction = LAST_REACTION_TIME.getOrDefault(uuid, 0L);
@@ -53,7 +53,7 @@ public class EvaporationEvent {
                 }
 
                 StatusEffectInstance pyro = entity.getStatusEffect(ModEffects.PYRO);
-                StatusEffectInstance cyro = entity.getStatusEffect(ModEffects.CYRO);
+                StatusEffectInstance cyro = entity.getStatusEffect(ModEffects.HYDRO);
 
                 if (pyro == null || cyro == null) {
                     REACTED.remove(uuid);
@@ -86,10 +86,10 @@ public class EvaporationEvent {
 
                 /* ===== 无限 vs 有限 ===== */
                 if (pyroInfinite) {
-                    entity.removeStatusEffect(ModEffects.CYRO);
-                    times.remove(ModEffects.CYRO);
+                    entity.removeStatusEffect(ModEffects.HYDRO);
+                    times.remove(ModEffects.HYDRO);
                     PREV.computeIfAbsent(uuid, k -> new HashMap<>())
-                            .put(ModEffects.CYRO, false);
+                            .put(ModEffects.HYDRO, false);
 
                     applyMeltDamage(entity, world, 2.0f);
                     LAST_REACTION_TIME.put(uuid, now);
@@ -113,11 +113,11 @@ public class EvaporationEvent {
 
                 /* ===== 有限 vs 有限 ===== */
                 long pyroTime = times.getOrDefault(ModEffects.PYRO, 0L);
-                long cyroTime = times.getOrDefault(ModEffects.CYRO, 0L);
+                long cyroTime = times.getOrDefault(ModEffects.HYDRO, 0L);
 
                 // 同 tick 获得：Pyro 视为先获得
                 boolean pyroLater = (pyroTime == cyroTime) || (pyroTime > cyroTime);
-                StatusEffect earlierEffect = pyroLater ? ModEffects.CYRO : ModEffects.PYRO;
+                StatusEffect earlierEffect = pyroLater ? ModEffects.HYDRO : ModEffects.PYRO;
 
                 entity.removeStatusEffect(earlierEffect);
                 times.remove(earlierEffect);
@@ -161,8 +161,8 @@ public class EvaporationEvent {
                         entity.getStatusEffect(ModEffects.PYRO) != null);
 
         PREV.computeIfAbsent(uuid, k -> new HashMap<>())
-                .put(ModEffects.CYRO,
-                        entity.getStatusEffect(ModEffects.CYRO) != null);
+                .put(ModEffects.HYDRO,
+                        entity.getStatusEffect(ModEffects.HYDRO) != null);
     }
 
     /** 记录首次获得时间 */
