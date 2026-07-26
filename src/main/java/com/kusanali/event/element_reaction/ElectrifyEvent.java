@@ -49,7 +49,6 @@ public class ElectrifyEvent {
 
     public static void register() {
         ServerTickEvents.END_WORLD_TICK.register(world -> {
-            if (!(world instanceof ServerWorld)) return;
             long now = world.getTime();
 
             /* ========== 更新获得时间 ========== */
@@ -167,7 +166,7 @@ public class ElectrifyEvent {
         double tx = entity.getX();
         double ty = entity.getY() + entity.getHeight() * 0.5;
         double tz = entity.getZ();
-        entity.damage(ModDamageTypes.reaction_type_3(world), 1.0f);
+        entity.damage(ModDamageTypes.reaction_type_2(world), 1.0f);
         world.spawnParticles(ParticleTypes.ELECTRIC_SPARK, tx, ty, tz,
                 3, 0.1, 0.1, 0.1, 0.05);
     }

@@ -63,6 +63,10 @@ public class Kusanali implements ModInitializer {
         ElectrifyEvent.register();
         DendroBurnEvent.register();
         BoomEvent.register();
+        CrystallizationEvent.register();
+        IntensifyEvent.register();
+        SuperIntensifyEvent.register();
+        GrowingIntensifyEvent.register();
 
         ElementDamageEvent.register();
 
