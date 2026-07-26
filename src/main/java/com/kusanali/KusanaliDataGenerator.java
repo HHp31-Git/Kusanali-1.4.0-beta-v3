@@ -23,11 +23,13 @@ public class KusanaliDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(AdvancementProvider::new);
         pack.addProvider(WorldGenerator::new);
         pack.addProvider(EntityTypeTagsProvider::new);
+        pack.addProvider(DamageTypeProvider::new);
         pack.addProvider(DamageTypeTagProvider::new);
 	}
     @Override
     public void buildRegistry(RegistryBuilder builder) {
         builder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
         builder.addRegistry(RegistryKeys.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
+        builder.addRegistry(RegistryKeys.DAMAGE_TYPE, context -> {});
     }
 }

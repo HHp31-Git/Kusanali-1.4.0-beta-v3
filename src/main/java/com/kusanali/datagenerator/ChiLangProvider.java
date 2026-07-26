@@ -79,6 +79,7 @@ public class ChiLangProvider extends FabricLanguageProvider {
         translationBuilder.add("effect.kusanali.superconductive", "超导");
         translationBuilder.add("effect.kusanali.electrify", "感电");
         translationBuilder.add("effect.kusanali.burning", "燃烧");
+        translationBuilder.add("effect.kusanali.intensify", "激化");
 
         translationBuilder.add("death_attack.element", "%1$s 被元素攻击击杀");
         translationBuilder.add("death.attack.element.player",   "%1$s 被元素攻击击杀");

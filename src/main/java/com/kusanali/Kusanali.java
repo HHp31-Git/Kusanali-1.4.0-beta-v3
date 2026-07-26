@@ -1,5 +1,6 @@
 package com.kusanali;
 
+import com.kusanali.entity.other.SeedEffectTracker;
 import com.kusanali.event.element_adhering.*;
 import com.kusanali.event.element_reaction.*;
 import com.kusanali.event.reaction_middle.SuperconductivityEvent;
@@ -9,6 +10,7 @@ import com.kusanali.server.FloatDreamHander;
 import com.kusanali.specialitem.FloatDream;
 import com.kusanali.world.feature.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import org.slf4j.Logger;
@@ -23,13 +25,13 @@ public class Kusanali implements ModInitializer {
 
 		LOGGER.info("For the Lesser Lord Kusanali");
 
-        ModItemGroup.initialize();
-        ModItems.initialize();
-        ModBlocks.initialize();
-        ModSounds.register();
-        ModPaintings.init();
         ModEffects.register();
         ModDamageTypes.register();
+        ModItems.initialize();
+        ModBlocks.initialize();
+        ModItemGroup.initialize();
+        ModSounds.register();
+        ModPaintings.init();
         ModLootTable.register();
 
         FloatDream.registerAttackEvent();
@@ -60,6 +62,7 @@ public class Kusanali implements ModInitializer {
         IceBreakEvent.register();
         ElectrifyEvent.register();
         DendroBurnEvent.register();
+        BoomEvent.register();
 
         ElementDamageEvent.register();
 
@@ -79,5 +82,7 @@ public class Kusanali implements ModInitializer {
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_AJI_LOG, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.AJI_WOOD, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_AJI_WOOD, 5, 5);
+
+        ServerTickEvents.END_WORLD_TICK.register(SeedEffectTracker::tickAll);
     }
 }

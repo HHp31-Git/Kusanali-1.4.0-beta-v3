@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "kusanali:reaction_type_1",
+      "required": false
+    },
+    {
+      "id": "kusanali:reaction_type_2",
+      "required": false
+    },
+    {
+      "id": "kusanali:reaction_type_3",
+      "required": false
+    },
+    {
+      "id": "kusanali:reaction_type_4",
+      "required": false
+    },
+    {
+      "id": "kusanali:reaction_type_5",
+      "required": false
+    },
+    {
+      "id": "kusanali:reaction_type_6",
+      "required": false
+    }
+  ]
+}

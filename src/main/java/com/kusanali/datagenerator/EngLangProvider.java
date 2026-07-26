@@ -78,6 +78,7 @@ public class EngLangProvider extends FabricLanguageProvider {
         translationBuilder.add("effect.kusanali.superconductive", "Superconductive");
         translationBuilder.add("effect.kusanali.electrify", "Electrify");
         translationBuilder.add("effect.kusanali.burning", "Burning");
+        translationBuilder.add("effect.kusanali.intensify", "Intensify");
 
 
         translationBuilder.add("death.attack.element",          "%1$s was consumed by elemental power");

@@ -30,11 +30,15 @@ public class DamageTypeTagProvider extends FabricTagProvider<DamageType> {
                 .add(new Identifier("minecraft", "arrow"))
                 .add(new Identifier("minecraft", "trident"));
         getOrCreateTagBuilder(REACTION)
-                .add(new Identifier("kusanali", "reaction_type_1"))
-                .add(new Identifier("kusanali", "reaction_type_2"))
-                .add(new Identifier("kusanali", "reaction_type_3"))
-                .add(new Identifier("kusanali", "reaction_type_4"))
-                .add(new Identifier("kusanali", "reaction_type_5"))
-                .add(new Identifier("kusanali", "reaction_type_6"));
+                .addOptional(new Identifier("kusanali", "reaction_type_1"))
+                .addOptional(new Identifier("kusanali", "reaction_type_2"))
+                .addOptional(new Identifier("kusanali", "reaction_type_3"))
+                .addOptional(new Identifier("kusanali", "reaction_type_4"))
+                .addOptional(new Identifier("kusanali", "reaction_type_5"))
+                .addOptional(new Identifier("kusanali", "reaction_type_6"));
+    }
+    @Override
+    public String getName() {
+        return "Kusanali Damage Type Tags";
     }
 }

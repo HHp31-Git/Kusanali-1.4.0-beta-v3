@@ -1,4 +1,4 @@
-package com.kusanali.effect.middel;
+package com.kusanali.effect.middle;
 
 import com.kusanali.datagenerator.DamageTypeTagProvider;
 import com.kusanali.register.ModEffects;

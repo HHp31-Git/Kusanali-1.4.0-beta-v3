@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 public class AranasEntity extends MerchantEntity {
     public AranasEntity(EntityType<? extends MerchantEntity> entityType, World world) {
         super(entityType, world);
+        //TODO:兰那罗商人
     }
 
     @Override

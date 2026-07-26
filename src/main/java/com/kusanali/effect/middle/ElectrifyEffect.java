@@ -1,4 +1,4 @@
-package com.kusanali.effect.middel;
+package com.kusanali.effect.middle;
 
 import com.kusanali.register.ModEffects;
 import net.minecraft.entity.LivingEntity;
