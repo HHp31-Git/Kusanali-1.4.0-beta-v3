@@ -1,5 +1,6 @@
 package com.kusanali.event.element_reaction;
 
+import com.kusanali.register.ModDamageTypes;
 import com.kusanali.register.ModEffects;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.entity.LivingEntity;
@@ -137,15 +138,11 @@ public class DiffusionEvent {
                             .put(spreadElement, true);
                 }
 
-                /* ===== 造成伤害（防递归） ===== */
+                /* ===== 造成伤害（使用 damage 但防递归） ===== */
                 if (!REENTERING.contains(uuid)) {
                     REENTERING.add(uuid);
                     try {
-                        entity.setHealth(entity.getHealth() - 1.0f);
-                        if (entity.getHealth() <= 0) {
-                            entity.setHealth(0);
-                            entity.onDeath(world.getDamageSources().magic());
-                        }
+                        entity.damage(world.getDamageSources().magic(), 1.0f);
                     } finally {
                         world.getServer().execute(() -> REENTERING.remove(uuid));
                     }

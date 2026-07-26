@@ -15,7 +15,6 @@ import java.util.*;
 
 public class OverloadEvent {
 
-    /** 扩散冷却时间（14 tick = 0.7 秒） */
     private static final int SWIRL_COOLDOWN = 20;
 
     /** 记录实体上次触发扩散的时间 */
@@ -122,9 +121,11 @@ public class OverloadEvent {
                 double z = pos.getZ();
                 world.createExplosion(null, x, y, z,
                         0.5f, false, World.ExplosionSourceType.NONE);
-                double angle = entity.getRandom().nextDouble() * Math.PI * 2;
-                double dx = Math.cos(angle);
-                double dz = Math.sin(angle);
+                // 使用实体的朝向反方向作为击退方向
+                float yaw = entity.getYaw();
+                double rad = Math.toRadians(yaw);
+                double dx = -Math.sin(rad);  // 面向的反方向
+                double dz = Math.cos(rad);
                 entity.takeKnockback(0.4, dx, dz);
                 LAST_SWIRL_TIME.put(uuid, now);
                 REACTED.put(uuid, true);

@@ -3,7 +3,6 @@ package com.kusanali.event.element_reaction;
 import com.kusanali.register.ModDamageTypes;
 import com.kusanali.register.ModEffects;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;

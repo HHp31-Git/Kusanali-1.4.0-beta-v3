@@ -143,12 +143,11 @@ public class EvaporationEvent {
 
         REENTERING.add(entity.getUuid());
         try {
-            entity.setHealth(entity.getHealth() - damage);
-            if (entity.getHealth() <= 0) {
-                entity.setHealth(0);
-                entity.onDeath(ModDamageTypes.reaction_type_2(world));
-            }
-            spawnMeltParticles(world,entity);
+            // 使用 entity.damage() 替代 setHealth，触发完整伤害流程
+            entity.damage(ModDamageTypes.reaction_type_2(world), damage);
+
+            // 生成粒子特效
+            spawnMeltParticles(world, entity);
         } finally {
             world.getServer().execute(() -> REENTERING.remove(entity.getUuid()));
         }

@@ -60,7 +60,7 @@ public class DendroBurnEvent {
                 UUID uuid = entity.getUuid();
 
                 track(uuid, ModEffects.DENDRO, entity, now);
-                track(uuid, ModEffects.CYRO, entity, now);
+                track(uuid, ModEffects.PYRO, entity, now);
             }
 
             /* ========== 结算反应 ========== */
@@ -75,7 +75,7 @@ public class DendroBurnEvent {
                 }
 
                 StatusEffectInstance dendro = entity.getStatusEffect(ModEffects.DENDRO);
-                StatusEffectInstance cyro = entity.getStatusEffect(ModEffects.CYRO);
+                StatusEffectInstance cyro = entity.getStatusEffect(ModEffects.PYRO);
 
                 if (dendro == null || cyro == null) {
                     REACTED.remove(uuid);
@@ -99,10 +99,10 @@ public class DendroBurnEvent {
 
                 /* ===== 无限处理 ===== */
                 if (dendroInfinite) {
-                    entity.removeStatusEffect(ModEffects.CYRO);
-                    times.remove(ModEffects.CYRO);
+                    entity.removeStatusEffect(ModEffects.PYRO);
+                    times.remove(ModEffects.PYRO);
                     PREV.getOrDefault(uuid, Collections.emptyMap())
-                            .put(ModEffects.CYRO, false);
+                            .put(ModEffects.PYRO, false);
 
                     applyReaction(entity, world);
                     LAST_REACTION_TIME.put(uuid, now);
@@ -131,8 +131,8 @@ public class DendroBurnEvent {
                                 entity.getStatusEffect(ModEffects.DENDRO) != null);
 
                 PREV.computeIfAbsent(uuid, k -> new HashMap<>())
-                        .put(ModEffects.CYRO,
-                                entity.getStatusEffect(ModEffects.CYRO) != null);
+                        .put(ModEffects.PYRO,
+                                entity.getStatusEffect(ModEffects.PYRO) != null);
             }
         });
     }
