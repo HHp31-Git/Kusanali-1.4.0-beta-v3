@@ -6,6 +6,8 @@ import com.kusanali.event.element_reaction.*;
 import com.kusanali.event.reaction_middle.SuperconductivityEvent;
 import com.kusanali.event.special_item.*;
 import com.kusanali.register.*;
+import com.kusanali.server.ClientHander;
+import com.kusanali.server.ClientOverlayRenderer;
 import com.kusanali.server.FloatDreamHander;
 import com.kusanali.specialitem.FloatDream;
 import com.kusanali.world.feature.ModWorldGeneration;
@@ -36,7 +38,6 @@ public class Kusanali implements ModInitializer {
 
         FloatDream.registerAttackEvent();
         CorollaEvent.register();
-        ClientEvent.register();
         TribbleEvent.register();
         TribbleReactionEvent.register();
 
@@ -73,6 +74,9 @@ public class Kusanali implements ModInitializer {
         AjiLeavesDrop.register();
 
         FloatDreamHander.register();
+        ClientHander.register();
+        ClientOverlayRenderer.register();
+        ClientGammaOverride.register();
 
         ModWorldGeneration.register();
 

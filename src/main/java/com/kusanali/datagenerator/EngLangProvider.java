@@ -64,6 +64,7 @@ public class EngLangProvider extends FabricLanguageProvider {
 
         translationBuilder.add("key.kusanali.activate_float_dream", "mind's vision creates illusions");
         translationBuilder.add("key.kusanali.e_float_dream", "All that is known and recorded");
+        translationBuilder.add("key.kusanali.v_ability", "Special Item Ability");
         translationBuilder.add("effect.kusanali.magic_damage", "Hall of Maya");
         translationBuilder.add("effect.kusanali.tribble", "Tribble");
         translationBuilder.add("category.kusanali.abilities", "Ability-Float Dream");

@@ -8,6 +8,7 @@ import org.lwjgl.glfw.GLFW;
 public class ModKeySet {
     public static KeyBinding ACTIVATE_FLOAT_DREAM;
     public static KeyBinding E_FLOAT_DREAM;
+    public static KeyBinding V_ABILITY;
 
     public static void register() {
         ACTIVATE_FLOAT_DREAM = KeyBindingHelper.registerKeyBinding(new KeyBinding(
@@ -20,6 +21,12 @@ public class ModKeySet {
                 "key.kusanali.e_float_dream", // 翻译键
                 InputUtil.Type.KEYSYM, // 键盘按键
                 GLFW.GLFW_KEY_E, // 默认键位R
+                "category.kusanali.abilities" // 按键分类
+        ));
+        V_ABILITY = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.kusanali.v_ability", // 翻译键
+                InputUtil.Type.KEYSYM, // 键盘按键
+                GLFW.GLFW_KEY_V, // 默认键位R
                 "category.kusanali.abilities" // 按键分类
         ));
     }

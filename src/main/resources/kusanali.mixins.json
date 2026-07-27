@@ -16,5 +16,7 @@
   },
   "overwrites": {
     "requireAnnotations": true
-	}
+  },
+  "client": [
+  ]
 }
