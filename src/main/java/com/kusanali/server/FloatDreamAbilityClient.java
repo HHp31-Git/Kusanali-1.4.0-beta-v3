@@ -114,36 +114,29 @@ public class FloatDreamAbilityClient implements HudRenderCallback {
 
     /**
      * 绘制单个技能的冷却 HUD（百分比显示）
-     *
-     * @param drawContext   绘图上下文
-     * @param textRenderer  文本渲染器
-     * @param windowWidth   窗口宽度，用于右对齐
-     * @param y             当前渲染的 Y 坐标
-     * @param prefix        技能名称前缀（如 "所识遍记 "）
-     * @param cooldownEnd   冷却结束的时间戳
-     * @param currentTime   当前时间戳
-     * @param totalCooldown 该次技能释放的总冷却时长（毫秒）
      */
     private void renderCooldownHud(DrawContext drawContext, TextRenderer textRenderer,
                                    int windowWidth, int y, String prefix,
-                                   long cooldownEnd, long currentTime,
-                                   long totalCooldown) {
+                                   long cooldownEnd, long cooldownStart, long currentTime) {
         String text;
         int color;
 
         if (cooldownEnd == 0 || currentTime >= cooldownEnd) {
-            // 充能完成：显示 100%
+            // 充能完成
             text = prefix + "100%";
-            color = 0x00FF00; // 绿色
+            color = 0x00FF00;
         } else {
-            // 计算已充能的时间
-            long elapsed = currentTime - rCooldownStart;
-
-            // 计算充能进度百分比（已充能的比例）
-            int percent = Math.min((int) (elapsed * 100 / totalCooldown), 99);
-
-            text = String.format("%s%d%%", prefix, percent);
-            color = 0xFFFF00; // 黄色
+            long totalCooldown = cooldownEnd - cooldownStart;
+            if (totalCooldown <= 0) {
+                text = prefix + "100%";
+                color = 0x00FF00;
+            } else {
+                long elapsed = currentTime - cooldownStart;
+                int percent = (int) (elapsed * 100 / totalCooldown);
+                percent = Math.min(percent, 99);
+                text = String.format("%s%d%%", prefix, percent);
+                color = 0xFFFF00;
+            }
         }
 
         int x = windowWidth - textRenderer.getWidth(text) - 10;

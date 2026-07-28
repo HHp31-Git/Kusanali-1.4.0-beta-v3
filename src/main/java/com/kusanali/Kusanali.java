@@ -76,7 +76,6 @@ public class Kusanali implements ModInitializer {
         FloatDreamHander.register();
         ClientHander.register();
         ClientOverlayRenderer.register();
-        ClientGammaOverride.register();
 
         ModWorldGeneration.register();
 
