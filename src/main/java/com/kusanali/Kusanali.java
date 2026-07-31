@@ -7,6 +7,7 @@ import com.kusanali.event.reaction_middle.SuperconductivityEvent;
 import com.kusanali.event.special_item.*;
 import com.kusanali.register.*;
 import com.kusanali.server.ClientHander;
+import com.kusanali.server.ClientMessageOverlay;
 import com.kusanali.server.ClientOverlayRenderer;
 import com.kusanali.server.FloatDreamHander;
 import com.kusanali.specialitem.FloatDream;
@@ -76,6 +77,7 @@ public class Kusanali implements ModInitializer {
         FloatDreamHander.register();
         ClientHander.register();
         ClientOverlayRenderer.register();
+        ClientMessageOverlay.register();
 
         ModWorldGeneration.register();
 

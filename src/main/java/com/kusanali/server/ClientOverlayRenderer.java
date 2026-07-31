@@ -48,10 +48,52 @@ public class ClientOverlayRenderer {
     private static long gammaTransitionStart = 0;
 
     /** Gamma 过渡持续时间 */
-    private static final long GAMMA_TRANSITION_DURATION = 600; // 0.6 秒
+    private static final long GAMMA_TRANSITION_DURATION = 900; // 0.9 秒
 
     /** 是否正在过渡 */
     private static boolean gammaTransitioning = false;
+
+    /** 内边距 */
+    private static final int INDICATOR_PAD = 160;
+
+    /** 阴影偏移 */
+    private static final int INDICATOR_SHADOW_OFF = 175;
+
+    /** 十字装饰臂长 */
+    private static final int INDICATOR_CROSS_ARM = 230;
+
+    /** 十字装饰线宽 */
+    private static final int INDICATOR_CROSS_W = 240;
+
+    /** 外发光厚度 */
+    private static final int INDICATOR_GLOW_T = 250;
+
+    /** 虚线步长 */
+    private static final int INDICATOR_DOTTED_STEP = 320;
+
+    /** 淡绿半透明背景 */
+    private static final int INDICATOR_BG_COLOR = 0x0A2218;
+
+    /** 主绿边缘 */
+    private static final int INDICATOR_EDGE_COLOR = 0x55FF66;
+
+    /** 暗绿边缘 */
+    private static final int INDICATOR_EDGE_DARK = 0x228844;
+
+    /** 外层柔和绿光晕 */
+    private static final int INDICATOR_GLOW_COLOR = 0x22FF66;
+
+    /** 十字装饰 */
+    private static final int INDICATOR_CROSS_COLOR = 0x66FF77;
+
+    /** 虚线边饰 */
+    private static final int INDICATOR_DOTTED_COLOR = 0x44EE66;
+
+    /** HUD 开启文字颜色 */
+    private static final int INDICATOR_ON_COLOR = 0x88FF44;
+
+    /** HUD 关闭文字颜色 */
+    private static final int INDICATOR_OFF_COLOR = 0xFF6644;
 
     public static void register() {
         // 注册 HUD 渲染
@@ -90,6 +132,9 @@ public class ClientOverlayRenderer {
 
         if (isVPressed && !wasVPressed) {
             hudEnabled = !hudEnabled;
+            if (hudEnabled) {
+                ClientMessageOverlay.trigger("§b§l愿吾得以聆听神明的智慧之声");
+            }
 
             ClientPlayerEntity player = CLIENT.player;
             if (player != null && isWearingHelmet(player)) {
@@ -153,17 +198,68 @@ public class ClientOverlayRenderer {
         String status = hudEnabled ? "§aHUD: ON [V]" : "§cHUD: OFF [V]";
         int textWidth = textRenderer.getWidth(status);
 
-        int indicatorX = screenW - textWidth - 10;
-        int indicatorY = screenH - 36;
+        // 右下角位置
+        int x = screenW - textWidth - 10;
+        int y = screenH - 10;
 
-        context.fill(indicatorX - 6, indicatorY - 3,
-                indicatorX + textWidth + 6, indicatorY + 14, 0x88000000);
-        context.drawText(textRenderer, status, indicatorX, indicatorY,
-                hudEnabled ? 0x00FF88 : 0xFF4444, false);
+        // 固定 alpha（常亮显示）
+        int alpha = 255;
+
+        int x0 = x - INDICATOR_PAD;
+        int y0 = y - INDICATOR_PAD;
+        int x1 = x + textWidth + INDICATOR_PAD;
+        int y1 = y + textRenderer.fontHeight + INDICATOR_PAD;
+
+        // ---- 微弱阴影层 ----
+        context.fill(
+                x0 + INDICATOR_SHADOW_OFF, y0 + INDICATOR_SHADOW_OFF,
+                x1 + INDICATOR_SHADOW_OFF, y1 + INDICATOR_SHADOW_OFF,
+                (alpha << 24)
+        );
+
+        // ---- 淡绿半透明背景 ----
+        context.fill(x0, y0, x1, y1, (alpha << 24) | INDICATOR_BG_COLOR);
+
+        // ---- 细绿边缘（上、左用亮绿） ----
+        int edgeColor = (alpha << 24) | INDICATOR_EDGE_COLOR;
+        context.fill(x0, y0, x1, y0 + 1, edgeColor);       // 上
+        context.fill(x0, y0, x0 + 1, y1, edgeColor);       // 左
+
+        // ---- 细绿边缘（下、右用暗绿） ----
+        int edgeDarkColor = (alpha << 24) | INDICATOR_EDGE_DARK;
+        context.fill(x0, y1 - 1, x1, y1, edgeDarkColor);   // 下
+        context.fill(x1 - 1, y0, x1, y1, edgeDarkColor);   // 右
+
+        // ---- 外层柔和绿光晕 ----
+        int glowColor = (alpha << 24) | INDICATOR_GLOW_COLOR;
+        context.fill(x0 - INDICATOR_GLOW_T, y0 - INDICATOR_GLOW_T - 1, x1 + INDICATOR_GLOW_T, y0 - INDICATOR_GLOW_T, glowColor);        // 上
+        context.fill(x0 - INDICATOR_GLOW_T, y1 + INDICATOR_GLOW_T, x1 + INDICATOR_GLOW_T, y1 + INDICATOR_GLOW_T + 1, glowColor);      // 下
+        context.fill(x0 - INDICATOR_GLOW_T - 1, y0 - INDICATOR_GLOW_T, x0 - INDICATOR_GLOW_T, y1 + INDICATOR_GLOW_T, glowColor);      // 左
+        context.fill(x1 + INDICATOR_GLOW_T, y0 - INDICATOR_GLOW_T, x1 + INDICATOR_GLOW_T + 1, y1 + INDICATOR_GLOW_T, glowColor);      // 右
+
+        // ---- 虚线/点线边饰 ----
+        int dottedColor = (alpha << 24) | INDICATOR_DOTTED_COLOR;
+        drawDottedLineH(context, x0 + 4, y0 - 2, x1 - 4, dottedColor);   // 上虚线
+        drawDottedLineH(context, x0 + 4, y1 + 1, x1 - 4, dottedColor);   // 下虚线
+        drawDottedLineV(context, x0 - 2, y0 + 4, y1 - 4, dottedColor);   // 左虚线
+        drawDottedLineV(context, x1 + 1, y0 + 4, y1 - 4, dottedColor);   // 右虚线
+
+        // ---- 四角十字装饰 ----
+        int cc = (alpha << 24) | INDICATOR_CROSS_COLOR;
+
+        // 左上
+        drawCross(context, x0, y0, cc);
+        // 右上
+        drawCross(context, x1 - 1, y0, cc);
+        // 左下
+        drawCross(context, x0, y1 - 1, cc);
+        // 右下
+        drawCross(context, x1 - 1, y1 - 1, cc);
+
+        // ---- 文字 ----
+        int textColor = hudEnabled ? INDICATOR_ON_COLOR : INDICATOR_OFF_COLOR;
+        context.drawText(textRenderer, status, x, y, textColor, false);
     }
-    // ============================================================
-    //                      工具方法
-    // ============================================================
 
     /**
      * 检查是否佩戴头盔
@@ -186,7 +282,7 @@ public class ClientOverlayRenderer {
         double eased = 1.0 - Math.pow(1.0 - t, 3);
         double current = gammaStart + (gammaTarget - gammaStart) * eased;
 
-        // 直接写入 gamma（不走 setGammaDirectly 的备份逻辑）
+        // 直接写入 gamma
         writeGammaRaw(current);
 
         if (t >= 1.0) {
@@ -212,5 +308,32 @@ public class ClientOverlayRenderer {
             valueField.setAccessible(true);
             valueField.set(simpleOption, value);
         } catch (Exception ignored) {}
+    }
+
+    /**
+     * 绘制四角十字装饰
+     */
+    private static void drawCross(DrawContext context, int cx, int cy, int color) {
+        context.fill(cx - INDICATOR_CROSS_ARM, cy - INDICATOR_CROSS_W + 1, cx + INDICATOR_CROSS_ARM + 1, cy + 1, color);
+        context.fill(cx - INDICATOR_CROSS_W + 1, cy - INDICATOR_CROSS_ARM, cx + 1, cy + INDICATOR_CROSS_ARM + 1, color);
+    }
+
+    /**
+     * 绘制水平虚线
+     */
+    private static void drawDottedLineH(DrawContext context, int x0, int y, int x1, int color) {
+        for (int i = x0; i < x1; i += INDICATOR_DOTTED_STEP) {
+            context.fill(i, y, i + 1, y + 1, color);
+        }
+    }
+
+
+    /**
+     * 绘制垂直虚线
+     */
+    private static void drawDottedLineV(DrawContext context, int x, int y0, int y1, int color) {
+        for (int i = y0; i < y1; i += INDICATOR_DOTTED_STEP) {
+            context.fill(x, i, x + 1, i + 1, color);
+        }
     }
 }
