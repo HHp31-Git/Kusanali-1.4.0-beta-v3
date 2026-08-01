@@ -15,6 +15,7 @@ import net.minecraft.entity.EquipmentSlot;
 
 @Environment(EnvType.CLIENT)
 public class ClientOverlayRenderer {
+    private static boolean wasWearingHelmet = false;
     /** 伪夜视目标 gamma 值 */
     private static final double GAMMA_MAX = 15.0;
 
@@ -24,7 +25,7 @@ public class ClientOverlayRenderer {
     private static final MinecraftClient CLIENT = MinecraftClient.getInstance();
 
     /** HUD 显示开关 */
-    private static boolean hudEnabled = true;
+    private static boolean hudEnabled = false;
 
     /** 上次 V 键状态（上升沿检测） */
     private static boolean wasVPressed = false;
@@ -54,22 +55,22 @@ public class ClientOverlayRenderer {
     private static boolean gammaTransitioning = false;
 
     /** 内边距 */
-    private static final int INDICATOR_PAD = 160;
+    private static final int INDICATOR_PAD = 4;
 
     /** 阴影偏移 */
-    private static final int INDICATOR_SHADOW_OFF = 175;
+    private static final int INDICATOR_SHADOW_OFF = 1;
 
     /** 十字装饰臂长 */
-    private static final int INDICATOR_CROSS_ARM = 230;
+    private static final int INDICATOR_CROSS_ARM = 3;
 
     /** 十字装饰线宽 */
-    private static final int INDICATOR_CROSS_W = 240;
+    private static final int INDICATOR_CROSS_W = 1;
 
     /** 外发光厚度 */
-    private static final int INDICATOR_GLOW_T = 250;
+    private static final int INDICATOR_GLOW_T = 1;
 
     /** 虚线步长 */
-    private static final int INDICATOR_DOTTED_STEP = 320;
+    private static final int INDICATOR_DOTTED_STEP = 3;
 
     /** 淡绿半透明背景 */
     private static final int INDICATOR_BG_COLOR = 0x0A2218;
@@ -94,6 +95,12 @@ public class ClientOverlayRenderer {
 
     /** HUD 关闭文字颜色 */
     private static final int INDICATOR_OFF_COLOR = 0xFF6644;
+
+    /** V键冷却结束时间 */
+    private static long vCooldownEnd = 0;
+
+    /** V键冷却持续时间 */
+    private static final long V_COOLDOWN_DURATION = 600;
 
     public static void register() {
         // 注册 HUD 渲染
@@ -129,26 +136,64 @@ public class ClientOverlayRenderer {
      */
     private static void handleVKeyPress() {
         boolean isVPressed = ModKeySet.V_ABILITY.isPressed();
+        ClientPlayerEntity player = CLIENT.player;
+        long currentTime = System.currentTimeMillis();
 
+        // 检测头盔穿戴状态变化
+        boolean isWearing = player != null && isWearingHelmet(player);
+
+        // 当刚戴上头盔时，重置状态
+        if (isWearing && !wasWearingHelmet) {
+            if (hudEnabled) {
+                setGammaDirectly(GAMMA_MAX);
+                gammaExternallyDisabled = false;
+                gammaActive = true;
+            } else {
+                setGammaDirectly(GAMMA_DEFAULT);
+                gammaExternallyDisabled = true;
+                gammaActive = false;
+            }
+        }
+
+        // 当摘下头盔时，重置伪夜视状态
+        if (!isWearing && wasWearingHelmet) {
+            setGammaDirectly(GAMMA_DEFAULT);
+            gammaExternallyDisabled = false;
+            gammaActive = false;
+        }
+
+        wasWearingHelmet = isWearing;
+
+        // 只有佩戴头盔时才响应V键
         if (isVPressed && !wasVPressed) {
+            // 检查是否佩戴头盔
+            if (player == null || !isWearingHelmet(player)) {
+                wasVPressed = true;
+                return;
+            }
+
+            if (currentTime < vCooldownEnd) {
+                wasVPressed = true;
+                return;
+            }
+
             hudEnabled = !hudEnabled;
+
+            vCooldownEnd = currentTime + V_COOLDOWN_DURATION;
+
             if (hudEnabled) {
                 ClientMessageOverlay.trigger("§b§l愿吾得以聆听神明的智慧之声");
             }
+            ClientVisionOverlay.setEnabled(hudEnabled);
 
-            ClientPlayerEntity player = CLIENT.player;
-            if (player != null && isWearingHelmet(player)) {
-                if (!hudEnabled) {
-                    // 关闭 HUD → 关闭伪夜视
-                    setGammaDirectly(GAMMA_DEFAULT);
-                    gammaExternallyDisabled = true;
-                    gammaActive = false;
-                } else {
-                    // 开启 HUD → 恢复伪夜视
-                    setGammaDirectly(GAMMA_MAX);
-                    gammaExternallyDisabled = false;
-                    gammaActive = true;
-                }
+            if (hudEnabled) {
+                setGammaDirectly(GAMMA_MAX);
+                gammaExternallyDisabled = false;
+                gammaActive = true;
+            } else {
+                setGammaDirectly(GAMMA_DEFAULT);
+                gammaExternallyDisabled = true;
+                gammaActive = false;
             }
         }
 
@@ -191,6 +236,11 @@ public class ClientOverlayRenderer {
      * 渲染右下角 HUD 开关指示器
      */
     private static void renderToggleIndicator(DrawContext context) {
+        ClientPlayerEntity player = CLIENT.player;
+        if (player == null || !isWearingHelmet(player)) {
+            return;
+        }
+
         TextRenderer textRenderer = CLIENT.textRenderer;
         int screenW = CLIENT.getWindow().getScaledWidth();
         int screenH = CLIENT.getWindow().getScaledHeight();
@@ -218,7 +268,8 @@ public class ClientOverlayRenderer {
         );
 
         // ---- 淡绿半透明背景 ----
-        context.fill(x0, y0, x1, y1, (alpha << 24) | INDICATOR_BG_COLOR);
+        // 修改：使用正确的ARGB格式，设置背景alpha为128（半透明）
+        context.fill(x0, y0, x1, y1, (128 << 24) | INDICATOR_BG_COLOR);
 
         // ---- 细绿边缘（上、左用亮绿） ----
         int edgeColor = (alpha << 24) | INDICATOR_EDGE_COLOR;
@@ -232,10 +283,10 @@ public class ClientOverlayRenderer {
 
         // ---- 外层柔和绿光晕 ----
         int glowColor = (alpha << 24) | INDICATOR_GLOW_COLOR;
-        context.fill(x0 - INDICATOR_GLOW_T, y0 - INDICATOR_GLOW_T - 1, x1 + INDICATOR_GLOW_T, y0 - INDICATOR_GLOW_T, glowColor);        // 上
-        context.fill(x0 - INDICATOR_GLOW_T, y1 + INDICATOR_GLOW_T, x1 + INDICATOR_GLOW_T, y1 + INDICATOR_GLOW_T + 1, glowColor);      // 下
-        context.fill(x0 - INDICATOR_GLOW_T - 1, y0 - INDICATOR_GLOW_T, x0 - INDICATOR_GLOW_T, y1 + INDICATOR_GLOW_T, glowColor);      // 左
-        context.fill(x1 + INDICATOR_GLOW_T, y0 - INDICATOR_GLOW_T, x1 + INDICATOR_GLOW_T + 1, y1 + INDICATOR_GLOW_T, glowColor);      // 右
+        context.fill(x0 - INDICATOR_GLOW_T, y0 - INDICATOR_GLOW_T - 1, x1 + INDICATOR_GLOW_T, y0 - INDICATOR_GLOW_T, glowColor);
+        context.fill(x0 - INDICATOR_GLOW_T, y1 + INDICATOR_GLOW_T, x1 + INDICATOR_GLOW_T, y1 + INDICATOR_GLOW_T + 1, glowColor);
+        context.fill(x0 - INDICATOR_GLOW_T - 1, y0 - INDICATOR_GLOW_T, x0 - INDICATOR_GLOW_T, y1 + INDICATOR_GLOW_T, glowColor);
+        context.fill(x1 + INDICATOR_GLOW_T, y0 - INDICATOR_GLOW_T, x1 + INDICATOR_GLOW_T + 1, y1 + INDICATOR_GLOW_T, glowColor);
 
         // ---- 虚线/点线边饰 ----
         int dottedColor = (alpha << 24) | INDICATOR_DOTTED_COLOR;

@@ -6,10 +6,7 @@ import com.kusanali.event.element_reaction.*;
 import com.kusanali.event.reaction_middle.SuperconductivityEvent;
 import com.kusanali.event.special_item.*;
 import com.kusanali.register.*;
-import com.kusanali.server.ClientHander;
-import com.kusanali.server.ClientMessageOverlay;
-import com.kusanali.server.ClientOverlayRenderer;
-import com.kusanali.server.FloatDreamHander;
+import com.kusanali.server.*;
 import com.kusanali.specialitem.FloatDream;
 import com.kusanali.world.feature.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
@@ -78,6 +75,7 @@ public class Kusanali implements ModInitializer {
         ClientHander.register();
         ClientOverlayRenderer.register();
         ClientMessageOverlay.register();
+        ClientVisionOverlay.register();
 
         ModWorldGeneration.register();
 

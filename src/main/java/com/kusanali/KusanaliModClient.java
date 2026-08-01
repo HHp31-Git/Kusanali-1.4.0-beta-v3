@@ -4,6 +4,7 @@ import com.kusanali.entity.ModEntities;
 import com.kusanali.entity.client.*;
 import com.kusanali.register.ModBlocks;
 import com.kusanali.register.ModKeySet;
+import com.kusanali.server.ClientVisionOverlay;
 import com.kusanali.server.FloatDreamAbilityClient;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -18,6 +19,8 @@ public class KusanaliModClient implements ClientModInitializer {
         ClientLifecycleEvents.CLIENT_STARTED.register(client -> {
             BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SUMIRU_ROSE, RenderLayer.getCutout());
             BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_SUMIRU_ROSE, RenderLayer.getCutout());
+
+            ClientVisionOverlay.init();
         });
 
         ModKeySet.register();
@@ -44,5 +47,6 @@ public class KusanaliModClient implements ClientModInitializer {
                 ModEntities.SEED_PROJECTILE,
                 SeedProjectileRenderer::new
         );
+        ClientVisionOverlay.register();
     }
 }

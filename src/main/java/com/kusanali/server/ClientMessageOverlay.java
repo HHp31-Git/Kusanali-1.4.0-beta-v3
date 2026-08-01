@@ -17,9 +17,9 @@ public class ClientMessageOverlay {
     //                    动画常量
     // ============================================================
 
-    private static final long FADE_IN_DURATION = 300;
+    private static final long FADE_IN_DURATION = 500;
     private static final long HOLD_DURATION = 200;
-    private static final long FADE_OUT_DURATION = 300;
+    private static final long FADE_OUT_DURATION = 500;
 
     // ============================================================
     //                    颜色常量
@@ -106,13 +106,6 @@ public class ClientMessageOverlay {
         currentMessage = text;
         fadePhase = FadePhase.FADE_IN;
         phaseStartTime = System.currentTimeMillis();
-    }
-
-    /**
-     * 检查当前是否正在显示
-     */
-    public static boolean isShowing() {
-        return fadePhase != FadePhase.NONE;
     }
 
     // ============================================================
