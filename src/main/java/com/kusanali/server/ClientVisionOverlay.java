@@ -5,14 +5,22 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static com.kusanali.Kusanali.MOD_ID;
+
 @Environment(EnvType.CLIENT)
 public class ClientVisionOverlay {
+
+    private static final Identifier TOP_BORDER_TEXTURE =
+            new Identifier(MOD_ID, "textures/gui/client_top.png");
+    private static final Identifier DOWN_BORDER_TEXTURE =
+            new Identifier(MOD_ID, "textures/gui/client_down.png");
 
     private static final MinecraftClient CLIENT = MinecraftClient.getInstance();
 
@@ -21,7 +29,7 @@ public class ClientVisionOverlay {
 
     // 淡入淡出
     private static float visionAlpha = 0.0F;
-    private static final float FADE_SPEED = 0.05F;
+    private static final float FADE_SPEED = 0.0278F;
 
     // 颜色（ARGB）
     private static final int TINT = 0x0A1A18;
@@ -61,7 +69,7 @@ public class ClientVisionOverlay {
         System.currentTimeMillis();
 
         // 全局染屏（深青绿，半透明）
-        ctx.fill(0, 0, w, h, blendTint(0.2F * a));
+        ctx.fill(0, 0, w, h, blendTint(0.1F * a));
 
         // 左上角渐变
         for (int i = 0; i < 5; i++) {
@@ -100,39 +108,61 @@ public class ClientVisionOverlay {
     private static class Particle {
         int x, y, size, life, maxLife;
         float alpha;
-        float centerX;
-
-        Particle() {
-        }
 
         void respawn(int w, int h) {
-            centerX = w / 2.0f;
-            // 粒子仅在左右两侧生成
-            x = RAND.nextBoolean() ? 0 : w - 1;
+            // 计算边缘权重（0-1）
+            float edgeWeight = RAND.nextFloat();
+
+            // 根据权重选择位置
+            if (edgeWeight < 0.7f) {
+                boolean isLeftSide = RAND.nextBoolean();
+                if (isLeftSide) {
+                    x = RAND.nextInt(w / 4);
+                } else {
+                    x = 3 * w / 4 + RAND.nextInt(w / 4);
+                }
+            } else {
+                // 中心区域（w/4 ~ 3w/4）
+                x = w / 4 + RAND.nextInt(w / 2);
+            }
+
+            // y 位置保持不变
             y = RAND.nextInt(h);
+
+            // 调整生命周期范围
             maxLife = 60 + RAND.nextInt(100);
             life = RAND.nextInt(maxLife);
             alpha = RAND.nextFloat();
-            updateSize();
+            updateSize(w);
         }
 
         void update(int w, int h) {
+            // 保持向下移动
             y -= 1;
             life++;
+
+            // 调整重生条件
             if (life > maxLife || y < -10) {
                 respawn(w, h);
             }
+
+            // 优化透明度变化
             alpha = 0.3F + 0.7F * MathHelper.sin(life * 0.1F);
-            updateSize();
+            updateSize(w);
         }
 
-        private void updateSize() {
-            // 计算与中心的距离比例（0-1）
-            float distanceFromCenter = Math.abs(x - centerX) / centerX;
-            // 距离中心越近，粒子越小（1-3像素）
-            size = 1 + (int)(distanceFromCenter * 2);
+        private void updateSize(int w) {
+            // 正确的边缘距离计算
+            float distToLeftEdge = x;
+            float distToRightEdge = w - x;
+            float minDistToEdge = Math.min(distToLeftEdge, distToRightEdge);
+            float sizeRatio = 1.0f - (minDistToEdge / (w / 2.0f));
+            size = 1 + (int)(sizeRatio * 2);
+            size = MathHelper.clamp(size, 1, 3);
         }
+
     }
+
 
     private static int argb(int rgb, int a) {
         return (MathHelper.clamp(a, 0, 255) << 24) | (rgb & 0xFFFFFF);

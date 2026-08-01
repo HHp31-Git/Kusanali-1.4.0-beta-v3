@@ -22,7 +22,12 @@ public class ClientHander {
                 if (hasHelmet && !HELMET_PLAYERS.contains(uuid)) {
                     HELMET_PLAYERS.add(uuid);
                 } else if (!hasHelmet) {
-                    HELMET_PLAYERS.remove(uuid);
+                    // 当摘下头盔时，同步关闭效果
+                    if (HELMET_PLAYERS.contains(uuid)) {
+                        HELMET_PLAYERS.remove(uuid);
+                        // 发送包通知客户端关闭效果
+                        ClientVisionOverlay.setEnabled(false);
+                    }
                 }
             }
         });
