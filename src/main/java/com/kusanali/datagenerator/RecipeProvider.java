@@ -94,7 +94,30 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(ModItems.BLESSED_SEED),
                         FabricRecipeProvider.conditionsFromItem(ModItems.BLESSED_SEED))
                 .offerTo(consumer);
-
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.AKASA_CORE)
+                .pattern("aba").pattern("bcb").pattern("aba")
+                .input('a', Items.REDSTONE_BLOCK)
+                .criterion(FabricRecipeProvider.hasItem(Items.REDSTONE_BLOCK),
+                        FabricRecipeProvider.conditionsFromItem(Items.REDSTONE_BLOCK))
+                .input('c', Items.DIAMOND_BLOCK)
+                .criterion(FabricRecipeProvider.hasItem(Items.DIAMOND_BLOCK),
+                        FabricRecipeProvider.conditionsFromItem(Items.DIAMOND_BLOCK))
+                .input('b', Items.IRON_BLOCK)
+                .criterion(FabricRecipeProvider.hasItem(Items.IRON_BLOCK),
+                        FabricRecipeProvider.conditionsFromItem(Items.IRON_BLOCK))
+                .offerTo(consumer);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CLIENT)
+                .pattern("cbc").pattern("bab").pattern("cbc")
+                .input('a', ModItems.AKASA_CORE)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.AKASA_CORE),
+                        FabricRecipeProvider.conditionsFromItem(ModItems.AKASA_CORE))
+                .input('b', Items.IRON_BLOCK)
+                .criterion(FabricRecipeProvider.hasItem(Items.IRON_BLOCK),
+                        FabricRecipeProvider.conditionsFromItem(Items.IRON_BLOCK))
+                .input('c', Items.REDSTONE)
+                .criterion(FabricRecipeProvider.hasItem(Items.REDSTONE),
+                        FabricRecipeProvider.conditionsFromItem(Items.REDSTONE))
+                .offerTo(consumer);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BLESSED_BENCH, 1)
                 .input(Items.STICK)

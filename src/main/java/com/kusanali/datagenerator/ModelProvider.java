@@ -32,7 +32,6 @@ public class ModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        //itemModelGenerator.register(ModItems.FLOAT_DREAM, Models.HANDHELD);
         itemModelGenerator.register(ModItems.BLESSED_SEED, Models.GENERATED);
         itemModelGenerator.register(ModItems.BLESSED_BENCH, Models.GENERATED);
         itemModelGenerator.register(ModItems.ARANAS_FLOWER, Models.GENERATED);
@@ -40,6 +39,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.HALVAMAZE, Models.GENERATED);
         itemModelGenerator.register(ModItems.IVE_NEVER_FORGOTTEN, Models.GENERATED);
         itemModelGenerator.register(ModItems.AJILENAKH, Models.GENERATED);
+        itemModelGenerator.register(ModItems.AKASA_CORE, Models.GENERATED);
 
         itemModelGenerator.registerArmor((ArmorItem) ModItems.COROLLA);
         itemModelGenerator.registerArmor((ArmorItem) ModItems.CLIENT);

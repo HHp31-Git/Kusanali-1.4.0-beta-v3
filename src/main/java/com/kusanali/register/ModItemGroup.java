@@ -8,6 +8,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+import static com.kusanali.Kusanali.MOD_ID;
+
 public class ModItemGroup {
     public static final ItemGroup KUSANALI = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ModItems.ARANAS_FLOWER))
@@ -16,6 +18,7 @@ public class ModItemGroup {
                 entries.add(ModItems.FLOAT_DREAM);
                 entries.add(ModItems.COROLLA);
                 entries.add(ModItems.CLIENT);
+                entries.add(ModItems.AKASA_CORE);
                 entries.add(ModItems.ARANAS_FLOWER);
                 entries.add(ModItems.BLESSED_BENCH);
                 entries.add(ModItems.BLESSED_SEED);
@@ -41,6 +44,6 @@ public class ModItemGroup {
             })
             .build();
     public static void initialize() {
-        Registry.register(Registries.ITEM_GROUP, new Identifier("tutorial", "test_group"), KUSANALI);
+        Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "group"), KUSANALI);
     }
 }

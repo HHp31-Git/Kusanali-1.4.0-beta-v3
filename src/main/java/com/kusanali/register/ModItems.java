@@ -125,6 +125,11 @@ public class ModItems {
             register("hydro_item", new HydroItem(new Item.Settings()
                     .rarity(Rarity.EPIC)));
 
+    public static final Item AKASA_CORE=
+            //终端核心
+            register("akasa_core", new Item(new Item.Settings()
+                    .maxCount(1)));
+
     private static Item register(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier("kusanali", name), item);
     }

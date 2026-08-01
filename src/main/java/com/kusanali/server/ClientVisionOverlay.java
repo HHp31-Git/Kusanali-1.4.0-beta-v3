@@ -110,56 +110,58 @@ public class ClientVisionOverlay {
         float alpha;
 
         void respawn(int w, int h) {
-            // 计算边缘权重（0-1）
-            float edgeWeight = RAND.nextFloat();
+            // 计算中央区域边界
+            int centerX1 = w / 4;
+            int centerX2 = 3 * w / 4;
 
-            // 根据权重选择位置
-            if (edgeWeight < 0.7f) {
-                boolean isLeftSide = RAND.nextBoolean();
-                if (isLeftSide) {
-                    x = RAND.nextInt(w / 4);
-                } else {
-                    x = 3 * w / 4 + RAND.nextInt(w / 4);
-                }
+            // 只在左右边缘生成
+            boolean isLeftSide = RAND.nextBoolean();
+            if (isLeftSide) {
+                x = RAND.nextInt(centerX1);
             } else {
-                // 中心区域（w/4 ~ 3w/4）
-                x = w / 4 + RAND.nextInt(w / 2);
+                x = centerX2 + RAND.nextInt(w - centerX2);
             }
 
-            // y 位置保持不变
+            // y 位置随机分布在整个屏幕高度
             y = RAND.nextInt(h);
 
-            // 调整生命周期范围
+            // 调整生命周期
             maxLife = 60 + RAND.nextInt(100);
             life = RAND.nextInt(maxLife);
             alpha = RAND.nextFloat();
             updateSize(w);
         }
 
+
         void update(int w, int h) {
             // 保持向下移动
             y -= 1;
             life++;
 
-            // 调整重生条件
+            // 重生条件
             if (life > maxLife || y < -10) {
                 respawn(w, h);
             }
 
-            // 优化透明度变化
+            // 透明度变化
             alpha = 0.3F + 0.7F * MathHelper.sin(life * 0.1F);
             updateSize(w);
         }
 
+
+
         private void updateSize(int w) {
-            // 正确的边缘距离计算
+            // 计算到边缘的距离
             float distToLeftEdge = x;
             float distToRightEdge = w - x;
             float minDistToEdge = Math.min(distToLeftEdge, distToRightEdge);
+
+            // 根据距离调整大小
             float sizeRatio = 1.0f - (minDistToEdge / (w / 2.0f));
             size = 1 + (int)(sizeRatio * 2);
             size = MathHelper.clamp(size, 1, 3);
         }
+
 
     }
 

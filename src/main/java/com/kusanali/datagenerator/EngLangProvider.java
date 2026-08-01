@@ -61,6 +61,8 @@ public class EngLangProvider extends FabricLanguageProvider {
                 "7 Normal Attack Damage");
         translationBuilder.add("item.kusanali.halvamaze.tooltip_1",
                 "It is said that 'Maz' in Sumiru means 'wisdom' Such exquisite and delicate 'wisdom' is truly irresistible");
+        translationBuilder.add("item.kusanali.client.tooltip_1",
+                "Unite the wisdom of people");
 
         translationBuilder.add("key.kusanali.activate_float_dream", "mind's vision creates illusions");
         translationBuilder.add("key.kusanali.e_float_dream", "All that is known and recorded");
