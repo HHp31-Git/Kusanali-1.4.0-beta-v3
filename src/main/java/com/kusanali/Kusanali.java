@@ -91,5 +91,7 @@ public class Kusanali implements ModInitializer {
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_AJI_WOOD, 5, 5);
 
         ServerTickEvents.END_WORLD_TICK.register(SeedEffectTracker::tickAll);
+
+        LOGGER.info("All settings done");
     }
 }

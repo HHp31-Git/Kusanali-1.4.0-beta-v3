@@ -12,6 +12,5 @@ public class ModSounds {
         return Registry.register(Registries.SOUND_EVENT, identifier, SoundEvent.of(identifier));
     }
     public static void register() {
-
     }
 }

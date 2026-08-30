@@ -5,22 +5,14 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static com.kusanali.Kusanali.MOD_ID;
-
 @Environment(EnvType.CLIENT)
 public class ClientVisionOverlay {
-
-    private static final Identifier TOP_BORDER_TEXTURE =
-            new Identifier(MOD_ID, "textures/gui/client_top.png");
-    private static final Identifier DOWN_BORDER_TEXTURE =
-            new Identifier(MOD_ID, "textures/gui/client_down.png");
 
     private static final MinecraftClient CLIENT = MinecraftClient.getInstance();
 
@@ -114,7 +106,7 @@ public class ClientVisionOverlay {
             int centerX1 = w / 4;
             int centerX2 = 3 * w / 4;
 
-            // 只在左右边缘生成
+            // 边缘生成
             boolean isLeftSide = RAND.nextBoolean();
             if (isLeftSide) {
                 x = RAND.nextInt(centerX1);
