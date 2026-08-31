@@ -48,6 +48,7 @@ public class ItemTagsProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModBlocks.STRIPPED_AJI_LOG.asItem())
                 .add(ModBlocks.STRIPPED_AJI_WOOD.asItem());
         getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS)
+                .add(ModBlocks.PADISARAH.asItem())
                 .add(ModBlocks.SUMIRU_ROSE.asItem());
 
         getOrCreateTagBuilder(ELEMENT_ITEMS)

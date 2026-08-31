@@ -19,7 +19,9 @@ public class BlockLootTable extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.STRIPPED_AJI_WOOD);
 
         addPottedPlantDrops(ModBlocks.POTTED_SUMIRU_ROSE);
+        addPottedPlantDrops(ModBlocks.POTTED_PADISARAH);
         addDrop(ModBlocks.SUMIRU_ROSE);
+        addDrop(ModBlocks.PADISARAH);
 
         addDrop(ModBlocks.AJI_LEAVES, leavesDrops(ModBlocks.AJI_LEAVES, ModBlocks.AJI_SAPLING, 0F, 0.05F));
     }

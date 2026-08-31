@@ -39,6 +39,9 @@ public class ChiLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.STRIPPED_AJI_LOG, "去皮枣椰原木");
         translationBuilder.add(ModBlocks.STRIPPED_AJI_WOOD, "去皮枣椰木");
         translationBuilder.add(ModBlocks.SUMIRU_ROSE, "须弥蔷薇");
+        translationBuilder.add(ModBlocks.POTTED_SUMIRU_ROSE, "须弥蔷薇盆栽");
+        translationBuilder.add(ModBlocks.PADISARAH, "帕蒂沙兰");
+        translationBuilder.add(ModBlocks.POTTED_PADISARAH, "帕蒂沙兰盆栽");
 
         translationBuilder.add("painting.kusanali.nhd_1.title", "2024贺图");
         translationBuilder.add("painting.kusanali.nhd_2.title", "2023贺图");

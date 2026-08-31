@@ -19,6 +19,14 @@ public class ModBlocks {
             //须弥蔷薇-盆栽
             register("potted_sumiru_rose", new FlowerPotBlock(ModBlocks.SUMIRU_ROSE,
                     FabricBlockSettings.copyOf(Blocks.POTTED_ORANGE_TULIP)));
+    public static final Block PADISARAH =
+            //帕蒂沙兰
+            register("padisarah", new FlowerBlock(StatusEffects.HASTE, 10,
+                    FabricBlockSettings.copyOf(Blocks.ORANGE_TULIP)));
+    public static final Block POTTED_PADISARAH =
+            //帕蒂沙兰-盆栽
+            register("potted_padisarah", new FlowerPotBlock(ModBlocks.PADISARAH,
+                    FabricBlockSettings.copyOf(Blocks.POTTED_ORANGE_TULIP)));
 
     public static final Block AJI_LOG =
             //枣椰原木

@@ -28,6 +28,8 @@ public class ModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.SUMIRU_ROSE, ModBlocks.POTTED_SUMIRU_ROSE,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.PADISARAH, ModBlocks.POTTED_PADISARAH,
+                BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
     @Override

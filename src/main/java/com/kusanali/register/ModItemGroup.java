@@ -34,6 +34,7 @@ public class ModItemGroup {
                 entries.add(ModBlocks.STRIPPED_AJI_LOG);
                 entries.add(ModBlocks.STRIPPED_AJI_WOOD);
                 entries.add(ModBlocks.SUMIRU_ROSE);
+                entries.add(ModBlocks.PADISARAH);
                 entries.add(ModItems.ANEMO_ITEM);
                 entries.add(ModItems.CYRO_ITEM);
                 entries.add(ModItems.DENDRO_ITEM);

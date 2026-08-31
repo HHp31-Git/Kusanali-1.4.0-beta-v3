@@ -3,7 +3,6 @@ package com.kusanali.world.feature;
 import com.kusanali.register.ModBlocks;
 import net.minecraft.registry.*;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
@@ -17,6 +16,7 @@ import static com.kusanali.Kusanali.MOD_ID;
 public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> AJI_TREE_PLACED_KEY = of("aji_tree_placed");
     public static final RegistryKey<PlacedFeature> SUMIRU_ROSE_PLACED_KEY = of("sumiru_rose_placed");
+    public static final RegistryKey<PlacedFeature> PADISARAH_PLACED_KEY = of("padisarah_placed");
 
     public static void bootstrap(Registerable<PlacedFeature> featureRegistry) {
         RegistryEntryLookup<ConfiguredFeature<?,?>> registryEntryLookup =
@@ -34,6 +34,12 @@ public class ModPlacedFeatures {
         PlacedFeatures.register(featureRegistry, SUMIRU_ROSE_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.SUMIRU_ROSE_KEY),
                 RarityFilterPlacementModifier.of(20),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                BiomePlacementModifier.of());
+        PlacedFeatures.register(featureRegistry, PADISARAH_PLACED_KEY,
+                registryEntryLookup.getOrThrow(ModConfiguredFeatures.PADISARAH_KEY),
+                RarityFilterPlacementModifier.of(13),
                 SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
                 BiomePlacementModifier.of());

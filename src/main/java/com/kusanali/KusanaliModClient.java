@@ -19,6 +19,7 @@ public class KusanaliModClient implements ClientModInitializer {
         ClientLifecycleEvents.CLIENT_STARTED.register(client -> {
             BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SUMIRU_ROSE, RenderLayer.getCutout());
             BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_SUMIRU_ROSE, RenderLayer.getCutout());
+            BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PADISARAH, RenderLayer.getCutout());
 
             ClientVisionOverlay.init();
         });

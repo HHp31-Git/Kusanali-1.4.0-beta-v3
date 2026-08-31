@@ -16,6 +16,8 @@ public class ModConfiguredFeatures {
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> SUMIRU_ROSE_KEY = of("sumiru_rose_key");
 
+    public static final RegistryKey<ConfiguredFeature<?, ?>> PADISARAH_KEY = of("padisarah_key");
+
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> registry) {
         ConfiguredFeatures.register(registry, AJI_TREE_KEY, Feature.TREE,
                 new TreeFeatureConfig.Builder(
@@ -30,6 +32,11 @@ public class ModConfiguredFeatures {
                 new RandomPatchFeatureConfig(20, 4, 3, PlacedFeatures.createEntry(
                         Feature.SIMPLE_BLOCK,
                         new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.SUMIRU_ROSE))
+                )));
+        ConfiguredFeatures.register(registry, PADISARAH_KEY, Feature.FLOWER,
+                new RandomPatchFeatureConfig(20, 4, 3, PlacedFeatures.createEntry(
+                        Feature.SIMPLE_BLOCK,
+                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.PADISARAH))
                 )));
     }
     public static RegistryKey<ConfiguredFeature<?, ?>> of(String id) {

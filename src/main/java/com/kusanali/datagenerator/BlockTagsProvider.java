@@ -29,6 +29,12 @@ public class BlockTagsProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.AJI_WOOD)
                 .add(ModBlocks.STRIPPED_AJI_LOG)
                 .add(ModBlocks.STRIPPED_AJI_WOOD);
+        getOrCreateTagBuilder(BlockTags.FLOWER_POTS)
+                .add(ModBlocks.POTTED_SUMIRU_ROSE)
+                .add(ModBlocks.POTTED_PADISARAH);
+        getOrCreateTagBuilder(BlockTags.FLOWERS)
+                .add(ModBlocks.PADISARAH)
+                .add(ModBlocks.SUMIRU_ROSE);
         getOrCreateTagBuilder(BlockTags.LEAVES)
                 .add(ModBlocks.AJI_LEAVES);
         getOrCreateTagBuilder(BlockTags.SAPLINGS)

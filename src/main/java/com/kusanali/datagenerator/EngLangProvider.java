@@ -39,6 +39,9 @@ public class EngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.STRIPPED_AJI_LOG, "stripped ajilenakh log");
         translationBuilder.add(ModBlocks.STRIPPED_AJI_WOOD, "stripped ajilenakh wood");
         translationBuilder.add(ModBlocks.SUMIRU_ROSE, "sumiru rose");
+        translationBuilder.add(ModBlocks.POTTED_SUMIRU_ROSE, "potted sumiru rose");
+        translationBuilder.add(ModBlocks.PADISARAH, "padisarah");
+        translationBuilder.add(ModBlocks.POTTED_PADISARAH, "potted padisarah");
 
         translationBuilder.add("painting.kusanali.nhd_1.title", "2024Birthday Painting");
         translationBuilder.add("painting.kusanali.nhd_3.title", "2025Birthday Painting");
