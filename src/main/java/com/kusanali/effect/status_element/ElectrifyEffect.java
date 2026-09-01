@@ -1,4 +1,4 @@
-package com.kusanali.effect.middle;
+package com.kusanali.effect.status_element;
 
 import com.kusanali.register.ModEffects;
 import net.minecraft.entity.LivingEntity;

@@ -1,4 +1,4 @@
-package com.kusanali.effect.middle;
+package com.kusanali.effect.status_element;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;

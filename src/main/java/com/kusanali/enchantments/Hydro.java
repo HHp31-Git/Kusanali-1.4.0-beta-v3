@@ -17,9 +17,4 @@ public class Hydro extends Enchantment {
     public int getMaxPower(int level) {
         return 64;
     }
-
-    @Override
-    public int getMaxLevel() {
-        return super.getMaxLevel();
-    }
 }

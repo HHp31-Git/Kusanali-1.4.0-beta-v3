@@ -17,9 +17,4 @@ public class Geo extends Enchantment {
     public int getMaxPower(int level) {
         return 64;
     }
-
-    @Override
-    public int getMaxLevel() {
-        return super.getMaxLevel();
-    }
 }

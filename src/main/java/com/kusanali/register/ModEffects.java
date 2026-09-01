@@ -2,7 +2,7 @@ package com.kusanali.register;
 
 import com.kusanali.effect.*;
 import com.kusanali.effect.elements.*;
-import com.kusanali.effect.middle.*;
+import com.kusanali.effect.status_element.*;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
