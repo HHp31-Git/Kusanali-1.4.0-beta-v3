@@ -22,6 +22,7 @@ public class ChiLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.IVE_NEVER_FORGOTTEN, "我不曾忘记");
         translationBuilder.add(ModItems.CLIENT, "虚空终端");
         translationBuilder.add(ModItems.AJILENAKH, "枣椰");
+        translationBuilder.add(ModItems.TROUPE_SWORD, "旅团弯刀");
 
         translationBuilder.add(ModItems.ANEMO_ITEM, "风元素");
         translationBuilder.add(ModItems.CYRO_ITEM, "冰元素");

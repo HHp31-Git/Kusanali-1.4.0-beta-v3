@@ -11,7 +11,6 @@ import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-import java.util.Arrays;
 import java.util.function.Consumer;
 
 public class AdvancementProvider extends FabricAdvancementProvider {
@@ -23,23 +22,16 @@ public class AdvancementProvider extends FabricAdvancementProvider {
     public void generateAdvancement(Consumer<Advancement> consumer) {
         Advancement rootAdvancement = Advancement.Builder.create()
                 .display(
-                        ModItems.ARANAS_FLOWER, // 显示的图标
-                        Text.literal("吉祥草之音"), // 标题
-                        Text.literal("For the Lesser Lord Kusanali!"), // 描述
+                        ModItems.ARANAS_FLOWER,
+                        Text.literal("吉祥草之音"),
+                        Text.literal("For the Lesser Lord Kusanali!"),
                         new Identifier("textures/gui/advancements/backgrounds/root.png"), // 使用的背景图片
-                        AdvancementFrame.TASK, // 选项: TASK, CHALLENGE, GOAL
-                        true, // 在右上角显示
-                        true, // 在聊天框中提示
-                        false // 在进度页面里隐藏
+                        AdvancementFrame.TASK,
+                        true,
+                        true,
+                        false
                 )
-                // Criterion 中使用的第一个字符串是其他进度在需要 'requirements' 时引用的名字
                 .rewards(AdvancementRewards.Builder.recipe(new Identifier(Kusanali.MOD_ID, "blessed_seed")
-                        //new Identifier(Kusanali.MOD_ID, "blessed_bench"),
-                        //new Identifier(Kusanali.MOD_ID, "float_dream"),
-                        //new Identifier(Kusanali.MOD_ID, "ive_never_forgotten"),
-                        //new Identifier(Kusanali.MOD_ID, "corolla"),
-                        //new Identifier(Kusanali.MOD_ID, "candied_nut"),
-                        //new Identifier(Kusanali.MOD_ID, "halvamaze"
                 ))
                 .criterion("got_flower", InventoryChangedCriterion.Conditions.items(ModItems.ARANAS_FLOWER))
                 .build(consumer, Kusanali.MOD_ID + "/root");
@@ -48,7 +40,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                         ModItems.BLESSED_SEED,
                         Text.literal("祝福之种"),
                         Text.literal("新芽将出"),
-                        null, // 子进度不需要设置背景
+                        null,
                         AdvancementFrame.TASK,
                         true,
                         true,
@@ -62,7 +54,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                         ModItems.BLESSED_BENCH,
                         Text.literal("祝福之枝"),
                         Text.literal("新叶将成"),
-                        null, // 子进度不需要设置背景
+                        null,
                         AdvancementFrame.TASK,
                         true,
                         true,
@@ -76,7 +68,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                         ModItems.AJILENAKH,
                         Text.literal("枣椰"),
                         Text.literal("沙漠之实"),
-                        null, // 子进度不需要设置背景
+                        null,
                         AdvancementFrame.TASK,
                         true,
                         true,
@@ -89,8 +81,8 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                 .display(
                         ModItems.CANDIED_NUT,
                         Text.literal("枣椰蜜糖"),
-                        Text.literal("SWEET"),
-                        null, // 子进度不需要设置背景
+                        Text.literal("SWEET!!"),
+                        null,
                         AdvancementFrame.GOAL,
                         true,
                         true,
@@ -104,7 +96,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                         ModItems.HALVAMAZE,
                         Text.literal("哈瓦玛玛兹"),
                         Text.literal("玲珑的「智慧」"),
-                        null, // 子进度不需要设置背景
+                        null,
                         AdvancementFrame.CHALLENGE,
                         true,
                         true,
@@ -118,7 +110,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                         ModItems.COROLLA,
                         Text.literal("花冠"),
                         Text.literal("致兰那罗的同行者"),
-                        null, // 子进度不需要设置背景
+                        null,
                         AdvancementFrame.CHALLENGE,
                         true,
                         true,
@@ -132,7 +124,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                         ModItems.CLIENT,
                         Text.literal("虚空终端"),
                         Text.literal("统合人民之智慧"),
-                        null, // 子进度不需要设置背景
+                        null,
                         AdvancementFrame.GOAL,
                         true,
                         true,
@@ -146,7 +138,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                         ModItems.FLOAT_DREAM,
                         Text.literal("千夜浮梦"),
                         Text.literal("苍翠的光中流溢着遥世的歌"),
-                        null, // 子进度不需要设置背景
+                        null,
                         AdvancementFrame.CHALLENGE,
                         true,
                         true,
@@ -160,7 +152,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                         ModItems.IVE_NEVER_FORGOTTEN,
                         Text.literal("我不曾忘记"),
                         Text.literal("致千树之王"),
-                        null, // 子进度不需要设置背景
+                        null,
                         AdvancementFrame.CHALLENGE,
                         true,
                         true,
@@ -169,5 +161,19 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                 .rewards(AdvancementRewards.Builder.experience(1500))
                 .criterion("got_ive", InventoryChangedCriterion.Conditions.items(ModItems.IVE_NEVER_FORGOTTEN))
                 .build(consumer, Kusanali.MOD_ID + "/got_ive");
+        Advancement gotTroupeSwordAdvancement = Advancement.Builder.create().parent(rootAdvancement)
+                .display(
+                        ModItems.TROUPE_SWORD,
+                        Text.literal("镀金旅团"),
+                        Text.literal("沙中斗士之刃"),
+                        null,
+                        AdvancementFrame.TASK,
+                        true,
+                        true,
+                        false
+                )
+                .rewards(AdvancementRewards.Builder.experience(200))
+                .criterion("got_ts", InventoryChangedCriterion.Conditions.items(ModItems.TROUPE_SWORD))
+                .build(consumer, Kusanali.MOD_ID + "/got_ts");
     }
 }

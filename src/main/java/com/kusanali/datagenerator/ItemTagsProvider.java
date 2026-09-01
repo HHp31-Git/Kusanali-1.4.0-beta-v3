@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
@@ -23,6 +24,8 @@ public class ItemTagsProvider extends FabricTagProvider.ItemTagProvider {
 
     public static final TagKey<Item> ELEMENT_ITEMS =
             TagKey.of(RegistryKeys.ITEM, new Identifier(Kusanali.MOD_ID, "element_items"));
+    public static final TagKey<Item> ELEMENT_ENCHANTABLE_WEAPON =
+            TagKey.of(RegistryKeys.ITEM, new Identifier(Kusanali.MOD_ID, "element_enchantable_weapon"));
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
@@ -34,6 +37,9 @@ public class ItemTagsProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
                 .add(ModItems.IVE_NEVER_FORGOTTEN);
+
+        getOrCreateTagBuilder(ItemTags.SWORDS)
+                .add(ModItems.TROUPE_SWORD);
 
         getOrCreateTagBuilder(ItemTags.PLANKS)
                 .add(ModBlocks.AJI_PLANKS.asItem());
@@ -59,5 +65,19 @@ public class ItemTagsProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.HYDRO_ITEM)
                 .add(ModItems.PYRO_ITEM)
                 .add(ModItems.ANEMO_ITEM);
+        getOrCreateTagBuilder(ELEMENT_ENCHANTABLE_WEAPON)
+                .add(Items.WOODEN_SWORD)
+                .add(Items.STONE_SWORD)
+                .add(Items.IRON_SWORD)
+                .add(Items.GOLDEN_SWORD)
+                .add(Items.DIAMOND_SWORD)
+                .add(Items.NETHERITE_SWORD)
+                .add(Items.WOODEN_AXE)
+                .add(Items.STONE_AXE)
+                .add(Items.IRON_AXE)
+                .add(Items.GOLDEN_AXE)
+                .add(Items.DIAMOND_AXE)
+                .add(Items.NETHERITE_AXE)
+                .add(ModItems.TROUPE_SWORD);
     }
 }

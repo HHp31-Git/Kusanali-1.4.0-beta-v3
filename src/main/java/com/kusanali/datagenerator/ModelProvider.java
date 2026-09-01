@@ -53,5 +53,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.GEO_ITEM, Models.GENERATED);
         itemModelGenerator.register(ModItems.HYDRO_ITEM, Models.GENERATED);
         itemModelGenerator.register(ModItems.PYRO_ITEM, Models.GENERATED);
+
+        itemModelGenerator.register(ModItems.TROUPE_SWORD, Models.HANDHELD);
     }
 }

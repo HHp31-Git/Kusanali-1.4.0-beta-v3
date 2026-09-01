@@ -118,6 +118,15 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(Items.REDSTONE),
                         FabricRecipeProvider.conditionsFromItem(Items.REDSTONE))
                 .offerTo(consumer);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.TROUPE_SWORD)
+                .pattern("c  ").pattern(" c ").pattern(" b ")
+                .input('b', Items.STICK)
+                .criterion(FabricRecipeProvider.hasItem(Items.STICK),
+                        FabricRecipeProvider.conditionsFromItem(Items.STICK))
+                .input('c', Items.IRON_INGOT)
+                .criterion(FabricRecipeProvider.hasItem(Items.IRON_INGOT),
+                        FabricRecipeProvider.conditionsFromItem(Items.IRON_INGOT))
+                .offerTo(consumer);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BLESSED_BENCH, 1)
                 .input(Items.STICK)

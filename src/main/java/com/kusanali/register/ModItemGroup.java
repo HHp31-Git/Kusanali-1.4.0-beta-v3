@@ -16,6 +16,7 @@ public class ModItemGroup {
             .displayName(Text.translatable("itemGroup.kusanali"))
             .entries((context, entries) -> {
                 entries.add(ModItems.FLOAT_DREAM);
+                entries.add(ModItems.TROUPE_SWORD);
                 entries.add(ModItems.COROLLA);
                 entries.add(ModItems.CLIENT);
                 entries.add(ModItems.AKASA_CORE);

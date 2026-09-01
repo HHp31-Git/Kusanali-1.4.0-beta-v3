@@ -2,6 +2,7 @@ package com.kusanali;
 
 import com.kusanali.entity.other.SeedEffectTracker;
 import com.kusanali.event.element_adhering.*;
+import com.kusanali.event.element_enchant.ElementEnchantEvent;
 import com.kusanali.event.element_reaction.*;
 import com.kusanali.event.reaction_middle.SuperconductivityEvent;
 import com.kusanali.event.special_item.*;
@@ -24,7 +25,7 @@ public class Kusanali implements ModInitializer {
 	public void onInitialize() {
 
 		LOGGER.info("For the Lesser Lord Kusanali");
-
+        //注册类
         ModEffects.register();
         ModDamageTypes.register();
         ModItems.initialize();
@@ -33,12 +34,14 @@ public class Kusanali implements ModInitializer {
         ModSounds.register();
         ModPaintings.init();
         ModLootTable.register();
-
+        ModTrades.register();
+        ModEnchants.register();
+        //特殊物品行为类
         FloatDream.registerAttackEvent();
         CorollaEvent.register();
         TribbleEvent.register();
         TribbleReactionEvent.register();
-
+        //元素附着类
         ElectroEvent.register();
         HydroEvent.register();
         PyroEvent.register();
@@ -49,7 +52,9 @@ public class Kusanali implements ModInitializer {
         SlimeRandomEvent.register();
         CyroSnowEvent.register();
         RainingHydroEvent.register();
-
+        ElementDamageEvent.register();
+        ElementEnchantEvent.onInitialize();
+        //元素反应类
         EvaporationEvent.register();
         MeltEvent.register();
         SuperconductivityEvent.register();
@@ -66,22 +71,19 @@ public class Kusanali implements ModInitializer {
         IntensifyEvent.register();
         SuperIntensifyEvent.register();
         GrowingIntensifyEvent.register();
-
-        ElementDamageEvent.register();
-
+        //世界生成类
+        ModWorldGeneration.register();
         AjiLeavesDrop.register();
-
+        //HUD类
         FloatDreamHander.register();
         ClientHander.register();
         ClientOverlayRenderer.register();
         ClientMessageOverlay.register();
         ClientVisionOverlay.register();
-
-        ModWorldGeneration.register();
-
+        //树木去皮注册
         StrippableBlockRegistry.register(ModBlocks.AJI_LOG, ModBlocks.STRIPPED_AJI_LOG);
         StrippableBlockRegistry.register(ModBlocks.AJI_WOOD, ModBlocks.STRIPPED_AJI_WOOD);
-
+        //可燃烧方块注册
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.AJI_PLANKS, 5, 20);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.AJI_LEAVES, 30, 60);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.AJI_SAPLING, 60, 100);
@@ -89,7 +91,7 @@ public class Kusanali implements ModInitializer {
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_AJI_LOG, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.AJI_WOOD, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.STRIPPED_AJI_WOOD, 5, 5);
-
+        //生物注册
         ServerTickEvents.END_WORLD_TICK.register(SeedEffectTracker::tickAll);
 
         LOGGER.info("All settings done");

@@ -6,16 +6,18 @@ import com.kusanali.specialitem.Halvamaze;
 import com.kusanali.specialitem.elements.*;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.FoodComponent;
-import net.minecraft.item.Item;
-import net.minecraft.item.MusicDiscItem;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
 public class ModItems {
+    public static final Item TROUPE_SWORD =
+            //镀金旅团-剑
+            register("troupe_sword", new SwordItem(ModToolMaterial.TROUPE, 3, -2.2f,
+                    new Item.Settings().maxCount(1)));
+
     public static final Item IVE_NEVER_FORGOTTEN =
             //唱片-我不曾忘记
             register("ive_never_forgotten", new MusicDiscItem(15,

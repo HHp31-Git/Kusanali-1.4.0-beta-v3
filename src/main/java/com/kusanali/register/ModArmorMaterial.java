@@ -3,6 +3,7 @@ package com.kusanali.register;
 import com.kusanali.Kusanali;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -28,7 +29,15 @@ public enum ModArmorMaterial implements ArmorMaterial, StringIdentifiable {
         map.put(ArmorItem.Type.CHESTPLATE, 8);
         map.put(ArmorItem.Type.HELMET, 3);
     }), 10, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN,
-    1.0F, 0.1F, () -> Ingredient.ofItems(ModItems.BLESSED_SEED));
+    1.0F, 0.1F, () -> Ingredient.ofItems(ModItems.BLESSED_SEED)),
+
+    TROUPE("troupe", 6, Util.make(new EnumMap(ArmorItem.Type.class), map -> {
+        map.put(ArmorItem.Type.BOOTS, 1);
+        map.put(ArmorItem.Type.LEGGINGS, 3);
+        map.put(ArmorItem.Type.CHESTPLATE, 3);
+        map.put(ArmorItem.Type.HELMET, 1);
+    }), 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
+            0.0F, 0.0F, () -> Ingredient.ofItems(Items.STRING));
 
     private static final EnumMap<ArmorItem.Type, Integer> BASE_DURABILITY = Util.make(new EnumMap(ArmorItem.Type.class), map -> {
         map.put(ArmorItem.Type.BOOTS, 13);

@@ -30,6 +30,7 @@ public class EngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.HYDRO_ITEM, "hydro item");
         translationBuilder.add(ModItems.PYRO_ITEM, "pyro item");
         translationBuilder.add(ModItems.DENDRO_ITEM, "dendro item");
+        translationBuilder.add(ModItems.TROUPE_SWORD, "troupe sword");
 
         translationBuilder.add(ModBlocks.AJI_LEAVES, "ajilenakh leaves");
         translationBuilder.add(ModBlocks.AJI_LOG, "ajilenakh log");
