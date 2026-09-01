@@ -12,7 +12,6 @@ public class FloatDreamQEffect extends StatusEffect {
 
     @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
-        // 每5秒（100游戏刻）触发一次伤害
         return duration % 100 == 0;
     }
 
