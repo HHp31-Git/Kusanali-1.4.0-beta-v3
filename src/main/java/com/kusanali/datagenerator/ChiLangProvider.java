@@ -112,7 +112,6 @@ public class ChiLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModEnchants.ELECTRO_ENCHANT, "雷元素附魔");
         translationBuilder.add(ModEnchants.GEO_ENCHANT, "岩元素附魔");
         translationBuilder.add(ModEnchants.HYDRO_ENCHANT, "水元素附魔");
-        translationBuilder.add(ModEnchants.PYRO_ENCHANT, "火元素附魔");
         translationBuilder.add(ModEnchants.DENDRO_ENCHANT, "草元素附魔");
         translationBuilder.add(ModEnchants.ANEMO_ENCHANT_BOW, "风矢");
         translationBuilder.add(ModEnchants.CYRO_ENCHANT_BOW, "冰矢");

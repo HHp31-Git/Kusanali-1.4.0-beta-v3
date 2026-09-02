@@ -112,7 +112,6 @@ public class EngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModEnchants.ELECTRO_ENCHANT, "Electro Enchant");
         translationBuilder.add(ModEnchants.GEO_ENCHANT, "Geo Enchant");
         translationBuilder.add(ModEnchants.HYDRO_ENCHANT, "Hydro Enchant");
-        translationBuilder.add(ModEnchants.PYRO_ENCHANT, "Pyro Enchant");
         translationBuilder.add(ModEnchants.DENDRO_ENCHANT, "Dendro Enchant");
         translationBuilder.add(ModEnchants.ANEMO_ENCHANT_BOW, "anemo arrow");
         translationBuilder.add(ModEnchants.CYRO_ENCHANT_BOW, "cyro arrow");

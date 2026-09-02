@@ -35,11 +35,6 @@ public class ModEnchants {
             new Identifier(MOD_ID, "hydro_enchant"),
             new Hydro()
     );
-    public static final Enchantment PYRO_ENCHANT = Registry.register(
-            Registries.ENCHANTMENT,
-            new Identifier(MOD_ID, "pyro_enchant"),
-            new Pyro()
-    );
     public static final Enchantment CYRO_ENCHANT = Registry.register(
             Registries.ENCHANTMENT,
             new Identifier(MOD_ID, "cyro_enchant"),

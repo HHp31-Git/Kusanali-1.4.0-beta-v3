@@ -28,7 +28,7 @@ public class EnchantTagProvider extends FabricTagProvider<Enchantment> {
         getOrCreateTagBuilder(ELEMENT_WEAPON)
                 .add(ModEnchants.ANEMO_ENCHANT)
                 .add(ModEnchants.GEO_ENCHANT)
-                .add(ModEnchants.PYRO_ENCHANT)
+                .add(Enchantments.FIRE_ASPECT)
                 .add(ModEnchants.HYDRO_ENCHANT)
                 .add(ModEnchants.DENDRO_ENCHANT)
                 .add(ModEnchants.CYRO_ENCHANT)

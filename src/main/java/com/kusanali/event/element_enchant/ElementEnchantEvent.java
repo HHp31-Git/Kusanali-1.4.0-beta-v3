@@ -4,6 +4,7 @@ import com.kusanali.register.ModEffects;
 import com.kusanali.register.ModEnchants;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -42,7 +43,7 @@ public class ElementEnchantEvent {
                         livingEntity.addStatusEffect(new StatusEffectInstance(ModEffects.HYDRO,
                                 125, 0, true, true));
                     }
-                    if (EnchantmentHelper.getLevel(ModEnchants.PYRO_ENCHANT, stack) > 0) {
+                    if (EnchantmentHelper.getLevel(Enchantments.FIRE_ASPECT, stack) > 0) {
                         livingEntity.addStatusEffect(new StatusEffectInstance(ModEffects.PYRO,
                                 125, 0, true, true));
                     }
