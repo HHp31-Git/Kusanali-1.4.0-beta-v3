@@ -35,34 +35,6 @@ public class AdvancementProvider extends FabricAdvancementProvider {
                 ))
                 .criterion("got_flower", InventoryChangedCriterion.Conditions.items(ModItems.ARANAS_FLOWER))
                 .build(consumer, Kusanali.MOD_ID + "/root");
-        Advancement gotSeedAdvancement = Advancement.Builder.create().parent(rootAdvancement)
-                .display(
-                        ModItems.BLESSED_SEED,
-                        Text.literal("祝福之种"),
-                        Text.literal("新芽将出"),
-                        null,
-                        AdvancementFrame.TASK,
-                        true,
-                        true,
-                        false
-                )
-                .rewards(AdvancementRewards.Builder.recipe(new Identifier(Kusanali.MOD_ID, "blessed_bench")))
-                .criterion("got_seed", InventoryChangedCriterion.Conditions.items(ModItems.BLESSED_SEED))
-                .build(consumer, Kusanali.MOD_ID + "/got_seed");
-        Advancement gotBenchAdvancement = Advancement.Builder.create().parent(rootAdvancement)
-                .display(
-                        ModItems.BLESSED_BENCH,
-                        Text.literal("祝福之枝"),
-                        Text.literal("新叶将成"),
-                        null,
-                        AdvancementFrame.TASK,
-                        true,
-                        true,
-                        false
-                )
-                .rewards(AdvancementRewards.Builder.recipe(new Identifier(Kusanali.MOD_ID, "corolla")))
-                .criterion("got_bench", InventoryChangedCriterion.Conditions.items(ModItems.BLESSED_BENCH))
-                .build(consumer, Kusanali.MOD_ID + "/got_bench");
         Advancement gotFrAdvancement = Advancement.Builder.create().parent(rootAdvancement)
                 .display(
                         ModItems.AJILENAKH,

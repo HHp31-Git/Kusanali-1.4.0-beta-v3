@@ -13,48 +13,48 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_blessed_bench": {
+    "has_diamond": {
       "conditions": {
         "items": [
           {
             "items": [
-              "kusanali:blessed_bench"
+              "minecraft:diamond"
             ]
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_blessed_seed": {
+    "has_emerald": {
       "conditions": {
         "items": [
           {
             "items": [
-              "kusanali:blessed_seed"
+              "minecraft:emerald"
             ]
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_diamond_block": {
+    "has_emerald_chunk": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:diamond_block"
+              "kusanali:emerald_chunk"
             ]
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_emerald_block": {
+    "has_emerald_gemstone": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:emerald_block"
+              "kusanali:emerald_gemstone"
             ]
           }
         ]
@@ -71,10 +71,10 @@
   "requirements": [
     [
       "has_aranas_flower",
-      "has_diamond_block",
-      "has_blessed_seed",
-      "has_blessed_bench",
-      "has_emerald_block",
+      "has_diamond",
+      "has_emerald_gemstone",
+      "has_emerald_chunk",
+      "has_emerald",
       "has_the_recipe"
     ]
   ],

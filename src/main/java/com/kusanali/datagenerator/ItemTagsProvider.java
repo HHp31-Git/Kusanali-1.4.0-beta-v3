@@ -25,6 +25,8 @@ public class ItemTagsProvider extends FabricTagProvider.ItemTagProvider {
             TagKey.of(RegistryKeys.ITEM, new Identifier(Kusanali.MOD_ID, "element_items"));
     public static final TagKey<Item> ELEMENT_ENCHANTABLE_WEAPON =
             TagKey.of(RegistryKeys.ITEM, new Identifier(Kusanali.MOD_ID, "element_enchantable_weapon"));
+    public static final TagKey<Item> EMERALD_UPDATE =
+            TagKey.of(RegistryKeys.ITEM, new Identifier(Kusanali.MOD_ID, "emerald_update"));
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
@@ -78,5 +80,10 @@ public class ItemTagsProvider extends FabricTagProvider.ItemTagProvider {
                 .add(Items.DIAMOND_AXE)
                 .add(Items.NETHERITE_AXE)
                 .add(ModItems.TROUPE_SWORD);
+        getOrCreateTagBuilder(EMERALD_UPDATE)
+                .add(ModItems.EMERALD_GEMSTONE)
+                .add(ModItems.EMERALD_CHUCK)
+                .add(ModItems.EMERALD_FRAGMENT)
+                .add(ModItems.EMERALD_SLIVER);
     }
 }

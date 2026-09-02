@@ -1,11 +1,10 @@
-// 1.20.1	2026-07-27T01:06:27.6705479	Kusanali/Advancements
+// 1.20.1	2026-09-02T18:53:02.3122779	Kusanali/Advancements
 75c6a32dd3d57a6e21c49dadc465170815d94b18 data\minecraft\advancements\kusanali\got_ive.json
 39e1d3aca51b5c6c5ff6fba9a6b86fa4f2efe34a data\minecraft\advancements\kusanali\got_hav.json
 ffa147d5dfb35d28f21bde7c9a16973b446ab32d data\minecraft\advancements\kusanali\got_co.json
-a22d030f5430e9451b70b6553143c91085d9a914 data\minecraft\advancements\kusanali\got_seed.json
-e155b433127b4c132d078895d2c5314dfdfb8432 data\minecraft\advancements\kusanali\got_bench.json
 a82e2b2c0a22a2d2e063bb4d6604439ad34e2321 data\minecraft\advancements\kusanali\root.json
-acbd1cf97fa8fb9cf9c3809789b2b8b4611e386f data\minecraft\advancements\kusanali\got_can.json
+84c0984a266a2e821f03dc33aa3a905cce314ac3 data\minecraft\advancements\kusanali\got_can.json
 e24ac475598aae899ab4dda28393c52263f3af26 data\minecraft\advancements\kusanali\got_fl.json
 e047f7f745a248dcdd74689740a609baa5bfe95f data\minecraft\advancements\kusanali\got_aji.json
+3075e92000d90bb3674b33e9772438b9d4a743c3 data\minecraft\advancements\kusanali\got_ts.json
 37404420285dd75daf0bdbbed60ed7a526e0ef57 data\minecraft\advancements\kusanali\got_cli.json

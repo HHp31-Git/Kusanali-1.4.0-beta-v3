@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:kusanali/root",
   "criteria": {
-    "got_bench": {
+    "got_ts": {
       "conditions": {
         "items": [
           {
             "items": [
-              "kusanali:blessed_bench"
+              "kusanali:troupe_sword"
             ]
           }
         ]
@@ -17,27 +17,26 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "text": "新叶将成"
+      "text": "沙中斗士之刃"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "kusanali:blessed_bench"
+      "item": "kusanali:troupe_sword",
+      "nbt": "{Damage:0}"
     },
     "show_toast": true,
     "title": {
-      "text": "祝福之枝"
+      "text": "镀金旅团"
     }
   },
   "requirements": [
     [
-      "got_bench"
+      "got_ts"
     ]
   ],
   "rewards": {
-    "recipes": [
-      "kusanali:corolla"
-    ]
+    "experience": 200
   },
   "sends_telemetry_event": true
 }

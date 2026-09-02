@@ -14,8 +14,6 @@ public class EngLangProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
         translationBuilder.add(ModItems.ARANAS_FLOWER, "Aranas Flower");
-        translationBuilder.add(ModItems.BLESSED_SEED, "Blessed Seed");
-        translationBuilder.add(ModItems.BLESSED_BENCH, "Blessed Bench");
         translationBuilder.add(ModItems.FLOAT_DREAM, "A Thousand Floating Dreams");
         translationBuilder.add(ModItems.CANDIED_NUT, "Candied Ajilenakh Nut");
         translationBuilder.add(ModItems.HALVAMAZE, "Halvamaze");
@@ -32,6 +30,11 @@ public class EngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.PYRO_ITEM, "pyro item");
         translationBuilder.add(ModItems.DENDRO_ITEM, "dendro item");
         translationBuilder.add(ModItems.TROUPE_SWORD, "troupe sword");
+
+        translationBuilder.add(ModItems.EMERALD_GEMSTONE, "emerald_gemstone");
+        translationBuilder.add(ModItems.EMERALD_CHUCK, "emerald chuck");
+        translationBuilder.add(ModItems.EMERALD_FRAGMENT, "emerald fragment");
+        translationBuilder.add(ModItems.EMERALD_SLIVER, "emerald sliver");
 
         translationBuilder.add(ModBlocks.AJI_LEAVES, "ajilenakh leaves");
         translationBuilder.add(ModBlocks.AJI_LOG, "ajilenakh log");

@@ -1,12 +1,24 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_blessed_bench": {
+    "has_akasa_core": {
       "conditions": {
         "items": [
           {
             "items": [
-              "kusanali:blessed_bench"
+              "kusanali:akasa_core"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_emerald_fragment": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "kusanali:emerald_fragment"
             ]
           }
         ]
@@ -22,7 +34,8 @@
   },
   "requirements": [
     [
-      "has_blessed_bench",
+      "has_emerald_fragment",
+      "has_akasa_core",
       "has_the_recipe"
     ]
   ],

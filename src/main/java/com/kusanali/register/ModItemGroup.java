@@ -17,12 +17,14 @@ public class ModItemGroup {
             .entries((context, entries) -> {
                 entries.add(ModItems.FLOAT_DREAM);
                 entries.add(ModItems.TROUPE_SWORD);
+                entries.add(ModItems.EMERALD_GEMSTONE);
+                entries.add(ModItems.EMERALD_CHUCK);
+                entries.add(ModItems.EMERALD_FRAGMENT);
+                entries.add(ModItems.EMERALD_SLIVER);
                 entries.add(ModItems.COROLLA);
                 entries.add(ModItems.CLIENT);
                 entries.add(ModItems.AKASA_CORE);
                 entries.add(ModItems.ARANAS_FLOWER);
-                entries.add(ModItems.BLESSED_BENCH);
-                entries.add(ModItems.BLESSED_SEED);
                 entries.add(ModItems.CANDIED_NUT);
                 entries.add(ModItems.HALVAMAZE);
                 entries.add(ModItems.IVE_NEVER_FORGOTTEN);

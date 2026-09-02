@@ -1,8 +1,11 @@
-// 1.20.1	2026-07-27T01:06:27.6694882	Kusanali/Tags for minecraft:item
+// 1.20.1	2026-09-02T18:53:02.3111862	Kusanali/Tags for minecraft:item
 1ad3368b9ef0b4613ec6cf075611d7244f01e5bd data\kusanali\tags\items\aji_logs.json
-ee6782de95e65ff75e36c39a3a3befb1ada31a0c data\minecraft\tags\items\small_flowers.json
+a6cceca0d7905bf0516a7e7e767b2c214d1e33a3 data\minecraft\tags\items\small_flowers.json
 881951f8b1e32829d1f9e009543a674c380b12c7 data\minecraft\tags\items\logs.json
+092e8317570362aa08cffd4446c44a57f79a4b3d data\minecraft\tags\items\swords.json
 dc83c3c5f18cd7bfee879361d87e774e96de6069 data\kusanali\tags\items\element_items.json
 4aebd333807d37c7c88029ac6ea891470d8c9496 data\minecraft\tags\items\music_discs.json
+29473e75df2d26ff9f1a021679707e2173cdec9c data\kusanali\tags\items\element_enchantable_weapon.json
 331d2ea4eaa9d0e5a4c88893bb80fd067f86ccb3 data\minecraft\tags\items\planks.json
 1ad3368b9ef0b4613ec6cf075611d7244f01e5bd data\minecraft\tags\items\logs_that_burn.json
+2665bb62b804d0370b188c32999dbbfac84bf900 data\kusanali\tags\items\emerald_update.json

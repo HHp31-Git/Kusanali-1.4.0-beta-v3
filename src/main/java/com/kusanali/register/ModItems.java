@@ -86,18 +86,6 @@ public class ModItems {
                     .maxCount(64)
                     .rarity(Rarity.EPIC)));
 
-    public static final Item BLESSED_BENCH =
-            //祝福之枝
-            register("blessed_bench", new Item(new Item.Settings()
-                    .maxCount(64)
-                    .rarity(Rarity.RARE)));
-
-    public static final Item BLESSED_SEED =
-            //祝福之种
-            register("blessed_seed", new Item(new Item.Settings()
-                    .maxCount(64)
-                    .rarity(Rarity.RARE)));
-
     public static final Item ELECTRO_ITEM =
             //雷元素
             register("electro_item", new ElectroItem(new Item.Settings()
@@ -126,6 +114,20 @@ public class ModItems {
             //水元素
             register("hydro_item", new HydroItem(new Item.Settings()
                     .rarity(Rarity.EPIC)));
+    public static final Item EMERALD_GEMSTONE =
+            //生长碧翡
+            register("emerald_gemstone", new Item(new Item.Settings()
+                    .rarity(Rarity.EPIC)));
+    public static final Item EMERALD_CHUCK =
+            //生长碧翡块
+            register("emerald_chunk", new Item(new Item.Settings()
+                    .rarity(Rarity.RARE)));
+    public static final Item EMERALD_FRAGMENT =
+            //生长碧翡碎片
+            register("emerald_fragment", new Item(new Item.Settings()));
+    public static final Item EMERALD_SLIVER =
+            //生长碧翡屑
+            register("emerald_sliver", new Item(new Item.Settings()));
 
     public static final Item AKASA_CORE=
             //终端核心

@@ -3,19 +3,19 @@
   "category": "misc",
   "key": {
     "b": {
-      "item": "kusanali:blessed_seed"
+      "item": "kusanali:emerald_gemstone"
     },
     "c": {
-      "item": "kusanali:blessed_bench"
+      "item": "kusanali:emerald_chunk"
     },
     "e": {
-      "item": "minecraft:emerald_block"
+      "item": "minecraft:emerald"
     },
     "f": {
       "item": "kusanali:aranas_flower"
     },
     "i": {
-      "item": "minecraft:diamond_block"
+      "item": "minecraft:diamond"
     }
   },
   "pattern": [

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "kusanali:item/blessed_bench"
+    "layer0": "kusanali:item/emerald_gemstone"
   }
 }

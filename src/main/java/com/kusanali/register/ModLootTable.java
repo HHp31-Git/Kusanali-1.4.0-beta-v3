@@ -41,6 +41,38 @@ public class ModLootTable {
                     if (JUNGLE_TEMPLE.equals(identifier)){
                         LootPool.Builder poolBuilder = LootPool.builder()
                                 .rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(RandomChanceLootCondition.builder(0.1F))
+                                .with(ItemEntry.builder(ModItems.EMERALD_GEMSTONE))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                        builder.pool(poolBuilder.build());
+                    }
+                    if (JUNGLE_TEMPLE.equals(identifier)) {
+                        LootPool.Builder poolBuilder = LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(RandomChanceLootCondition.builder(0.2F))
+                                .with(ItemEntry.builder(ModItems.EMERALD_CHUCK))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                        builder.pool(poolBuilder.build());
+                    }
+                    if (JUNGLE_TEMPLE.equals(identifier)) {
+                        LootPool.Builder poolBuilder = LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(RandomChanceLootCondition.builder(0.4F))
+                                .with(ItemEntry.builder(ModItems.EMERALD_FRAGMENT))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                        builder.pool(poolBuilder.build());
+                    }
+                    if (JUNGLE_TEMPLE.equals(identifier)) {
+                        LootPool.Builder poolBuilder = LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(RandomChanceLootCondition.builder(0.8F))
+                                .with(ItemEntry.builder(ModItems.EMERALD_SLIVER))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)));
+                        builder.pool(poolBuilder.build());
+                    }
+                    if (JUNGLE_TEMPLE.equals(identifier)){
+                        LootPool.Builder poolBuilder = LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1))
                                 .conditionally(RandomChanceLootCondition.builder(0.8F))
                                 .with(ItemEntry.builder(ModItems.IVE_NEVER_FORGOTTEN))
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
@@ -92,6 +124,38 @@ public class ModLootTable {
                                 .conditionally(RandomChanceLootCondition.builder(0.7F))
                                 .with(ItemEntry.builder(ModItems.ARANAS_FLOWER))
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                        builder.pool(poolBuilder.build());
+                    }
+                    if (UNDERWATER_RUIN_BIG.equals(identifier)){
+                        LootPool.Builder poolBuilder = LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(RandomChanceLootCondition.builder(0.1F))
+                                .with(ItemEntry.builder(ModItems.EMERALD_GEMSTONE))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                        builder.pool(poolBuilder.build());
+                    }
+                    if (UNDERWATER_RUIN_BIG.equals(identifier)) {
+                        LootPool.Builder poolBuilder = LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(RandomChanceLootCondition.builder(0.2F))
+                                .with(ItemEntry.builder(ModItems.EMERALD_CHUCK))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                        builder.pool(poolBuilder.build());
+                    }
+                    if (UNDERWATER_RUIN_BIG.equals(identifier)) {
+                        LootPool.Builder poolBuilder = LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(RandomChanceLootCondition.builder(0.4F))
+                                .with(ItemEntry.builder(ModItems.EMERALD_FRAGMENT))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                        builder.pool(poolBuilder.build());
+                    }
+                    if (UNDERWATER_RUIN_BIG.equals(identifier)) {
+                        LootPool.Builder poolBuilder = LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(RandomChanceLootCondition.builder(0.8F))
+                                .with(ItemEntry.builder(ModItems.EMERALD_SLIVER))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f)));
                         builder.pool(poolBuilder.build());
                     }
                     if (UNDERWATER_RUIN_SMALL.equals(identifier)){

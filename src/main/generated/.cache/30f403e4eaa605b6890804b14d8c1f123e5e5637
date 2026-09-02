@@ -1,7 +1,9 @@
-// 1.20.1	2026-07-27T01:06:27.6671829	Kusanali/Block Loot Tables
+// 1.20.1	2026-09-02T18:53:02.3091962	Kusanali/Block Loot Tables
 e0bf87795a65f0e8ee154428bd368012a192a683 data\kusanali\loot_tables\blocks\aji_log.json
+7cc4b645dedda25ef9ddb9c4f5ab766b8c8250f7 data\kusanali\loot_tables\blocks\potted_padisarah.json
 3884edaf06f15bbd50f3aa49b51267f67643780b data\kusanali\loot_tables\blocks\aji_leaves.json
 14b4685fa71f148b5fb3870a9125729bf6ea148b data\kusanali\loot_tables\blocks\aji_planks.json
+6d25d3255178744fb83d6c54b2e3f75827802cdb data\kusanali\loot_tables\blocks\padisarah.json
 fb6fda06b121a529005b02c07825d4df1b3d536a data\kusanali\loot_tables\blocks\aji_wood.json
 b000db38bab2d3c681c1c083910919878420e09f data\kusanali\loot_tables\blocks\stripped_aji_wood.json
 fbd54cd495df304b51b7cdd0e038b2e82023db04 data\kusanali\loot_tables\blocks\stripped_aji_log.json

@@ -29,7 +29,7 @@ public enum ModArmorMaterial implements ArmorMaterial, StringIdentifiable {
         map.put(ArmorItem.Type.CHESTPLATE, 8);
         map.put(ArmorItem.Type.HELMET, 3);
     }), 10, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN,
-    1.0F, 0.1F, () -> Ingredient.ofItems(ModItems.BLESSED_SEED)),
+    1.0F, 0.1F, () -> Ingredient.ofItems(ModItems.EMERALD_FRAGMENT)),
 
     TROUPE("troupe", 6, Util.make(new EnumMap(ArmorItem.Type.class), map -> {
         map.put(ArmorItem.Type.BOOTS, 1);

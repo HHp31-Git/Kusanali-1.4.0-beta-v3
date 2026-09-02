@@ -27,5 +27,15 @@ public class ModTrades {
                         new ItemStack(Items.EMERALD, 1),
                         new ItemStack(ModBlocks.SUMIRU_ROSE, 1),
                         12, 10, 0.05F)));
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories ->
+                factories.add((entity, random) -> new TradeOffer(
+                        new ItemStack(Items.EMERALD, 1),
+                        new ItemStack(ModItems.EMERALD_SLIVER, 1),
+                        9, 10, 0.05F)));
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories ->
+                factories.add((entity, random) -> new TradeOffer(
+                        new ItemStack(Items.EMERALD, 3),
+                        new ItemStack(ModItems.EMERALD_FRAGMENT, 1),
+                        4, 10, 0.05F)));
     }
 }

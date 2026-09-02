@@ -8,6 +8,8 @@ import net.minecraft.recipe.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModToolMaterial implements ToolMaterial {
+    SUMIRU_CRAFT(MiningLevels.IRON, 1027, 8.5f, 3.7f,20,
+            () -> Ingredient.ofItems(ModItems.EMERALD_CHUCK)),
     TROUPE(MiningLevels.IRON, 270, 6.0F, 2.2F, 15,
             () -> Ingredient.ofItems(Items.IRON_INGOT));
 

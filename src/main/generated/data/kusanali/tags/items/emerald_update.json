@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "kusanali:emerald_gemstone",
+    "kusanali:emerald_chunk",
+    "kusanali:emerald_fragment",
+    "kusanali:emerald_sliver"
+  ]
+}

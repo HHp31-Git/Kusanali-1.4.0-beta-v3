@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "kusanali:emerald_sliver"
+    },
+    {
+      "item": "kusanali:emerald_sliver"
+    },
+    {
+      "item": "kusanali:emerald_sliver"
+    }
+  ],
+  "result": {
+    "item": "kusanali:emerald_fragment"
+  }
+}

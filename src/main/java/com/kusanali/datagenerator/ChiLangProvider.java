@@ -14,8 +14,6 @@ public class ChiLangProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
         translationBuilder.add(ModItems.ARANAS_FLOWER, "兰那罗之花");
-        translationBuilder.add(ModItems.BLESSED_SEED, "祝福之种");
-        translationBuilder.add(ModItems.BLESSED_BENCH, "祝福之枝");
         translationBuilder.add(ModItems.FLOAT_DREAM, "千夜浮梦");
         translationBuilder.add(ModItems.CANDIED_NUT, "枣椰蜜糖");
         translationBuilder.add(ModItems.HALVAMAZE, "哈瓦玛玛兹");
@@ -32,6 +30,11 @@ public class ChiLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.HYDRO_ITEM, "水元素");
         translationBuilder.add(ModItems.PYRO_ITEM, "火元素");
         translationBuilder.add(ModItems.DENDRO_ITEM, "草元素");
+
+        translationBuilder.add(ModItems.EMERALD_GEMSTONE, "生长碧翡");
+        translationBuilder.add(ModItems.EMERALD_CHUCK, "生长碧翡块");
+        translationBuilder.add(ModItems.EMERALD_FRAGMENT, "生长碧翡碎片");
+        translationBuilder.add(ModItems.EMERALD_SLIVER, "生长碧翡碎屑");
 
         translationBuilder.add(ModBlocks.AJI_LEAVES, "枣椰树叶");
         translationBuilder.add(ModBlocks.AJI_LOG, "枣椰原木");

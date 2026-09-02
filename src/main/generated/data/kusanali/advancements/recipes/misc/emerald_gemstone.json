@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_aranas_flower": {
+    "has_emerald_chunk": {
       "conditions": {
         "items": [
           {
             "items": [
-              "kusanali:aranas_flower"
+              "kusanali:emerald_chunk"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "kusanali:blessed_seed"
+        "recipe": "kusanali:emerald_gemstone"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_aranas_flower",
+      "has_emerald_chunk",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "kusanali:blessed_seed"
+      "kusanali:emerald_gemstone"
     ]
   },
   "sends_telemetry_event": false

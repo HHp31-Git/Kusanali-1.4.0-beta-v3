@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "kusanali:emerald_chunk"
+    },
+    {
+      "item": "kusanali:emerald_chunk"
+    },
+    {
+      "item": "kusanali:emerald_chunk"
+    }
+  ],
+  "result": {
+    "item": "kusanali:emerald_gemstone"
+  }
+}

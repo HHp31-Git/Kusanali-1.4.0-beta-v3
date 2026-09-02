@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "kusanali:anemo_enchant",
+    "kusanali:geo_enchant",
+    "kusanali:pyro_enchant",
+    "kusanali:hydro_enchant",
+    "kusanali:dendro_enchant",
+    "kusanali:cyro_enchant",
+    "kusanali:electro_enchant"
+  ]
+}

@@ -34,14 +34,16 @@ public class ModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        itemModelGenerator.register(ModItems.BLESSED_SEED, Models.GENERATED);
-        itemModelGenerator.register(ModItems.BLESSED_BENCH, Models.GENERATED);
         itemModelGenerator.register(ModItems.ARANAS_FLOWER, Models.GENERATED);
         itemModelGenerator.register(ModItems.CANDIED_NUT, Models.GENERATED);
         itemModelGenerator.register(ModItems.HALVAMAZE, Models.GENERATED);
         itemModelGenerator.register(ModItems.IVE_NEVER_FORGOTTEN, Models.GENERATED);
         itemModelGenerator.register(ModItems.AJILENAKH, Models.GENERATED);
         itemModelGenerator.register(ModItems.AKASA_CORE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.EMERALD_GEMSTONE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.EMERALD_CHUCK, Models.GENERATED);
+        itemModelGenerator.register(ModItems.EMERALD_FRAGMENT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.EMERALD_SLIVER, Models.GENERATED);
 
         itemModelGenerator.registerArmor((ArmorItem) ModItems.COROLLA);
         itemModelGenerator.registerArmor((ArmorItem) ModItems.CLIENT);

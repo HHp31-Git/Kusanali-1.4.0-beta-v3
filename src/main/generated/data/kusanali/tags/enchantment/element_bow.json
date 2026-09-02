@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "kusanali:anemo_enchant_bow",
+    "kusanali:geo_enchant_bow",
+    "minecraft:flame",
+    "kusanali:hydro_enchant_bow",
+    "kusanali:dendro_enchant_bow",
+    "kusanali:cyro_enchant_bow",
+    "kusanali:electro_enchant_bow"
+  ]
+}

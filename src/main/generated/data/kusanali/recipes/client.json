@@ -3,12 +3,15 @@
   "category": "misc",
   "key": {
     "b": {
-      "item": "kusanali:blessed_bench"
+      "item": "kusanali:emerald_fragment"
+    },
+    "c": {
+      "item": "kusanali:akasa_core"
     }
   },
   "pattern": [
     " bb",
-    "b b",
+    "bcb",
     "bb "
   ],
   "result": {

@@ -26,20 +26,20 @@ public class RecipeProvider extends FabricRecipeProvider {
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.FLOAT_DREAM)
                 .pattern(" b ").pattern("ifi").pattern("cec")
                 .input('f', ModItems.ARANAS_FLOWER)
-                .input('i', Items.DIAMOND_BLOCK)
-                .input('b', ModItems.BLESSED_SEED)
-                .input('c', ModItems.BLESSED_BENCH)
-                .input('e', Items.EMERALD_BLOCK)
+                .input('i', Items.DIAMOND)
+                .input('b', ModItems.EMERALD_GEMSTONE)
+                .input('c', ModItems.EMERALD_CHUCK)
+                .input('e', Items.EMERALD)
                 .criterion(FabricRecipeProvider.hasItem(ModItems.ARANAS_FLOWER),
                         FabricRecipeProvider.conditionsFromItem(ModItems.ARANAS_FLOWER))
-                .criterion(FabricRecipeProvider.hasItem(Items.DIAMOND_BLOCK),
-                        FabricRecipeProvider.conditionsFromItem(Items.DIAMOND_BLOCK))
-                .criterion(FabricRecipeProvider.hasItem(ModItems.BLESSED_SEED),
-                        FabricRecipeProvider.conditionsFromItem(ModItems.BLESSED_SEED))
-                .criterion(FabricRecipeProvider.hasItem(ModItems.BLESSED_BENCH),
-                        FabricRecipeProvider.conditionsFromItem(ModItems.BLESSED_BENCH))
-                .criterion(FabricRecipeProvider.hasItem(Items.EMERALD_BLOCK),
-                        FabricRecipeProvider.conditionsFromItem(Items.EMERALD_BLOCK))
+                .criterion(FabricRecipeProvider.hasItem(Items.DIAMOND),
+                        FabricRecipeProvider.conditionsFromItem(Items.DIAMOND))
+                .criterion(FabricRecipeProvider.hasItem(ModItems.EMERALD_GEMSTONE),
+                        FabricRecipeProvider.conditionsFromItem(ModItems.EMERALD_GEMSTONE))
+                .criterion(FabricRecipeProvider.hasItem(ModItems.EMERALD_CHUCK),
+                        FabricRecipeProvider.conditionsFromItem(ModItems.EMERALD_CHUCK))
+                .criterion(FabricRecipeProvider.hasItem(Items.EMERALD),
+                        FabricRecipeProvider.conditionsFromItem(Items.EMERALD))
                 .offerTo(consumer);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.COROLLA)
@@ -50,10 +50,13 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .offerTo(consumer);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CLIENT)
-                .pattern(" bb").pattern("b b").pattern("bb ")
-                .input('b', ModItems.BLESSED_BENCH)
-                .criterion(FabricRecipeProvider.hasItem(ModItems.BLESSED_BENCH),
-                        FabricRecipeProvider.conditionsFromItem(ModItems.BLESSED_BENCH))
+                .pattern(" bb").pattern("bcb").pattern("bb ")
+                .input('b', ModItems.EMERALD_FRAGMENT)
+                .input('c', ModItems.AKASA_CORE)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.EMERALD_FRAGMENT),
+                        FabricRecipeProvider.conditionsFromItem(ModItems.EMERALD_FRAGMENT))
+                .criterion(FabricRecipeProvider.hasItem(ModItems.AKASA_CORE),
+                        FabricRecipeProvider.conditionsFromItem(ModItems.AKASA_CORE))
                 .offerTo(consumer);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.IVE_NEVER_FORGOTTEN)
@@ -61,9 +64,9 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .input('a', ModItems.ARANAS_FLOWER)
                 .criterion(FabricRecipeProvider.hasItem(ModItems.ARANAS_FLOWER),
                         FabricRecipeProvider.conditionsFromItem(ModItems.ARANAS_FLOWER))
-                .input('b', ModItems.BLESSED_SEED)
-                .criterion(FabricRecipeProvider.hasItem(ModItems.BLESSED_SEED),
-                        FabricRecipeProvider.conditionsFromItem(ModItems.BLESSED_SEED))
+                .input('b', ModItems.EMERALD_FRAGMENT)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.EMERALD_FRAGMENT),
+                        FabricRecipeProvider.conditionsFromItem(ModItems.EMERALD_FRAGMENT))
                 .offerTo(consumer);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CANDIED_NUT)
@@ -90,9 +93,9 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .input('a', Items.MILK_BUCKET)
                 .criterion(FabricRecipeProvider.hasItem(Items.MILK_BUCKET),
                         FabricRecipeProvider.conditionsFromItem(Items.MILK_BUCKET))
-                .input('d', ModItems.BLESSED_SEED)
-                .criterion(FabricRecipeProvider.hasItem(ModItems.BLESSED_SEED),
-                        FabricRecipeProvider.conditionsFromItem(ModItems.BLESSED_SEED))
+                .input('d', ModItems.EMERALD_FRAGMENT)
+                .criterion(FabricRecipeProvider.hasItem(ModItems.EMERALD_FRAGMENT),
+                        FabricRecipeProvider.conditionsFromItem(ModItems.EMERALD_FRAGMENT))
                 .offerTo(consumer);
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.AKASA_CORE)
                 .pattern("aba").pattern("bcb").pattern("aba")
@@ -106,39 +109,19 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(Items.IRON_BLOCK),
                         FabricRecipeProvider.conditionsFromItem(Items.IRON_BLOCK))
                 .offerTo(consumer);
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CLIENT)
-                .pattern("cbc").pattern("bab").pattern("cbc")
-                .input('a', ModItems.AKASA_CORE)
-                .criterion(FabricRecipeProvider.hasItem(ModItems.AKASA_CORE),
-                        FabricRecipeProvider.conditionsFromItem(ModItems.AKASA_CORE))
-                .input('b', Items.IRON_BLOCK)
-                .criterion(FabricRecipeProvider.hasItem(Items.IRON_BLOCK),
-                        FabricRecipeProvider.conditionsFromItem(Items.IRON_BLOCK))
-                .input('c', Items.REDSTONE)
-                .criterion(FabricRecipeProvider.hasItem(Items.REDSTONE),
-                        FabricRecipeProvider.conditionsFromItem(Items.REDSTONE))
-                .offerTo(consumer);
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.TROUPE_SWORD)
-                .pattern("c  ").pattern(" c ").pattern(" b ")
+                .pattern(" cd").pattern(" c ").pattern("b  ")
                 .input('b', Items.STICK)
                 .criterion(FabricRecipeProvider.hasItem(Items.STICK),
                         FabricRecipeProvider.conditionsFromItem(Items.STICK))
                 .input('c', Items.IRON_INGOT)
                 .criterion(FabricRecipeProvider.hasItem(Items.IRON_INGOT),
                         FabricRecipeProvider.conditionsFromItem(Items.IRON_INGOT))
+                .input('d', Items.IRON_NUGGET)
+                .criterion(FabricRecipeProvider.hasItem(Items.IRON_NUGGET),
+                        FabricRecipeProvider.conditionsFromItem(Items.IRON_NUGGET))
                 .offerTo(consumer);
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BLESSED_BENCH, 1)
-                .input(Items.STICK)
-                .input(ModItems.ARANAS_FLOWER)
-                .criterion(hasItem(ModItems.ARANAS_FLOWER), conditionsFromItem(ModItems.ARANAS_FLOWER))
-                .offerTo(consumer);
-
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BLESSED_SEED, 1)
-                .input(Items.WHEAT_SEEDS)
-                .input(ModItems.ARANAS_FLOWER)
-                .criterion(hasItem(ModItems.ARANAS_FLOWER), conditionsFromItem(ModItems.ARANAS_FLOWER))
-                .offerTo(consumer);
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.AJI_SAPLING, 1)
                 .input(ModItems.AJILENAKH)
                 .criterion(hasItem(ModItems.AJILENAKH), conditionsFromItem(ModItems.AJILENAKH))
@@ -158,6 +141,25 @@ public class RecipeProvider extends FabricRecipeProvider {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.STRIPPED_AJI_WOOD, 1)
                 .input(ModBlocks.STRIPPED_AJI_LOG)
                 .criterion(hasItem(ModBlocks.STRIPPED_AJI_LOG), conditionsFromItem(ModBlocks.STRIPPED_AJI_LOG))
+                .offerTo(consumer);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.EMERALD_GEMSTONE, 1)
+                .input(ModItems.EMERALD_CHUCK)
+                .input(ModItems.EMERALD_CHUCK)
+                .input(ModItems.EMERALD_CHUCK)
+                .criterion(hasItem(ModItems.EMERALD_CHUCK), conditionsFromItem(ModItems.EMERALD_CHUCK))
+                .offerTo(consumer);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.EMERALD_CHUCK, 1)
+                .input(ModItems.EMERALD_FRAGMENT)
+                .input(ModItems.EMERALD_FRAGMENT)
+                .input(ModItems.EMERALD_FRAGMENT)
+                .criterion(hasItem(ModItems.EMERALD_FRAGMENT), conditionsFromItem(ModItems.EMERALD_FRAGMENT))
+                .offerTo(consumer);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.EMERALD_FRAGMENT, 1)
+                .input(ModItems.EMERALD_SLIVER)
+                .input(ModItems.EMERALD_SLIVER)
+                .input(ModItems.EMERALD_SLIVER)
+                .criterion(hasItem(ModItems.EMERALD_SLIVER), conditionsFromItem(ModItems.EMERALD_SLIVER))
                 .offerTo(consumer);
     }
 }
