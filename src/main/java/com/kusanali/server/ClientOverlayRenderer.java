@@ -1,7 +1,7 @@
 package com.kusanali.server;
 
 import com.kusanali.register.ModKeySet;
-import com.kusanali.specialitem.Client;
+import com.kusanali.specialitem.combats.Client;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;

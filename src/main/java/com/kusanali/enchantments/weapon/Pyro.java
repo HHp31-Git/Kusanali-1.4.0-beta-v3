@@ -1,12 +1,12 @@
-package com.kusanali.enchantments;
+package com.kusanali.enchantments.weapon;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 
-public class Hydro extends Enchantment {
-    public Hydro() {
-        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+public class Pyro extends Enchantment{
+    public Pyro() {
+        super(Enchantment.Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
     @Override
     public int getMinPower(int level) {
@@ -16,5 +16,9 @@ public class Hydro extends Enchantment {
     @Override
     public int getMaxPower(int level) {
         return 64;
+    }
+    @Override
+    public boolean isTreasure() {
+        return true;
     }
 }

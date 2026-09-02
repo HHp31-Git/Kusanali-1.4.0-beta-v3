@@ -1,6 +1,6 @@
 package com.kusanali.server;
 
-import com.kusanali.specialitem.Client;
+import com.kusanali.specialitem.combats.Client;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.server.network.ServerPlayerEntity;

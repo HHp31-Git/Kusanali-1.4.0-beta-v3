@@ -1,11 +1,11 @@
-package com.kusanali.enchantments;
+package com.kusanali.enchantments.weapon;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 
-public class Pyro extends Enchantment{
-    public Pyro() {
+public class Electro extends Enchantment{
+    public Electro() {
         super(Enchantment.Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
     @Override
@@ -16,5 +16,9 @@ public class Pyro extends Enchantment{
     @Override
     public int getMaxPower(int level) {
         return 64;
+    }
+    @Override
+    public boolean isTreasure() {
+        return true;
     }
 }

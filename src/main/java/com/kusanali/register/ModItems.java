@@ -1,7 +1,7 @@
 package com.kusanali.register;
 
-import com.kusanali.specialitem.Client;
-import com.kusanali.specialitem.FloatDream;
+import com.kusanali.specialitem.combats.Client;
+import com.kusanali.specialitem.combats.FloatDream;
 import com.kusanali.specialitem.Halvamaze;
 import com.kusanali.specialitem.elements.*;
 import net.minecraft.entity.effect.StatusEffectInstance;

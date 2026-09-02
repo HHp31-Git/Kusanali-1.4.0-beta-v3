@@ -1,11 +1,11 @@
-package com.kusanali.enchantments;
+package com.kusanali.enchantments.weapon;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 
-public class Dendro extends Enchantment {
-    public Dendro() {
+public class Cyro extends Enchantment {
+    public Cyro() {
         super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
     @Override
@@ -16,5 +16,9 @@ public class Dendro extends Enchantment {
     @Override
     public int getMaxPower(int level) {
         return 64;
+    }
+    @Override
+    public boolean isTreasure() {
+        return true;
     }
 }

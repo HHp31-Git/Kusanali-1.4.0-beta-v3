@@ -1,6 +1,7 @@
 package com.kusanali.datagenerator;
 
 import com.kusanali.register.ModBlocks;
+import com.kusanali.register.ModEnchants;
 import com.kusanali.register.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -102,5 +103,19 @@ public class ChiLangProvider extends FabricLanguageProvider {
         translationBuilder.add("death.attack.reaction_type_5.player",   "%1$s 死于月反应");
         translationBuilder.add("death_attack.reaction_type_6", "%1$s 死于星反应");
         translationBuilder.add("death.attack.reaction_type_6.player",   "%1$s 死于星反应");
+
+        translationBuilder.add(ModEnchants.ANEMO_ENCHANT, "风元素附魔");
+        translationBuilder.add(ModEnchants.CYRO_ENCHANT, "冰元素附魔");
+        translationBuilder.add(ModEnchants.ELECTRO_ENCHANT, "雷元素附魔");
+        translationBuilder.add(ModEnchants.GEO_ENCHANT, "岩元素附魔");
+        translationBuilder.add(ModEnchants.HYDRO_ENCHANT, "水元素附魔");
+        translationBuilder.add(ModEnchants.PYRO_ENCHANT, "火元素附魔");
+        translationBuilder.add(ModEnchants.DENDRO_ENCHANT, "草元素附魔");
+        translationBuilder.add(ModEnchants.ANEMO_ENCHANT_BOW, "风矢");
+        translationBuilder.add(ModEnchants.CYRO_ENCHANT_BOW, "冰矢");
+        translationBuilder.add(ModEnchants.ELECTRO_ENCHANT_BOW, "雷矢");
+        translationBuilder.add(ModEnchants.GEO_ENCHANT_BOW, "岩矢");
+        translationBuilder.add(ModEnchants.HYDRO_ENCHANT_BOW, "水矢");
+        translationBuilder.add(ModEnchants.DENDRO_ENCHANT_BOW, "草矢");
     }
 }

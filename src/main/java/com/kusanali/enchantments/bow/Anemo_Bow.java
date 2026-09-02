@@ -1,12 +1,12 @@
-package com.kusanali.enchantments;
+package com.kusanali.enchantments.bow;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 
-public class Electro extends Enchantment{
-    public Electro() {
-        super(Enchantment.Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+public class Anemo_Bow extends Enchantment{
+    public Anemo_Bow() {
+        super(Rarity.RARE, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
     @Override
     public int getMinPower(int level) {
@@ -16,5 +16,9 @@ public class Electro extends Enchantment{
     @Override
     public int getMaxPower(int level) {
         return 64;
+    }
+    @Override
+    public boolean isTreasure() {
+        return true;
     }
 }

@@ -1,4 +1,4 @@
-package com.kusanali.specialitem;
+package com.kusanali.specialitem.combats;
 
 import com.kusanali.register.ModEffects;
 import com.kusanali.register.ModItems;

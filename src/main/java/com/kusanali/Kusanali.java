@@ -2,13 +2,16 @@ package com.kusanali;
 
 import com.kusanali.entity.other.SeedEffectTracker;
 import com.kusanali.event.element_adhering.*;
+import com.kusanali.event.element_enchant.ElementBowEnchantEvent;
 import com.kusanali.event.element_enchant.ElementEnchantEvent;
+import com.kusanali.event.element_enchant.EnchantBowSetting;
 import com.kusanali.event.element_reaction.*;
-import com.kusanali.event.reaction_middle.SuperconductivityEvent;
+import com.kusanali.event.element_enchant.EnchantWeaponSetting;
+import com.kusanali.event.reaction_status.SuperconductivityEvent;
 import com.kusanali.event.special_item.*;
 import com.kusanali.register.*;
 import com.kusanali.server.*;
-import com.kusanali.specialitem.FloatDream;
+import com.kusanali.specialitem.combats.FloatDream;
 import com.kusanali.world.feature.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
@@ -71,6 +74,10 @@ public class Kusanali implements ModInitializer {
         IntensifyEvent.register();
         SuperIntensifyEvent.register();
         GrowingIntensifyEvent.register();
+        //附魔设置类
+        EnchantWeaponSetting.register();
+        ElementBowEnchantEvent.onInitialize();
+        EnchantBowSetting.register();
         //世界生成类
         ModWorldGeneration.register();
         AjiLeavesDrop.register();

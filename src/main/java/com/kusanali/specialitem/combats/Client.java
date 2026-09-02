@@ -1,4 +1,4 @@
-package com.kusanali.specialitem;
+package com.kusanali.specialitem.combats;
 
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.ArmorItem;

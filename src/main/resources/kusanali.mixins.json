@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "BlazePyroAddMixin",
+    "FlameFixMixin",
     "IronGolemPyroAddMixin",
     "MagmaPyroAddMixin",
     "SlimeSplitMixin",

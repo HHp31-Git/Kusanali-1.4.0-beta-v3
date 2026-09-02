@@ -111,7 +111,6 @@ public class DiffusionEvent {
                 boolean anemoInfinite = anemo.getDuration() == -1;
                 boolean spreadInfinite = spreadInstance.getDuration() == -1;
 
-                /* ===== 处理 Anemo 删除 ===== */
                 if (!anemoInfinite) {
                     entity.removeStatusEffect(ModEffects.ANEMO);
                     times.remove(ModEffects.ANEMO);
@@ -137,7 +136,6 @@ public class DiffusionEvent {
                             .put(spreadElement, true);
                 }
 
-                /* ===== 造成伤害（使用 damage 但防递归） ===== */
                 if (!REENTERING.contains(uuid)) {
                     REENTERING.add(uuid);
                     try {

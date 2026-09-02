@@ -1,12 +1,12 @@
-package com.kusanali.enchantments;
+package com.kusanali.enchantments.bow;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 
-public class Geo extends Enchantment {
-    public Geo() {
-        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+public class Geo_Bow extends Enchantment {
+    public Geo_Bow() {
+        super(Rarity.RARE, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
     @Override
     public int getMinPower(int level) {
@@ -16,5 +16,9 @@ public class Geo extends Enchantment {
     @Override
     public int getMaxPower(int level) {
         return 64;
+    }
+    @Override
+    public boolean isTreasure() {
+        return true;
     }
 }

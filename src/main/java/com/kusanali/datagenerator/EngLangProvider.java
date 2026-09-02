@@ -1,6 +1,7 @@
 package com.kusanali.datagenerator;
 
 import com.kusanali.register.ModBlocks;
+import com.kusanali.register.ModEnchants;
 import com.kusanali.register.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -76,7 +77,7 @@ public class EngLangProvider extends FabricLanguageProvider {
         translationBuilder.add("category.kusanali.abilities", "Ability-Float Dream");
         translationBuilder.add("effect.kusanali.pyro", "Pyro Adhering");
         translationBuilder.add("effect.kusanali.hydro", "Hydro Adhering");
-        translationBuilder.add("effect.kusanali.anemo", "Anemo Adhering");
+        translationBuilder.add("effect.kusanali.anemo", "Anemo_Bow Adhering");
         translationBuilder.add("effect.kusanali.electro", "Electro Adhering");
         translationBuilder.add("effect.kusanali.dendro", "Dendro Adhering");
         translationBuilder.add("effect.kusanali.cryo", "Cryo Adhering");
@@ -102,5 +103,19 @@ public class EngLangProvider extends FabricLanguageProvider {
         translationBuilder.add("death.attack.reaction_type_5.player",   "%1$s was consumed by moon reaction");
         translationBuilder.add("death_attack.reaction_type_6", "%1$s was consumed by star reaction");
         translationBuilder.add("death.attack.reaction_type_6.player",   "%1$s was consumed by star reaction");
+
+        translationBuilder.add(ModEnchants.ANEMO_ENCHANT, "Anemo_Bow Enchant");
+        translationBuilder.add(ModEnchants.CYRO_ENCHANT, "Cyro Enchant");
+        translationBuilder.add(ModEnchants.ELECTRO_ENCHANT, "Electro Enchant");
+        translationBuilder.add(ModEnchants.GEO_ENCHANT, "Geo Enchant");
+        translationBuilder.add(ModEnchants.HYDRO_ENCHANT, "Hydro Enchant");
+        translationBuilder.add(ModEnchants.PYRO_ENCHANT, "Pyro Enchant");
+        translationBuilder.add(ModEnchants.DENDRO_ENCHANT, "Dendro Enchant");
+        translationBuilder.add(ModEnchants.ANEMO_ENCHANT_BOW, "anemo arrow");
+        translationBuilder.add(ModEnchants.CYRO_ENCHANT_BOW, "cyro arrow");
+        translationBuilder.add(ModEnchants.ELECTRO_ENCHANT_BOW, "electro arrow");
+        translationBuilder.add(ModEnchants.GEO_ENCHANT_BOW, "geo arrow");
+        translationBuilder.add(ModEnchants.HYDRO_ENCHANT_BOW, "hydro arrow");
+        translationBuilder.add(ModEnchants.DENDRO_ENCHANT_BOW, "dendro arrow");
     }
 }
